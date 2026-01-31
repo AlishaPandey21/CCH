@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email - CollabHub</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-size='60' fill='white'>C</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        },
+                        dark: {
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+        }
+        
+        .auth-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15), transparent 50%),
+                radial-gradient(ellipse at bottom left, rgba(16, 185, 129, 0.1), transparent 50%);
+            z-index: 0;
+        }
+        
+        .auth-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+        
+        .auth-card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(71, 85, 105, 0.5);
+            border-radius: 24px;
+        }
+        
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+            text-decoration: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+            color: white;
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: transparent;
+            color: #94a3b8;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn-secondary:hover {
+            background: #1e293b;
+            border-color: #475569;
+            color: white;
+        }
+        
+        .icon-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+        
+        .icon-box.email {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+        }
+        
+        .icon-box.success {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(2deg); }
+            75% { transform: translateY(5px) rotate(-2deg); }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .email-sent-animation {
+            position: relative;
+        }
+        
+        .email-sent-animation::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 24px;
+            height: 24px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bounceIn 0.5s ease forwards;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        .step-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #334155;
+            transition: all 0.3s ease;
+        }
+        
+        .step-dot.active {
+            background: #6366f1;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+        
+        .step-dot.completed {
+            background: #10b981;
+        }
+        
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .email-providers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .email-provider {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .email-provider:hover {
+            border-color: #6366f1;
+            color: white;
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        .verified-state, .pending-state {
+            transition: all 0.3s ease;
+        }
+        
+        .verified-state {
+            display: none;
+        }
+        
+        .verified-state.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .pending-state.hidden {
+            display: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="auth-bg"></div>
+    <div class="auth-grid"></div>
+    
+    <!-- Main Container -->
+    <div class="min-h-screen flex flex-col items-center justify-center p-6 relative z-10">
+        <!-- Logo -->
+        <a href="../index.html" class="flex items-center gap-3 mb-8">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-purple-500 flex items-center justify-center">
+                <i class="fas fa-cube text-white text-lg"></i>
+            </div>
+            <span class="text-xl font-bold text-white">CollabHub</span>
+        </a>
+        
+        <!-- Auth Card -->
+        <div class="auth-card p-8 w-full max-w-lg text-center">
+            
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+                <div class="step-dot completed"></div>
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+            </div>
+            
+            <!-- Pending State -->
+            <div class="pending-state" id="pendingState">
+                <div class="icon-box email floating email-sent-animation">
+                    <i class="fas fa-envelope-open-text text-primary-400 text-4xl"></i>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-white mb-3">Verify Your Email</h2>
+                <p class="text-dark-400 mb-2">We've sent a verification link to</p>
+                <p class="text-white font-semibold text-lg mb-6" id="userEmail">your@email.com</p>
+                
+                <div class="bg-dark-800/50 rounded-xl p-5 text-left mb-6">
+                    <h4 class="text-white font-semibold mb-3 flex items-center gap-2">
+                        <i class="fas fa-info-circle text-primary-400"></i>
+                        Next Steps:
+                    </h4>
+                    <ol class="text-dark-400 text-sm space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-primary-500/20 flex items-center justify-center text-primary-400 text-xs flex-shrink-0">1</span>
+                            <span>Open your email inbox</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-primary-500/20 flex items-center justify-center text-primary-400 text-xs flex-shrink-0">2</span>
+                            <span>Click the verification link in the email from CollabHub</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-primary-500/20 flex items-center justify-center text-primary-400 text-xs flex-shrink-0">3</span>
+                            <span>Start exploring campaigns and opportunities!</span>
+                        </li>
+                    </ol>
+                </div>
+                
+                <!-- Quick Email Links -->
+                <p class="text-dark-500 text-sm mb-3">Open your email:</p>
+                <div class="email-providers">
+                    <a href="https://mail.google.com" target="_blank" class="email-provider">
+                        <i class="fab fa-google text-red-400"></i>
+                        Gmail
+                    </a>
+                    <a href="https://outlook.live.com" target="_blank" class="email-provider">
+                        <i class="fab fa-microsoft text-blue-400"></i>
+                        Outlook
+                    </a>
+                    <a href="https://mail.yahoo.com" target="_blank" class="email-provider">
+                        <i class="fab fa-yahoo text-purple-400"></i>
+                        Yahoo
+                    </a>
+                </div>
+                
+                <div class="border-t border-dark-700 my-6"></div>
+                
+                <!-- Resend Section -->
+                <p class="text-dark-400 text-sm mb-4">
+                    <i class="fas fa-clock mr-2"></i>
+                    Didn't receive the email? Check spam or
+                </p>
+                
+                <button type="button" id="resendBtn" class="btn-secondary" onclick="resendEmail()">
+                    <i class="fas fa-redo"></i>
+                    <span id="resendText">Resend Email</span>
+                    <span id="resendTimer" class="hidden"></span>
+                </button>
+                
+                <p class="text-dark-500 text-sm mt-6">
+                    Wrong email? <a href="register.html" class="text-primary-400 hover:underline">Go back and change it</a>
+                </p>
+            </div>
+            
+            <!-- Verified State -->
+            <div class="verified-state" id="verifiedState">
+                <div class="icon-box success floating" id="successIcon">
+                    <i class="fas fa-check-circle text-green-400 text-5xl"></i>
+                </div>
+                
+                <h2 class="text-2xl font-bold text-white mb-3">Email Verified! 🎉</h2>
+                <p class="text-dark-400 mb-8">
+                    Your account is now active. Welcome to CollabHub!
+                </p>
+                
+                <div class="space-y-4">
+                    <a href="login.html?verified=true" class="btn-primary w-full">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In to Your Account
+                    </a>
+                    
+                    <p class="text-dark-500 text-sm">
+                        You'll be redirected automatically in <span id="redirectCount">5</span> seconds...
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Links -->
+        <div class="text-center mt-8 text-dark-500 text-sm">
+            <a href="#" class="hover:text-dark-300 transition-colors">Help</a>
+            <span class="mx-2">•</span>
+            <a href="#" class="hover:text-dark-300 transition-colors">Contact Support</a>
+        </div>
+    </div>
+    
+    <script>
+        // ===== GET EMAIL FROM URL =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const email = urlParams.get('email');
+            const verified = urlParams.get('verified');
+            
+            if (email) {
+                document.getElementById('userEmail').textContent = email;
+            }
+            
+            // If verified param exists, show success state
+            if (verified === 'true') {
+                showVerifiedState();
+            }
+        });
+        
+        // ===== RESEND EMAIL =====
+        let resendCooldown = 0;
+        let resendInterval;
+        
+        async function resendEmail() {
+            const resendBtn = document.getElementById('resendBtn');
+            const resendText = document.getElementById('resendText');
+            const resendTimer = document.getElementById('resendTimer');
+            
+            if (resendCooldown > 0) return;
+            
+            // Show loading
+            resendBtn.disabled = true;
+            resendText.textContent = 'Sending...';
+            
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // In real app:
+                // const email = document.getElementById('userEmail').textContent;
+                // await fetch('/api/auth/resend-verification', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({ email })
+                // });
+                
+                // Start cooldown
+                resendCooldown = 60;
+                resendText.classList.add('hidden');
+                resendTimer.classList.remove('hidden');
+                
+                resendInterval = setInterval(() => {
+                    resendCooldown--;
+                    resendTimer.textContent = `Wait ${resendCooldown}s`;
+                    
+                    if (resendCooldown <= 0) {
+                        clearInterval(resendInterval);
+                        resendBtn.disabled = false;
+                        resendText.classList.remove('hidden');
+                        resendText.textContent = 'Resend Email';
+                        resendTimer.classList.add('hidden');
+                    }
+                }, 1000);
+                
+            } catch (error) {
+                resendText.textContent = 'Failed. Try again.';
+                resendBtn.disabled = false;
+            }
+        }
+        
+        // ===== SHOW VERIFIED STATE =====
+        function showVerifiedState() {
+            document.getElementById('pendingState').classList.add('hidden');
+            document.getElementById('verifiedState').classList.add('active');
+            
+            // Create confetti effect
+            createConfetti();
+            
+            // Start redirect countdown
+            let count = 5;
+            const countEl = document.getElementById('redirectCount');
+            
+            const countdown = setInterval(() => {
+                count--;
+                countEl.textContent = count;
+                
+                if (count <= 0) {
+                    clearInterval(countdown);
+                    window.location.href = 'login.html?verified=true';
+                }
+            }, 1000);
+        }
+        
+        // ===== CONFETTI EFFECT =====
+        function createConfetti() {
+            const colors = ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b'];
+            const container = document.getElementById('successIcon');
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'px';
+                    confetti.style.top = Math.random() * 100 + 'px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animation = `confetti ${1 + Math.random()}s ease forwards`;
+                    
+                    container.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 2000);
+                }, i * 50);
+            }
+        }
+        
+        // ===== SIMULATE EMAIL VERIFICATION (For Demo) =====
+        // In production, remove this and handle via actual email link
+        // Uncomment below to auto-verify after 10 seconds for demo
+        /*
+        setTimeout(() => {
+            showVerifiedState();
+        }, 10000);
+        */
+    </script>
+</body>
+</html>

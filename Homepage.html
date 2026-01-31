@@ -1,0 +1,2286 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollabHub - Where Brands Meet Creators</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-size='60' fill='white'>C</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        },
+                        secondary: {
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                        },
+                        accent: {
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                        },
+                        dark: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        /* ===== CUSTOM SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #6366f1;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4f46e5;
+        }
+        
+        /* ===== GRADIENT TEXT ===== */
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-text-light {
+            background: linear-gradient(135deg, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* ===== GRADIENT BACKGROUNDS ===== */
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        }
+        
+        .gradient-bg-hover:hover {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        }
+        
+        /* ===== GLASS EFFECT ===== */
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(71, 85, 105, 0.5);
+        }
+        
+        /* ===== NAVBAR ===== */
+        .navbar {
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* ===== BUTTONS ===== */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
+            color: white;
+        }
+        
+        .btn-secondary-custom {
+            background: #1e293b;
+            color: white;
+            border: 1px solid #475569;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary-custom:hover {
+            background: #334155;
+            border-color: #6366f1;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-ghost {
+            background: transparent;
+            color: #94a3b8;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-ghost:hover {
+            color: white;
+            background: rgba(99, 102, 241, 0.1);
+        }
+        
+        /* ===== CARDS ===== */
+        .feature-card {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border: 1px solid #475569;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: #6366f1;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* ===== VALUE CARDS ===== */
+        .value-card {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid #334155;
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-5px);
+        }
+        
+        .value-card.for-brands:hover {
+            border-color: #6366f1;
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+        }
+        
+        .value-card.for-influencers:hover {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.2);
+        }
+        
+        /* ===== STEP CARDS ===== */
+        .step-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .step-connector {
+            position: absolute;
+            top: 25px;
+            left: calc(50% + 60px);
+            width: calc(100% - 120px);
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            opacity: 0.3;
+        }
+        
+        /* ===== CATEGORY CARDS ===== */
+        .category-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, #1e293b, #334155);
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* ===== PRICING CARDS ===== */
+        .pricing-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border: 2px solid #6366f1;
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(99, 102, 241, 0.3);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== FAQ ACCORDION ===== */
+        .faq-item {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: #475569;
+        }
+        
+        .faq-item.active {
+            border-color: #6366f1;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: rgba(99, 102, 241, 0.05);
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+        
+        /* ===== TESTIMONIAL CARDS ===== */
+        .testimonial-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-5px);
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.15), transparent 50%),
+                radial-gradient(ellipse at top right, rgba(139, 92, 246, 0.1), transparent 50%),
+                radial-gradient(ellipse at bottom center, rgba(6, 182, 212, 0.1), transparent 50%);
+            z-index: 0;
+        }
+        
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+        
+        /* ===== FLOATING ANIMATION ===== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .floating-delay-1 { animation-delay: 0.5s; }
+        .floating-delay-2 { animation-delay: 1s; }
+        .floating-delay-3 { animation-delay: 1.5s; }
+        
+        /* ===== PULSE ANIMATION ===== */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        /* ===== PLATFORM BADGES ===== */
+        .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .platform-badge:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+        
+        /* ===== SECTION BADGE ===== */
+        .section-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #818cf8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* ===== STATS COUNTER ===== */
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* ===== TRUSTED LOGOS ===== */
+        .trusted-logo {
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+            filter: grayscale(100%);
+        }
+        
+        .trusted-logo:hover {
+            opacity: 0.8;
+            filter: grayscale(0%);
+        }
+        
+        /* ===== HOW IT WORKS TABS ===== */
+        .how-tab {
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .how-tab.active {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+        }
+        
+        .how-tab:not(.active) {
+            background: #1e293b;
+            color: #94a3b8;
+            border-color: #334155;
+        }
+        
+        .how-tab:not(.active):hover {
+            border-color: #6366f1;
+            color: white;
+        }
+        
+        .how-content {
+            display: none;
+        }
+        
+        .how-content.active {
+            display: block;
+        }
+        
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* ===== MOBILE MENU ===== */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: #0f172a;
+            z-index: 1001;
+            padding: 2rem;
+            transition: right 0.3s ease;
+            border-left: 1px solid #334155;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* ===== BENEFIT LIST ===== */
+        .benefit-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-list li i {
+            color: #10b981;
+            margin-top: 4px;
+        }
+        
+        /* ===== PROMISE LIST ===== */
+        .promise-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 1.25rem;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .promise-item:hover {
+            border-color: #6366f1;
+            transform: translateX(5px);
+        }
+        
+        .promise-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+        
+        /* ===== CAMPAIGN TYPE CARDS ===== */
+        .campaign-type-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .campaign-type-card:hover {
+            border-color: #6366f1;
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, #1e293b, #334155);
+        }
+        
+        .campaign-type-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
+        }
+        
+        /* ===== LOADING SPINNER ===== */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #334155;
+            border-top-color: #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .section-title {
+                font-size: 2rem !important;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+            
+            .step-connector {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- ========== UPDATED NAVBAR ========== -->
+    <nav id="navbar" class="navbar fixed-top py-3 px-4 lg:px-8 z-50 transition-all duration-300">
+        <div class="container-fluid max-w-7xl mx-auto">
+            <div class="flex items-center justify-between">
+                <!-- Logo - Links to Homepage -->
+                <a href="index.html" class="flex items-center gap-3 text-decoration-none">
+                    <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
+                        <i class="fas fa-cube text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold text-white">CollabHub</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#features" class="nav-link text-dark-400 hover:text-white font-medium text-sm">Features</a>
+                    <a href="#how-it-works" class="nav-link text-dark-400 hover:text-white font-medium text-sm">How It Works</a>
+                    <a href="#pricing" class="nav-link text-dark-400 hover:text-white font-medium text-sm">Pricing</a>
+                    <a href="#faq" class="nav-link text-dark-400 hover:text-white font-medium text-sm">FAQ</a>
+                </div>
+                
+                <!-- Desktop Auth Buttons -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <!-- Sign In - Goes to Login Page -->
+                    <a href="auth/login.html" class="btn-ghost text-sm">Sign In</a>
+                    
+                    <!-- Get Started - Goes to Register Choice Page -->
+                    <a href="auth/register.html" class="btn-primary-custom text-sm">Get Started Free</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden text-white text-xl p-2">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- ========== UPDATED MOBILE MENU ========== -->
+    <div id="mobileMenu" class="mobile-menu">
+        <div class="flex justify-between items-center mb-8">
+            <span class="text-xl font-bold text-white">Menu</span>
+            <button id="closeMobileMenu" class="text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex flex-col gap-4">
+            <a href="#features" class="text-dark-300 hover:text-white font-medium py-2 mobile-link">Features</a>
+            <a href="#how-it-works" class="text-dark-300 hover:text-white font-medium py-2 mobile-link">How It Works</a>
+            <a href="#pricing" class="text-dark-300 hover:text-white font-medium py-2 mobile-link">Pricing</a>
+            <a href="#faq" class="text-dark-300 hover:text-white font-medium py-2 mobile-link">FAQ</a>
+            <hr class="border-dark-700 my-4">
+            
+            <!-- Mobile Auth Links -->
+            <a href="auth/login.html" class="text-dark-300 hover:text-white font-medium py-2">Sign In</a>
+            <a href="auth/register.html" class="btn-primary-custom text-center mt-2">Get Started Free</a>
+        </div>
+    </div>
+    
+    <!-- ========== HERO SECTION ========== -->
+    <section id="hero" class="min-h-screen relative flex items-center pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        
+        <div class="container max-w-7xl mx-auto px-4 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Hero Content -->
+                <div class="text-center lg:text-left" data-aos="fade-right" data-aos-duration="1000">
+                    <!-- Badge -->
+                    <div class="mb-6">
+                        <span class="section-badge">
+                            <i class="fas fa-rocket mr-2"></i> The Future of Influencer Marketing
+                        </span>
+                    </div>
+                    
+                    <!-- Title -->
+                    <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                        <span class="gradient-text-light">Where Brands</span>
+                        <br>
+                        <span class="gradient-text">Meet Creators</span>
+                    </h1>
+                    
+                    <!-- Subtitle -->
+                    <p class="text-dark-400 text-lg lg:text-xl leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+                        The smarter way to discover, collaborate, and grow together. Connect with verified influencers and authentic brands for impactful campaigns.
+                    </p>
+                    
+                    <!-- CTA Buttons - Direct to Registration -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
+                        <!-- I'm a Brand - Goes directly to Brand Registration -->
+                        <a href="auth/register-brand.html" class="btn-primary-custom text-center flex items-center justify-center gap-2 text-base py-4 px-8">
+                            <i class="fas fa-building"></i> I'm a Brand
+                        </a>
+                        
+                        <!-- I'm a Creator - Goes directly to Influencer Registration -->
+                        <a href="auth/register-influencer.html" class="btn-secondary-custom text-center flex items-center justify-center gap-2 text-base py-4 px-8">
+                            <i class="fas fa-star"></i> I'm a Creator
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <div class="platform-badge">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <span>Verified Profiles</span>
+                        </div>
+                        <div class="platform-badge">
+                            <i class="fas fa-shield-alt text-blue-500"></i>
+                            <span>Secure Payments</span>
+                        </div>
+                        <div class="platform-badge">
+                            <i class="fas fa-bolt text-yellow-500"></i>
+                            <span>Smart Matching</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Visual -->
+                <div class="relative hero-visual" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <!-- Main Dashboard Card -->
+                    <div class="glass-card rounded-3xl p-6 shadow-2xl">
+                        <!-- Browser Header -->
+                        <div class="flex items-center gap-2 mb-4 pb-4 border-b border-dark-700">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <div class="flex-1 ml-4">
+                                <div class="bg-dark-800 rounded-lg py-2 px-4 text-xs text-dark-400 max-w-xs">
+                                    collabhub.com/dashboard
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Dashboard Content -->
+                        <div class="space-y-4">
+                            <!-- Header -->
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="text-white font-semibold">Dashboard</h4>
+                                    <p class="text-dark-400 text-sm">Welcome back!</p>
+                                </div>
+                                <div class="flex -space-x-2">
+                                    <div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">A</div>
+                                    <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">B</div>
+                                    <div class="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">C</div>
+                                    <div class="w-8 h-8 rounded-full bg-dark-700 flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">+5</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Stats Grid -->
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-dark-400 text-xs">Campaigns</span>
+                                        <i class="fas fa-bullhorn text-primary-500 text-xs"></i>
+                                    </div>
+                                    <p class="text-xl font-bold text-white">24</p>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-dark-400 text-xs">Matches</span>
+                                        <i class="fas fa-handshake text-green-500 text-xs"></i>
+                                    </div>
+                                    <p class="text-xl font-bold text-white">18</p>
+                                </div>
+                                <div class="bg-dark-800 rounded-xl p-4">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-dark-400 text-xs">Earnings</span>
+                                        <i class="fas fa-dollar-sign text-yellow-500 text-xs"></i>
+                                    </div>
+                                    <p class="text-xl font-bold text-white">$4.2K</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Activity -->
+                            <div class="bg-dark-800 rounded-xl p-4">
+                                <p class="text-dark-400 text-xs mb-3">Recent Activity</p>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+                                            <i class="fas fa-check text-green-500 text-xs"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-white text-sm">Campaign approved</p>
+                                            <p class="text-dark-500 text-xs">2 min ago</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                                            <i class="fas fa-envelope text-blue-500 text-xs"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-white text-sm">New message</p>
+                                            <p class="text-dark-500 text-xs">15 min ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Cards -->
+                    <div class="absolute -top-6 -right-6 glass-card rounded-xl p-4 shadow-lg floating hidden lg:block">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                                <i class="fas fa-check text-green-500"></i>
+                            </div>
+                            <div>
+                                <p class="text-white text-sm font-medium">New Match!</p>
+                                <p class="text-dark-400 text-xs">@fashionista</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-4 -left-6 glass-card rounded-xl p-4 shadow-lg floating floating-delay-1 hidden lg:block">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                                <i class="fas fa-dollar-sign text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <p class="text-white text-sm font-medium">Payment Received</p>
+                                <p class="text-dark-400 text-xs">+$1,500.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== STATS SECTION (Conditional) ========== -->
+    <section id="stats-section" class="py-12 border-t border-b border-dark-800">
+        <div class="container max-w-7xl mx-auto px-4">
+            <!-- This will be dynamically updated based on real data -->
+            <!-- For now, showing the "Growing Community" version -->
+            <div id="stats-content" class="text-center">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center">
+                            <i class="fas fa-rocket text-white"></i>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="text-white font-bold text-lg">Join Our Growing Community</h4>
+                            <p class="text-dark-400 text-sm">Be among the first to experience smarter collaborations</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <!-- Links to Registration Pages -->
+                        <a href="auth/register-influencer.html" class="btn-primary-custom text-sm py-3 px-6">Join as Creator</a>
+                        <a href="auth/register-brand.html" class="btn-secondary-custom text-sm py-3 px-6">Join as Brand</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== VALUE PROPOSITION ========== -->
+    <section id="value-prop" class="py-20 lg:py-28">
+        <div class="container max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- For Brands -->
+                <div class="value-card for-brands" data-aos="fade-up" data-aos-duration="800">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-primary-500/20 flex items-center justify-center">
+                            <i class="fas fa-building text-primary-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">For Brands</h3>
+                    </div>
+                    
+                    <h4 class="text-xl font-semibold text-white mb-4">Grow Your Brand with Authentic Voices</h4>
+                    <p class="text-dark-400 mb-6">Connect with influencers who truly align with your brand values and target audience.</p>
+                    
+                    <ul class="benefit-list text-dark-300 mb-8 space-y-4">
+                        <li>
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <div>
+                                <span class="text-white font-medium">Smart Discovery</span>
+                                <p class="text-dark-400 text-sm">AI-powered matching to find perfect creators</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <div>
+                                <span class="text-white font-medium">Data-Driven Decisions</span>
+                                <p class="text-dark-400 text-sm">Real engagement metrics and audience insights</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <div>
+                                <span class="text-white font-medium">Streamlined Workflow</span>
+                                <p class="text-dark-400 text-sm">Manage campaigns from discovery to payment</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <div>
+                                <span class="text-white font-medium">Secure Collaborations</span>
+                                <p class="text-dark-400 text-sm">Contracts, milestones, and escrow payments</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <!-- CTA Button - Goes to Brand Registration -->
+                    <a href="auth/register-brand.html" class="btn-primary-custom inline-flex items-center gap-2">
+                        Find Influencers <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- For Influencers -->
+                <div class="value-card for-influencers" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-secondary-500/20 flex items-center justify-center">
+                            <i class="fas fa-star text-secondary-500 text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">For Creators</h3>
+                    </div>
+                    
+                    <h4 class="text-xl font-semibold text-white mb-4">Monetize Your Influence</h4>
+                    <p class="text-dark-400 mb-6">Get discovered by brands that value your creativity and connect with your audience.</p>
+                    
+                    <ul class="benefit-list text-dark-300 mb-8 space-y-4">
+                        <li>
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <div>
+                                <span class="text-white font-medium">Get Paid What You're Worth</span>
+                                <p class="text-dark-400 text-sm">Transparent pricing and secure payments</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <div>
+                                <span class="text-white font-medium">Discover Opportunities</span>
+                                <p class="text-dark-400 text-sm">Browse campaigns that match your niche</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <div>
+                                <span class="text-white font-medium">Grow Your Career</span>
+                                <p class="text-dark-400 text-sm">Build portfolio, collect reviews, level up</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle text-green-500"></i>
+                            <div>
+                                <span class="text-white font-medium">Work with Confidence</span>
+                                <p class="text-dark-400 text-sm">Clear contracts and dispute protection</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <a href="#" class="btn-secondary-custom inline-flex items-center gap-2 border-secondary-500 hover:bg-secondary-500/10">
+                        Browse Campaigns <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== HOW IT WORKS ========== -->
+    <section id="how-it-works" class="py-20 lg:py-28 bg-dark-900/50">
+        <div class="container max-w-7xl mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="section-badge mb-4">How It Works</span>
+                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Get Started in Minutes</h2>
+                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+                    Whether you're a brand or creator, our platform makes collaboration simple and effective.
+                </p>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="flex justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
+                <button class="how-tab active" data-tab="brands">
+                    <i class="fas fa-building mr-2"></i> For Brands
+                </button>
+                <button class="how-tab" data-tab="creators">
+                    <i class="fas fa-star mr-2"></i> For Creators
+                </button>
+            </div>
+            
+            <!-- Brands Content -->
+            <div id="brands-content" class="how-content active">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-connector hidden lg:block"></div>
+                        <div class="step-number">1</div>
+                        <div class="text-4xl mb-4">📝</div>
+                        <h4 class="text-white font-semibold text-lg mb-2">Create Campaign</h4>
+                        <p class="text-dark-400 text-sm">Define your goals, set budget, and specify requirements for your ideal collaboration.</p>
+                    </div>
+                    
+                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-connector hidden lg:block"></div>
+                        <div class="step-number">2</div>
+                        <div class="text-4xl mb-4">🔍</div>
+                        <h4 class="text-white font-semibold text-lg mb-2">Find Matches</h4>
+                        <p class="text-dark-400 text-sm">Our AI suggests influencers that align with your brand. Review profiles and analytics.</p>
+                    </div>
+                    
+                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-connector hidden lg:block"></div>
+                        <div class="step-number">3</div>
+                        <div class="text-4xl mb-4">🤝</div>
+                        <h4 class="text-white font-semibold text-lg mb-2">Collaborate</h4>
+                        <p class="text-dark-400 text-sm">Connect, negotiate terms, and sign digital contracts. Communicate seamlessly.</p>
+                    </div>
+                    
+                    <div class="step-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="step-number">4</div>
+                        <div class="text-4xl mb-4">📊</div>
+                        <h4 class="text-white font-semibold text-lg mb-2">Measure Results</h4>
+                        <p class="text-dark-400 text-sm">Track performance, engagement metrics, and ROI in real-time.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Creators Content -->
+            <div id="creators-content" class="how-content">
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-connector hidden lg:block"></div>
+                        <div class="step-number">1</div>
+                        <div class="text-4xl mb-4">👤</div>
+                        <h4 class="text-white font-semibold text-lg mb-2">Build Profile</h4>
+                        <p class="text-dark-400 text-sm">Showcase your work, connect social accounts, and set your rates.</p>
+                    </div>
+                    
+                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-connector hidden lg:block"></div>
+                        <div class="step-number">2</div>
+                        <div class="text-4xl mb-4">🎯</div>
+                        <h4 class="text-white font-semibold text-lg mb-2">Find Opportunities</h4>
+                        <p class="text-dark-400 text-sm">Browse campaigns matching your niche. Get personalized recommendations.</p>
+                    </div>
+                    
+                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-connector hidden lg:block"></div>
+                        <div class="step-number">3</div>
+                        <div class="text-4xl mb-4">📩</div>
+                        <h4 class="text-white font-semibold text-lg mb-2">Apply & Negotiate</h4>
+                        <p class="text-dark-400 text-sm">Submit proposals with your creative ideas. Negotiate terms that work for you.</p>
+                    </div>
+                    
+                    <div class="step-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="step-number">4</div>
+                        <div class="text-4xl mb-4">💵</div>
+                        <h4 class="text-white font-semibold text-lg mb-2">Create & Get Paid</h4>
+                        <p class="text-dark-400 text-sm">Deliver content, get approved, and receive secure payment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== FEATURES ========== -->
+    <section id="features" class="py-20 lg:py-28">
+        <div class="container max-w-7xl mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="section-badge mb-4">Features</span>
+                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Everything You Need to Succeed</h2>
+                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+                    Powerful tools designed to make collaboration seamless and profitable.
+                </p>
+            </div>
+            
+            <!-- Features Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-search text-primary-500"></i>
+                    </div>
+                    <h4 class="text-white font-semibold text-xl mb-3">Smart Discovery</h4>
+                    <p class="text-dark-400">AI-powered search to find influencers that match your brand using advanced filters for niche, audience, and engagement.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments text-green-500"></i>
+                    </div>
+                    <h4 class="text-white font-semibold text-xl mb-3">Direct Messaging</h4>
+                    <p class="text-dark-400">Built-in messaging system to communicate, share files, discuss ideas, and negotiate terms all in one place.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line text-cyan-500"></i>
+                    </div>
+                    <h4 class="text-white font-semibold text-xl mb-3">Real-time Analytics</h4>
+                    <p class="text-dark-400">Track campaign performance, engagement metrics, and ROI with comprehensive real-time analytics dashboard.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt text-yellow-500"></i>
+                    </div>
+                    <h4 class="text-white font-semibold text-xl mb-3">Secure Payments</h4>
+                    <p class="text-dark-400">Protected escrow payments with milestone-based releases. Multiple payment methods for peace of mind.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks text-purple-500"></i>
+                    </div>
+                    <h4 class="text-white font-semibold text-xl mb-3">Campaign Management</h4>
+                    <p class="text-dark-400">Create, launch, and manage campaigns from a single dashboard. Track applications, content, and deliverables.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check text-pink-500"></i>
+                    </div>
+                    <h4 class="text-white font-semibold text-xl mb-3">Verified Profiles</h4>
+                    <p class="text-dark-400">Trust in verified influencers and brands. We validate identities and authenticate social accounts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== CATEGORIES ========== -->
+    <section id="categories" class="py-20 lg:py-28 bg-dark-900/50">
+        <div class="container max-w-7xl mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="section-badge mb-4">Categories</span>
+                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Find Your Perfect Niche</h2>
+                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+                    Explore campaigns and creators across all major categories.
+                </p>
+            </div>
+            
+            <!-- Categories Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="category-card" data-aos="fade-up" data-aos-delay="50">
+                    <div class="category-icon">👗</div>
+                    <h5 class="text-white font-semibold">Fashion</h5>
+                    <p class="text-dark-500 text-sm">Style & Clothing</p>
+                </div>
+                
+                <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-icon">📱</div>
+                    <h5 class="text-white font-semibold">Tech</h5>
+                    <p class="text-dark-500 text-sm">Gadgets & Software</p>
+                </div>
+                
+                <div class="category-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="category-icon">🍕</div>
+                    <h5 class="text-white font-semibold">Food</h5>
+                    <p class="text-dark-500 text-sm">Cooking & Recipes</p>
+                </div>
+                
+                <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-icon">✈️</div>
+                    <h5 class="text-white font-semibold">Travel</h5>
+                    <p class="text-dark-500 text-sm">Adventure & Places</p>
+                </div>
+                
+                <div class="category-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="category-icon">💪</div>
+                    <h5 class="text-white font-semibold">Fitness</h5>
+                    <p class="text-dark-500 text-sm">Health & Wellness</p>
+                </div>
+                
+                <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="category-icon">🎮</div>
+                    <h5 class="text-white font-semibold">Gaming</h5>
+                    <p class="text-dark-500 text-sm">Games & Esports</p>
+                </div>
+                
+                <div class="category-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="category-icon">💄</div>
+                    <h5 class="text-white font-semibold">Beauty</h5>
+                    <p class="text-dark-500 text-sm">Makeup & Skincare</p>
+                </div>
+                
+                <div class="category-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="category-icon">🏠</div>
+                    <h5 class="text-white font-semibold">Lifestyle</h5>
+                    <p class="text-dark-500 text-sm">Home & Living</p>
+                </div>
+                
+                <div class="category-card" data-aos="fade-up" data-aos-delay="450">
+                    <div class="category-icon">📚</div>
+                    <h5 class="text-white font-semibold">Education</h5>
+                    <p class="text-dark-500 text-sm">Learning & Courses</p>
+                </div>
+                
+                <div class="category-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="category-icon">🎵</div>
+                    <h5 class="text-white font-semibold">Music</h5>
+                    <p class="text-dark-500 text-sm">Artists & Sounds</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== CAMPAIGN TYPES (Alternative to Latest Campaigns when empty) ========== -->
+    <section id="campaign-types" class="py-20 lg:py-28">
+        <div class="container max-w-7xl mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="section-badge mb-4">Opportunities</span>
+                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Campaign Types on CollabHub</h2>
+                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+                    Discover various collaboration opportunities that match your style and audience.
+                </p>
+            </div>
+            
+            <!-- Campaign Types Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="campaign-type-icon">📸</div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Sponsored Posts</h4>
+                    <p class="text-dark-400 text-sm">Create branded content for your social media platforms with authentic integration.</p>
+                </div>
+                
+                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="campaign-type-icon">📹</div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Product Reviews</h4>
+                    <p class="text-dark-400 text-sm">Share honest reviews and unboxing experiences with your audience.</p>
+                </div>
+                
+                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="campaign-type-icon">🤝</div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Brand Ambassador</h4>
+                    <p class="text-dark-400 text-sm">Long-term partnerships representing brands you love.</p>
+                </div>
+                
+                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="campaign-type-icon">🎁</div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Giveaways</h4>
+                    <p class="text-dark-400 text-sm">Host exciting giveaways to boost engagement and brand awareness.</p>
+                </div>
+                
+                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="campaign-type-icon">🎬</div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Event Coverage</h4>
+                    <p class="text-dark-400 text-sm">Attend and cover brand events, launches, and experiences.</p>
+                </div>
+                
+                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="campaign-type-icon">📱</div>
+                    <h4 class="text-white font-semibold text-lg mb-2">Account Takeover</h4>
+                    <p class="text-dark-400 text-sm">Take over brand social accounts to engage their audience directly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== PROMISE SECTION (Alternative to Testimonials when empty) ========== -->
+    <section id="promise" class="py-20 lg:py-28 bg-dark-900/50">
+        <div class="container max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div data-aos="fade-right">
+                    <span class="section-badge mb-4">Our Promise</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-4 mb-6">Why Trust CollabHub</h2>
+                    <p class="text-dark-400 text-lg mb-8">
+                        We've built CollabHub with trust, transparency, and your success at its core. Here's what you can always count on.
+                    </p>
+                    
+                    <!-- Promise Items -->
+                    <div class="space-y-4">
+                        <div class="promise-item">
+                            <div class="promise-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold mb-1">Verified Profiles</h5>
+                                <p class="text-dark-400 text-sm">Every user is authenticated. Real people, real brands.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="promise-item">
+                            <div class="promise-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold mb-1">Secure Escrow Payments</h5>
+                                <p class="text-dark-400 text-sm">Funds are protected until work is approved.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="promise-item">
+                            <div class="promise-icon">
+                                <i class="fas fa-file-contract"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold mb-1">Clear Contracts</h5>
+                                <p class="text-dark-400 text-sm">Know exactly what's expected. No surprises.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="promise-item">
+                            <div class="promise-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold mb-1">Dedicated Support</h5>
+                                <p class="text-dark-400 text-sm">We're here when you need us. Real humans, real help.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="promise-item">
+                            <div class="promise-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-semibold mb-1">Fair & Transparent</h5>
+                                <p class="text-dark-400 text-sm">No hidden fees. You see exactly what you pay.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Visual -->
+                <div class="relative" data-aos="fade-left">
+                    <div class="glass-card rounded-3xl p-8">
+                        <div class="text-center mb-8">
+                            <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center mx-auto mb-4 pulse-glow">
+                                <i class="fas fa-shield-alt text-white text-3xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">100% Protected</h3>
+                            <p class="text-dark-400">Every collaboration on CollabHub</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 p-4 bg-dark-800 rounded-xl">
+                                <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                                <span class="text-white">Money-back guarantee</span>
+                            </div>
+                            <div class="flex items-center gap-4 p-4 bg-dark-800 rounded-xl">
+                                <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                                <span class="text-white">Dispute resolution support</span>
+                            </div>
+                            <div class="flex items-center gap-4 p-4 bg-dark-800 rounded-xl">
+                                <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                                <span class="text-white">24/7 fraud protection</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Elements -->
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary-500/10 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-secondary-500/10 rounded-full blur-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== PRICING ========== -->
+    <section id="pricing" class="py-20 lg:py-28">
+        <div class="container max-w-7xl mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="section-badge mb-4">Pricing</span>
+                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+                    Choose the plan that's right for you. No hidden fees, cancel anytime.
+                </p>
+            </div>
+            
+            <!-- Pricing Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Starter -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center mb-8">
+                        <h3 class="text-xl font-semibold text-white mb-2">Starter</h3>
+                        <div class="text-4xl font-bold text-white mb-2">Free</div>
+                        <p class="text-dark-400 text-sm">Perfect for getting started</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>3 campaigns per month</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Basic search filters</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Direct messaging</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Standard support</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-500">
+                            <i class="fas fa-times"></i>
+                            <span>Advanced analytics</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-500">
+                            <i class="fas fa-times"></i>
+                            <span>AI matching</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#" class="btn-secondary-custom w-full text-center block">Get Started</a>
+                </div>
+                
+                <!-- Professional -->
+                <div class="pricing-card featured relative" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pricing-badge">Most Popular</div>
+                    
+                    <div class="text-center mb-8">
+                        <h3 class="text-xl font-semibold text-white mb-2">Professional</h3>
+                        <div class="text-4xl font-bold text-white mb-2">$49<span class="text-lg text-dark-400 font-normal">/mo</span></div>
+                        <p class="text-dark-400 text-sm">For growing teams</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Unlimited campaigns</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Advanced AI matching</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Priority support</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Analytics dashboard</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>API access</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Custom branding</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#" class="btn-primary-custom w-full text-center block">Start Free Trial</a>
+                </div>
+                
+                <!-- Enterprise -->
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center mb-8">
+                        <h3 class="text-xl font-semibold text-white mb-2">Enterprise</h3>
+                        <div class="text-4xl font-bold text-white mb-2">Custom</div>
+                        <p class="text-dark-400 text-sm">For large organizations</p>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Everything in Professional</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Dedicated account manager</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Custom integrations</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>SLA guarantee</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Advanced security</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-dark-300">
+                            <i class="fas fa-check text-green-500"></i>
+                            <span>Volume discounts</span>
+                        </li>
+                    </ul>
+                    
+                    <a href="#" class="btn-secondary-custom w-full text-center block">Contact Sales</a>
+                </div>
+            </div>
+            
+            <!-- Note -->
+            <p class="text-center text-dark-500 text-sm mt-8">
+                All plans include secure payments and basic support. 14-day free trial on paid plans.
+            </p>
+        </div>
+    </section>
+    
+    <!-- ========== FAQ ========== -->
+    <section id="faq" class="py-20 lg:py-28 bg-dark-900/50">
+        <div class="container max-w-4xl mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="section-badge mb-4">FAQ</span>
+                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Frequently Asked Questions</h2>
+                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+                    Everything you need to know about CollabHub.
+                </p>
+            </div>
+            
+            <!-- FAQ Items -->
+            <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+                <!-- FAQ 1 -->
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <h4 class="text-white font-semibold pr-8">How does CollabHub work?</h4>
+                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-dark-400">CollabHub connects brands with influencers for marketing collaborations. Brands can post campaigns specifying their requirements, budget, and target audience. Influencers browse and apply to campaigns that match their niche. Once matched, both parties collaborate through our platform with secure contracts, messaging, and payments.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4 class="text-white font-semibold pr-8">How do influencers get paid?</h4>
+                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-dark-400">We use a secure escrow payment system. When a brand accepts an influencer, they deposit the agreed amount into escrow. Once the influencer delivers the content and it's approved by the brand, the payment is released. This protects both parties and ensures fair transactions.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4 class="text-white font-semibold pr-8">Is it free to join as an influencer?</h4>
+                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-dark-400">Yes! Influencers can join and browse campaigns completely free. We only charge a small platform fee (10%) on successful collaborations. This means you only pay when you get paid. There are no upfront costs or subscription fees for creators.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4 class="text-white font-semibold pr-8">How do I find the right influencers for my brand?</h4>
+                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-dark-400">Our smart search and AI matching system helps you find perfect matches. Filter by niche, follower count, engagement rate, location, platform, and more. You can also post a campaign and let influencers come to you. We verify all profiles to ensure quality and authenticity.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4 class="text-white font-semibold pr-8">What if there's a dispute?</h4>
+                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-dark-400">Our dedicated support team handles all disputes fairly. With escrow protection and clear contracts, issues are rare. If a dispute arises, we review the evidence from both parties and make a fair decision. We prioritize resolution and maintaining trust on our platform.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 6 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4 class="text-white font-semibold pr-8">What platforms do you support?</h4>
+                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="text-dark-400">CollabHub supports all major social media platforms including Instagram, YouTube, TikTok, Twitter, Facebook, LinkedIn, Pinterest, Twitch, and blogs. Influencers can connect multiple platforms to their profile to showcase their complete reach.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- More Questions -->
+            <div class="text-center mt-12">
+                <p class="text-dark-400 mb-4">Still have questions?</p>
+                <a href="#" class="btn-secondary-custom inline-flex items-center gap-2">
+                    <i class="fas fa-envelope"></i> Contact Support
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== CTA SECTION ========== -->
+    <section id="cta" class="py-20 lg:py-28">
+        <div class="container max-w-5xl mx-auto px-4">
+            <div class="cta-section p-8 md:p-16 text-center" data-aos="fade-up">
+                <div class="relative z-10">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+                        Ready to Start Your<br>
+                        <span class="gradient-text">Collaboration Journey?</span>
+                    </h2>
+                    <p class="text-dark-400 text-lg mb-8 max-w-2xl mx-auto">
+                        Join CollabHub today and experience the future of influencer marketing. Whether you're a brand or creator, your next big opportunity awaits.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#" class="btn-primary-custom text-lg py-4 px-8 flex items-center justify-center gap-2">
+                            <i class="fas fa-building"></i> Join as Brand
+                        </a>
+                        <a href="#" class="btn-secondary-custom text-lg py-4 px-8 flex items-center justify-center gap-2">
+                            <i class="fas fa-star"></i> Join as Creator
+                        </a>
+                    </div>
+                    <p class="text-dark-500 text-sm mt-6">
+                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+                        No credit card required • Free to join • Cancel anytime
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ========== FOOTER ========== -->
+    <footer class="py-16 border-t border-dark-800">
+        <div class="container max-w-7xl mx-auto px-4">
+            <!-- Footer Top -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <a href="#" class="flex items-center gap-3 text-decoration-none mb-4">
+                        <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
+                            <i class="fas fa-cube text-white text-lg"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">CollabHub</span>
+                    </a>
+                    <p class="text-dark-400 mb-6 max-w-xs">
+                        Connecting brands and creators for authentic, impactful collaborations.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Product -->
+                <div>
+                    <h5 class="text-white font-semibold mb-4">Product</h5>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">For Brands</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">For Creators</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">API</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Company -->
+                <div>
+                    <h5 class="text-white font-semibold mb-4">Company</h5>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Press Kit</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div>
+                    <h5 class="text-white font-semibold mb-4">Support</h5>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">FAQs</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Community</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Status</a></li>
+                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="pt-8 border-t border-dark-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-dark-500 text-sm">
+                    © 2024 CollabHub. All rights reserved.
+                </p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-dark-500 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-dark-500 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    <a href="#" class="text-dark-500 hover:text-white text-sm transition-colors">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- ========== BACK TO TOP ========== -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- ========== SCRIPTS ========== -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // ===== INITIALIZE AOS =====
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true,
+            offset: 50
+        });
+        
+        // ===== NAVBAR SCROLL EFFECT =====
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // ===== MOBILE MENU =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenuFn() {
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+        closeMobileMenu.addEventListener('click', closeMobileMenuFn);
+        mobileOverlay.addEventListener('click', closeMobileMenuFn);
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenuFn);
+        });
+        
+        // ===== HOW IT WORKS TABS =====
+        const howTabs = document.querySelectorAll('.how-tab');
+        const brandsContent = document.getElementById('brands-content');
+        const creatorsContent = document.getElementById('creators-content');
+        
+        howTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active from all tabs
+                howTabs.forEach(t => t.classList.remove('active'));
+                // Add active to clicked tab
+                tab.classList.add('active');
+                
+                // Toggle content
+                if (tab.dataset.tab === 'brands') {
+                    brandsContent.classList.add('active');
+                    creatorsContent.classList.remove('active');
+                } else {
+                    creatorsContent.classList.add('active');
+                    brandsContent.classList.remove('active');
+                }
+            });
+        });
+        
+        // ===== FAQ ACCORDION =====
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // ===== BACK TO TOP =====
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offset = 80; // Navbar height
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // ===== STATS SECTION (Dynamic based on real data) =====
+        class PlatformStats {
+            constructor() {
+                this.statsSection = document.getElementById('stats-section');
+                this.statsContent = document.getElementById('stats-content');
+                this.thresholds = {
+                    influencers: 100,
+                    brands: 50,
+                    paidOut: 10000,
+                    campaigns: 50
+                };
+            }
+            
+            // Simulate fetching from database
+            async fetchStats() {
+                // In real implementation, this would be an API call
+                // For now, simulating with localStorage or default values
+                
+                // This is where you'd fetch from your PHP backend:
+                // const response = await fetch('/api/platform-stats.php');
+                // const data = await response.json();
+                
+                // Simulated data (replace with real API call)
+                const data = {
+                    influencers: 0,  // Will show "Growing Community" version
+                    brands: 0,
+                    paidOut: 0,
+                    campaigns: 0
+                };
+                
+                this.renderStats(data);
+            }
+            
+            renderStats(data) {
+                const hasEnoughData = 
+                    data.influencers >= this.thresholds.influencers ||
+                    data.brands >= this.thresholds.brands;
+                
+                if (hasEnoughData) {
+                    this.renderRealStats(data);
+                } else {
+                    this.renderGrowingCommunity();
+                }
+            }
+            
+            renderRealStats(data) {
+                let statsHTML = '<div class="grid grid-cols-2 md:grid-cols-4 gap-8">';
+                
+                if (data.influencers >= this.thresholds.influencers) {
+                    statsHTML += `
+                        <div class="stat-card">
+                            <div class="stat-value">${this.formatNumber(data.influencers)}</div>
+                            <div class="stat-label">Creators</div>
+                        </div>
+                    `;
+                }
+                
+                if (data.brands >= this.thresholds.brands) {
+                    statsHTML += `
+                        <div class="stat-card">
+                            <div class="stat-value">${this.formatNumber(data.brands)}</div>
+                            <div class="stat-label">Brands</div>
+                        </div>
+                    `;
+                }
+                
+                if (data.paidOut >= this.thresholds.paidOut) {
+                    statsHTML += `
+                        <div class="stat-card">
+                            <div class="stat-value">${this.formatCurrency(data.paidOut)}</div>
+                            <div class="stat-label">Paid to Creators</div>
+                        </div>
+                    `;
+                }
+                
+                if (data.campaigns >= this.thresholds.campaigns) {
+                    statsHTML += `
+                        <div class="stat-card">
+                            <div class="stat-value">${this.formatNumber(data.campaigns)}</div>
+                            <div class="stat-label">Campaigns</div>
+                        </div>
+                    `;
+                }
+                
+                statsHTML += '</div>';
+                this.statsContent.innerHTML = statsHTML;
+            }
+            
+            renderGrowingCommunity() {
+                this.statsContent.innerHTML = `
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center">
+                                <i class="fas fa-rocket text-white"></i>
+                            </div>
+                            <div class="text-left">
+                                <h4 class="text-white font-bold text-lg">Join Our Growing Community</h4>
+                                <p class="text-dark-400 text-sm">Be among the first to experience smarter collaborations</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="#" class="btn-primary-custom text-sm py-3 px-6">Join as Creator</a>
+                            <a href="#" class="btn-secondary-custom text-sm py-3 px-6">Join as Brand</a>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            formatNumber(num) {
+                if (num >= 1000000) {
+                    return (num / 1000000).toFixed(1) + 'M+';
+                } else if (num >= 1000) {
+                    return (num / 1000).toFixed(1) + 'K+';
+                }
+                return num.toString() + '+';
+            }
+            
+            formatCurrency(num) {
+                if (num >= 1000000) {
+                    return '$' + (num / 1000000).toFixed(1) + 'M+';
+                } else if (num >= 1000) {
+                    return '$' + Math.floor(num / 1000) + 'K+';
+                }
+                return '$' + num.toString();
+            }
+        }
+        
+        // Initialize stats
+        const platformStats = new PlatformStats();
+        platformStats.fetchStats();
+        
+        // ===== COUNTER ANIMATION =====
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start).toLocaleString();
+                }
+            }, 16);
+        }
+        
+        // ===== INTERSECTION OBSERVER FOR COUNTERS =====
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('[data-count]');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.dataset.count);
+                        animateCounter(counter, target);
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe stats section if it has real stats
+        const statsSection = document.getElementById('stats-section');
+        if (statsSection) {
+            counterObserver.observe(statsSection);
+        }
+        
+        // ===== TYPING EFFECT (Optional for Hero) =====
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.textContent = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+        
+        // ===== PARALLAX EFFECT ON SCROLL =====
+        const heroVisual = document.querySelector('.hero-visual');
+        
+        if (heroVisual) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                if (scrolled < 800) {
+                    heroVisual.style.transform = `translateY(${scrolled * 0.1}px)`;
+                }
+            });
+        }
+        
+        // ===== HOVER TILT EFFECT ON CARDS =====
+        const tiltCards = document.querySelectorAll('.feature-card, .value-card');
+        
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+        
+        // ===== CONSOLE LOG FOR BRANDING =====
+        console.log('%c CollabHub ', 'background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; font-size: 24px; padding: 10px 20px; border-radius: 8px; font-weight: bold;');
+        console.log('%c Where Brands Meet Creators ', 'color: #6366f1; font-size: 14px;');
+    </script>
+</body>
+</html>
