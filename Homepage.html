@@ -1,33 +1,27 @@
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CollabHub - Where Brands Meet Creators</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-size='60' fill='white'>C</text></svg>">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Tailwind Config -->
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CollabHub - Where Brands Meet Creators</title>
+<!-- Favicon -->
+<link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;rect width='100' height='100' rx='20' fill='%236366f1'/&gt;&lt;text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-size='60' fill='white'&gt;C&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<!-- AOS Animation Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -73,8 +67,7 @@
             }
         }
     </script>
-    
-    <style>
+<style>
         /* ===== BASE STYLES ===== */
         * {
             margin: 0;
@@ -819,1116 +812,1016 @@
 </head>
 <body>
 <!-- ========== UPDATED NAVBAR ========== -->
-    <nav id="navbar" class="navbar fixed-top py-3 px-4 lg:px-8 z-50 transition-all duration-300">
-        <div class="container-fluid max-w-7xl mx-auto">
-            <div class="flex items-center justify-between">
-                <!-- Logo - Links to Homepage -->
-                <a href="index.html" class="flex items-center gap-3 text-decoration-none">
-                    <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
-                        <i class="fas fa-cube text-white text-lg"></i>
-                    </div>
-                    <span class="text-xl font-bold text-white">CollabHub</span>
-                </a>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center gap-8">
-                    <a href="#features" class="nav-link text-dark-400 hover:text-white font-medium text-sm">Features</a>
-                    <a href="#how-it-works" class="nav-link text-dark-400 hover:text-white font-medium text-sm">How It Works</a>
-                    <a href="#pricing" class="nav-link text-dark-400 hover:text-white font-medium text-sm">Pricing</a>
-                    <a href="#faq" class="nav-link text-dark-400 hover:text-white font-medium text-sm">FAQ</a>
-                </div>
-                
-                <!-- Desktop Auth Buttons -->
-                <div class="hidden lg:flex items-center gap-3">
-                    <!-- Sign In - Goes to Login Page -->
-                    <a href="auth/login.html" class="btn-ghost text-sm">Sign In</a>
-                    
-                    <!-- Get Started - Goes to Register Choice Page -->
-                    <a href="auth/register.html" class="btn-primary-custom text-sm">Get Started Free</a>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="lg:hidden text-white text-xl p-2">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- ========== UPDATED MOBILE MENU ========== -->
-    <div id="mobileMenu" class="mobile-menu">
-        <div class="flex justify-between items-center mb-8">
-            <span class="text-xl font-bold text-white">Menu</span>
-            <button id="closeMobileMenu" class="text-white text-xl">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="flex flex-col gap-4">
-            <a href="#features" class="text-dark-300 hover:text-white font-medium py-2 mobile-link">Features</a>
-            <a href="#how-it-works" class="text-dark-300 hover:text-white font-medium py-2 mobile-link">How It Works</a>
-            <a href="#pricing" class="text-dark-300 hover:text-white font-medium py-2 mobile-link">Pricing</a>
-            <a href="#faq" class="text-dark-300 hover:text-white font-medium py-2 mobile-link">FAQ</a>
-            <hr class="border-dark-700 my-4">
-            
-            <!-- Mobile Auth Links -->
-            <a href="auth/login.html" class="text-dark-300 hover:text-white font-medium py-2">Sign In</a>
-            <a href="auth/register.html" class="btn-primary-custom text-center mt-2">Get Started Free</a>
-        </div>
-    </div>
-    
-    <!-- ========== HERO SECTION ========== -->
-    <section id="hero" class="min-h-screen relative flex items-center pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
-        <div class="hero-bg"></div>
-        <div class="hero-grid"></div>
-        
-        <div class="container max-w-7xl mx-auto px-4 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <!-- Hero Content -->
-                <div class="text-center lg:text-left" data-aos="fade-right" data-aos-duration="1000">
-                    <!-- Badge -->
-                    <div class="mb-6">
-                        <span class="section-badge">
-                            <i class="fas fa-rocket mr-2"></i> The Future of Influencer Marketing
+<nav class="navbar fixed-top py-3 px-4 lg:px-8 z-50 transition-all duration-300" id="navbar">
+<div class="container max-w-7xl mx-auto px-4">
+<div class="flex items-center justify-between">
+<!-- Logo - Links to Homepage -->
+<a class="flex items-center gap-3 text-decoration-none" href="index.html">
+<div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
+<i class="fas fa-cube text-white text-lg"></i>
+</div>
+<span class="text-xl font-bold text-white">CollabHub</span>
+</a>
+<!-- Desktop Navigation -->
+<div class="hidden lg:flex items-center gap-8">
+<a class="nav-link text-dark-400 hover:text-white font-medium text-sm" href="#features">Features</a>
+<a class="nav-link text-dark-400 hover:text-white font-medium text-sm" href="#how-it-works">How It Works</a>
+<a class="nav-link text-dark-400 hover:text-white font-medium text-sm" href="#pricing">Pricing</a>
+<a class="nav-link text-dark-400 hover:text-white font-medium text-sm" href="#faq">FAQ</a>
+</div>
+<!-- Desktop Auth Buttons -->
+<div class="hidden lg:flex items-center gap-3">
+<!-- Sign In - Goes to Login Page -->
+<a class="btn-ghost text-sm" href="login.html">Sign In</a>
+<!-- Get Started - Goes to Register Choice Page -->
+<a class="btn-primary-custom text-sm" href="register.html">Get Started Free</a>
+</div>
+<!-- Mobile Menu Button -->
+<button class="lg:hidden text-white text-xl p-2" id="mobileMenuBtn" type="button">
+<i class="fas fa-bars"></i>
+</button>
+</div>
+</div>
+</nav>
+<!-- ========== UPDATED MOBILE MENU ========== -->
+<div class="mobile-menu" id="mobileMenu">
+<div class="flex justify-between items-center mb-8">
+<span class="text-xl font-bold text-white">Menu</span>
+<button class="text-white text-xl" id="closeMobileMenu" type="button">
+<i class="fas fa-times"></i>
+</button>
+</div>
+<div class="flex flex-col gap-4">
+<a class="text-dark-300 hover:text-white font-medium py-2 mobile-link" href="#features">Features</a>
+<a class="text-dark-300 hover:text-white font-medium py-2 mobile-link" href="#how-it-works">How It Works</a>
+<a class="text-dark-300 hover:text-white font-medium py-2 mobile-link" href="#pricing">Pricing</a>
+<a class="text-dark-300 hover:text-white font-medium py-2 mobile-link" href="#faq">FAQ</a>
+<hr class="border-dark-700 my-4"/>
+<!-- Mobile Auth Links -->
+<a class="text-dark-300 hover:text-white font-medium py-2" href="login.html">Sign In</a>
+<a class="btn-primary-custom text-center mt-2" href="register.html">Get Started Free</a>
+</div>
+</div>
+<!-- Mobile overlay used when mobile menu is open -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<!-- ========== HERO SECTION ========== -->
+<section class="min-h-screen relative flex items-center pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden" id="hero">
+<div class="hero-bg"></div>
+<div class="hero-grid"></div>
+<div class="container max-w-7xl mx-auto px-4 relative z-10">
+<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+<!-- Hero Content -->
+<div class="text-center lg:text-left" data-aos="fade-right" data-aos-duration="1000">
+<!-- Badge -->
+<div class="mb-6">
+<span class="section-badge">
+<i class="fas fa-rocket mr-2"></i> The Future of Influencer Marketing
                         </span>
-                    </div>
-                    
-                    <!-- Title -->
-                    <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-                        <span class="gradient-text-light">Where Brands</span>
-                        <br>
-                        <span class="gradient-text">Meet Creators</span>
-                    </h1>
-                    
-                    <!-- Subtitle -->
-                    <p class="text-dark-400 text-lg lg:text-xl leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+</div>
+<!-- Title -->
+<h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+<span class="gradient-text-light">Where Brands</span>
+<br/>
+<span class="gradient-text">Meet Creators</span>
+</h1>
+<!-- Subtitle -->
+<p class="text-dark-400 text-lg lg:text-xl leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
                         The smarter way to discover, collaborate, and grow together. Connect with verified influencers and authentic brands for impactful campaigns.
                     </p>
-                    
-                    <!-- CTA Buttons - Direct to Registration -->
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
-                        <!-- I'm a Brand - Goes directly to Brand Registration -->
-                        <a href="auth/register-brand.html" class="btn-primary-custom text-center flex items-center justify-center gap-2 text-base py-4 px-8">
-                            <i class="fas fa-building"></i> I'm a Brand
+<!-- CTA Buttons - Direct to Registration -->
+<div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
+<!-- I'm a Brand - Goes directly to Brand Registration -->
+<a class="btn-primary-custom text-center flex items-center justify-center gap-2 text-base py-4 px-8" href="register-brand.html">
+<i class="fas fa-building"></i> I'm a Brand
                         </a>
-                        
-                        <!-- I'm a Creator - Goes directly to Influencer Registration -->
-                        <a href="auth/register-influencer.html" class="btn-secondary-custom text-center flex items-center justify-center gap-2 text-base py-4 px-8">
-                            <i class="fas fa-star"></i> I'm a Creator
+<!-- I'm a Creator - Goes directly to Influencer Registration -->
+<a class="btn-secondary-custom text-center flex items-center justify-center gap-2 text-base py-4 px-8" href="register-influencer.html">
+<i class="fas fa-star"></i> I'm a Creator
                         </a>
-                    </div>
-                    
-                    <!-- Trust Indicators -->
-                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-                        <div class="platform-badge">
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <span>Verified Profiles</span>
-                        </div>
-                        <div class="platform-badge">
-                            <i class="fas fa-shield-alt text-blue-500"></i>
-                            <span>Secure Payments</span>
-                        </div>
-                        <div class="platform-badge">
-                            <i class="fas fa-bolt text-yellow-500"></i>
-                            <span>Smart Matching</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Hero Visual -->
-                <div class="relative hero-visual" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <!-- Main Dashboard Card -->
-                    <div class="glass-card rounded-3xl p-6 shadow-2xl">
-                        <!-- Browser Header -->
-                        <div class="flex items-center gap-2 mb-4 pb-4 border-b border-dark-700">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            <div class="flex-1 ml-4">
-                                <div class="bg-dark-800 rounded-lg py-2 px-4 text-xs text-dark-400 max-w-xs">
+</div>
+<!-- Trust Indicators -->
+<div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+<div class="platform-badge">
+<i class="fas fa-check-circle text-green-500"></i>
+<span>Verified Profiles</span>
+</div>
+<div class="platform-badge">
+<i class="fas fa-shield-alt text-blue-500"></i>
+<span>Secure Payments</span>
+</div>
+<div class="platform-badge">
+<i class="fas fa-bolt text-yellow-500"></i>
+<span>Smart Matching</span>
+</div>
+</div>
+</div>
+<!-- Hero Visual -->
+<div class="relative hero-visual" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000">
+<!-- Main Dashboard Card -->
+<div class="glass-card rounded-3xl p-6 shadow-2xl">
+<!-- Browser Header -->
+<div class="flex items-center gap-2 mb-4 pb-4 border-b border-dark-700">
+<div class="w-3 h-3 rounded-full bg-red-500"></div>
+<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+<div class="w-3 h-3 rounded-full bg-green-500"></div>
+<div class="flex-1 ml-4">
+<div class="bg-dark-800 rounded-lg py-2 px-4 text-xs text-dark-400 max-w-xs">
                                     collabhub.com/dashboard
                                 </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Dashboard Content -->
-                        <div class="space-y-4">
-                            <!-- Header -->
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <h4 class="text-white font-semibold">Dashboard</h4>
-                                    <p class="text-dark-400 text-sm">Welcome back!</p>
-                                </div>
-                                <div class="flex -space-x-2">
-                                    <div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">A</div>
-                                    <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">B</div>
-                                    <div class="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">C</div>
-                                    <div class="w-8 h-8 rounded-full bg-dark-700 flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">+5</div>
-                                </div>
-                            </div>
-                            
-                            <!-- Stats Grid -->
-                            <div class="grid grid-cols-3 gap-3">
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <div class="flex items-center justify-between mb-2">
-                                        <span class="text-dark-400 text-xs">Campaigns</span>
-                                        <i class="fas fa-bullhorn text-primary-500 text-xs"></i>
-                                    </div>
-                                    <p class="text-xl font-bold text-white">24</p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <div class="flex items-center justify-between mb-2">
-                                        <span class="text-dark-400 text-xs">Matches</span>
-                                        <i class="fas fa-handshake text-green-500 text-xs"></i>
-                                    </div>
-                                    <p class="text-xl font-bold text-white">18</p>
-                                </div>
-                                <div class="bg-dark-800 rounded-xl p-4">
-                                    <div class="flex items-center justify-between mb-2">
-                                        <span class="text-dark-400 text-xs">Earnings</span>
-                                        <i class="fas fa-dollar-sign text-yellow-500 text-xs"></i>
-                                    </div>
-                                    <p class="text-xl font-bold text-white">$4.2K</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Recent Activity -->
-                            <div class="bg-dark-800 rounded-xl p-4">
-                                <p class="text-dark-400 text-xs mb-3">Recent Activity</p>
-                                <div class="space-y-3">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                                            <i class="fas fa-check text-green-500 text-xs"></i>
-                                        </div>
-                                        <div class="flex-1">
-                                            <p class="text-white text-sm">Campaign approved</p>
-                                            <p class="text-dark-500 text-xs">2 min ago</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
-                                            <i class="fas fa-envelope text-blue-500 text-xs"></i>
-                                        </div>
-                                        <div class="flex-1">
-                                            <p class="text-white text-sm">New message</p>
-                                            <p class="text-dark-500 text-xs">15 min ago</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Floating Cards -->
-                    <div class="absolute -top-6 -right-6 glass-card rounded-xl p-4 shadow-lg floating hidden lg:block">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                                <i class="fas fa-check text-green-500"></i>
-                            </div>
-                            <div>
-                                <p class="text-white text-sm font-medium">New Match!</p>
-                                <p class="text-dark-400 text-xs">@fashionista</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="absolute -bottom-4 -left-6 glass-card rounded-xl p-4 shadow-lg floating floating-delay-1 hidden lg:block">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center">
-                                <i class="fas fa-dollar-sign text-yellow-500"></i>
-                            </div>
-                            <div>
-                                <p class="text-white text-sm font-medium">Payment Received</p>
-                                <p class="text-dark-400 text-xs">+$1,500.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== STATS SECTION (Conditional) ========== -->
-    <section id="stats-section" class="py-12 border-t border-b border-dark-800">
-        <div class="container max-w-7xl mx-auto px-4">
-            <!-- This will be dynamically updated based on real data -->
-            <!-- For now, showing the "Growing Community" version -->
-            <div id="stats-content" class="text-center">
-                <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center">
-                            <i class="fas fa-rocket text-white"></i>
-                        </div>
-                        <div class="text-left">
-                            <h4 class="text-white font-bold text-lg">Join Our Growing Community</h4>
-                            <p class="text-dark-400 text-sm">Be among the first to experience smarter collaborations</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <!-- Links to Registration Pages -->
-                        <a href="auth/register-influencer.html" class="btn-primary-custom text-sm py-3 px-6">Join as Creator</a>
-                        <a href="auth/register-brand.html" class="btn-secondary-custom text-sm py-3 px-6">Join as Brand</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== VALUE PROPOSITION ========== -->
-    <section id="value-prop" class="py-20 lg:py-28">
-        <div class="container max-w-7xl mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-8">
-                <!-- For Brands -->
-                <div class="value-card for-brands" data-aos="fade-up" data-aos-duration="800">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-primary-500/20 flex items-center justify-center">
-                            <i class="fas fa-building text-primary-500 text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">For Brands</h3>
-                    </div>
-                    
-                    <h4 class="text-xl font-semibold text-white mb-4">Grow Your Brand with Authentic Voices</h4>
-                    <p class="text-dark-400 mb-6">Connect with influencers who truly align with your brand values and target audience.</p>
-                    
-                    <ul class="benefit-list text-dark-300 mb-8 space-y-4">
-                        <li>
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <div>
-                                <span class="text-white font-medium">Smart Discovery</span>
-                                <p class="text-dark-400 text-sm">AI-powered matching to find perfect creators</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <div>
-                                <span class="text-white font-medium">Data-Driven Decisions</span>
-                                <p class="text-dark-400 text-sm">Real engagement metrics and audience insights</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <div>
-                                <span class="text-white font-medium">Streamlined Workflow</span>
-                                <p class="text-dark-400 text-sm">Manage campaigns from discovery to payment</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <div>
-                                <span class="text-white font-medium">Secure Collaborations</span>
-                                <p class="text-dark-400 text-sm">Contracts, milestones, and escrow payments</p>
-                            </div>
-                        </li>
-                    </ul>
-                    
-                    <!-- CTA Button - Goes to Brand Registration -->
-                    <a href="auth/register-brand.html" class="btn-primary-custom inline-flex items-center gap-2">
+</div>
+</div>
+<!-- Dashboard Content -->
+<div class="space-y-4">
+<!-- Header -->
+<div class="flex items-center justify-between">
+<div>
+<h4 class="text-white font-semibold">Dashboard</h4>
+<p class="text-dark-400 text-sm">Welcome back!</p>
+</div>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">A</div>
+<div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">B</div>
+<div class="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">C</div>
+<div class="w-8 h-8 rounded-full bg-dark-700 flex items-center justify-center text-xs font-bold text-white border-2 border-dark-800">+5</div>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-3 gap-3">
+<div class="bg-dark-800 rounded-xl p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-dark-400 text-xs">Campaigns</span>
+<i class="fas fa-bullhorn text-primary-500 text-xs"></i>
+</div>
+<p class="text-xl font-bold text-white">24</p>
+</div>
+<div class="bg-dark-800 rounded-xl p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-dark-400 text-xs">Matches</span>
+<i class="fas fa-handshake text-green-500 text-xs"></i>
+</div>
+<p class="text-xl font-bold text-white">18</p>
+</div>
+<div class="bg-dark-800 rounded-xl p-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-dark-400 text-xs">Earnings</span>
+<i class="fas fa-dollar-sign text-yellow-500 text-xs"></i>
+</div>
+<p class="text-xl font-bold text-white">$4.2K</p>
+</div>
+</div>
+<!-- Recent Activity -->
+<div class="bg-dark-800 rounded-xl p-4">
+<p class="text-dark-400 text-xs mb-3">Recent Activity</p>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+<i class="fas fa-check text-green-500 text-xs"></i>
+</div>
+<div class="flex-1">
+<p class="text-white text-sm">Campaign approved</p>
+<p class="text-dark-500 text-xs">2 min ago</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+<i class="fas fa-envelope text-blue-500 text-xs"></i>
+</div>
+<div class="flex-1">
+<p class="text-white text-sm">New message</p>
+<p class="text-dark-500 text-xs">15 min ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Cards -->
+<div class="absolute -top-6 -right-6 glass-card rounded-xl p-4 shadow-lg floating hidden lg:block">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+<i class="fas fa-check text-green-500"></i>
+</div>
+<div>
+<p class="text-white text-sm font-medium">New Match!</p>
+<p class="text-dark-400 text-xs">@fashionista</p>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-4 -left-6 glass-card rounded-xl p-4 shadow-lg floating floating-delay-1 hidden lg:block">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center">
+<i class="fas fa-dollar-sign text-yellow-500"></i>
+</div>
+<div>
+<p class="text-white text-sm font-medium">Payment Received</p>
+<p class="text-dark-400 text-xs">+$1,500.00</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== STATS SECTION (Conditional) ========== -->
+<section class="py-12 border-t border-b border-dark-800" id="stats-section">
+<div class="container max-w-7xl mx-auto px-4">
+<!-- This will be dynamically updated based on real data -->
+<!-- For now, showing the "Growing Community" version -->
+<div class="text-center" id="stats-content">
+<div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center">
+<i class="fas fa-rocket text-white"></i>
+</div>
+<div class="text-left">
+<h4 class="text-white font-bold text-lg">Join Our Growing Community</h4>
+<p class="text-dark-400 text-sm">Be among the first to experience smarter collaborations</p>
+</div>
+</div>
+<div class="flex gap-4">
+<!-- Links to Registration Pages -->
+<a class="btn-primary-custom text-sm py-3 px-6" href="register-influencer.html">Join as Creator</a>
+<a class="btn-secondary-custom text-sm py-3 px-6" href="register-brand.html">Join as Brand</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== VALUE PROPOSITION ========== -->
+<section class="py-20 lg:py-28" id="value-prop">
+<div class="container max-w-7xl mx-auto px-4">
+<div class="grid lg:grid-cols-2 gap-8">
+<!-- For Brands -->
+<div class="value-card for-brands" data-aos="fade-up" data-aos-duration="800">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-12 h-12 rounded-xl bg-primary-500/20 flex items-center justify-center">
+<i class="fas fa-building text-primary-500 text-xl"></i>
+</div>
+<h3 class="text-2xl font-bold text-white">For Brands</h3>
+</div>
+<h4 class="text-xl font-semibold text-white mb-4">Grow Your Brand with Authentic Voices</h4>
+<p class="text-dark-400 mb-6">Connect with influencers who truly align with your brand values and target audience.</p>
+<ul class="benefit-list text-dark-300 mb-8 space-y-4">
+<li>
+<i class="fas fa-check-circle text-green-500"></i>
+<div>
+<span class="text-white font-medium">Smart Discovery</span>
+<p class="text-dark-400 text-sm">AI-powered matching to find perfect creators</p>
+</div>
+</li>
+<li>
+<i class="fas fa-check-circle text-green-500"></i>
+<div>
+<span class="text-white font-medium">Data-Driven Decisions</span>
+<p class="text-dark-400 text-sm">Real engagement metrics and audience insights</p>
+</div>
+</li>
+<li>
+<i class="fas fa-check-circle text-green-500"></i>
+<div>
+<span class="text-white font-medium">Streamlined Workflow</span>
+<p class="text-dark-400 text-sm">Manage campaigns from discovery to payment</p>
+</div>
+</li>
+<li>
+<i class="fas fa-check-circle text-green-500"></i>
+<div>
+<span class="text-white font-medium">Secure Collaborations</span>
+<p class="text-dark-400 text-sm">Contracts, milestones, and escrow payments</p>
+</div>
+</li>
+</ul>
+<!-- CTA Button - Goes to Brand Registration -->
+<a class="btn-primary-custom inline-flex items-center gap-2" href="register-brand.html">
                         Find Influencers <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <!-- For Influencers -->
-                <div class="value-card for-influencers" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 rounded-xl bg-secondary-500/20 flex items-center justify-center">
-                            <i class="fas fa-star text-secondary-500 text-xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">For Creators</h3>
-                    </div>
-                    
-                    <h4 class="text-xl font-semibold text-white mb-4">Monetize Your Influence</h4>
-                    <p class="text-dark-400 mb-6">Get discovered by brands that value your creativity and connect with your audience.</p>
-                    
-                    <ul class="benefit-list text-dark-300 mb-8 space-y-4">
-                        <li>
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <div>
-                                <span class="text-white font-medium">Get Paid What You're Worth</span>
-                                <p class="text-dark-400 text-sm">Transparent pricing and secure payments</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <div>
-                                <span class="text-white font-medium">Discover Opportunities</span>
-                                <p class="text-dark-400 text-sm">Browse campaigns that match your niche</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <div>
-                                <span class="text-white font-medium">Grow Your Career</span>
-                                <p class="text-dark-400 text-sm">Build portfolio, collect reviews, level up</p>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-check-circle text-green-500"></i>
-                            <div>
-                                <span class="text-white font-medium">Work with Confidence</span>
-                                <p class="text-dark-400 text-sm">Clear contracts and dispute protection</p>
-                            </div>
-                        </li>
-                    </ul>
-                    
-                    <a href="#" class="btn-secondary-custom inline-flex items-center gap-2 border-secondary-500 hover:bg-secondary-500/10">
+</a>
+</div>
+<!-- For Influencers -->
+<div class="value-card for-influencers" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-12 h-12 rounded-xl bg-secondary-500/20 flex items-center justify-center">
+<i class="fas fa-star text-secondary-500 text-xl"></i>
+</div>
+<h3 class="text-2xl font-bold text-white">For Creators</h3>
+</div>
+<h4 class="text-xl font-semibold text-white mb-4">Monetize Your Influence</h4>
+<p class="text-dark-400 mb-6">Get discovered by brands that value your creativity and connect with your audience.</p>
+<ul class="benefit-list text-dark-300 mb-8 space-y-4">
+<li>
+<i class="fas fa-check-circle text-green-500"></i>
+<div>
+<span class="text-white font-medium">Get Paid What You're Worth</span>
+<p class="text-dark-400 text-sm">Transparent pricing and secure payments</p>
+</div>
+</li>
+<li>
+<i class="fas fa-check-circle text-green-500"></i>
+<div>
+<span class="text-white font-medium">Discover Opportunities</span>
+<p class="text-dark-400 text-sm">Browse campaigns that match your niche</p>
+</div>
+</li>
+<li>
+<i class="fas fa-check-circle text-green-500"></i>
+<div>
+<span class="text-white font-medium">Grow Your Career</span>
+<p class="text-dark-400 text-sm">Build portfolio, collect reviews, level up</p>
+</div>
+</li>
+<li>
+<i class="fas fa-check-circle text-green-500"></i>
+<div>
+<span class="text-white font-medium">Work with Confidence</span>
+<p class="text-dark-400 text-sm">Clear contracts and dispute protection</p>
+</div>
+</li>
+</ul>
+<a aria-disabled="true" class="btn-secondary-custom inline-flex items-center gap-2 border-secondary-500 hover:bg-secondary-500/10" href="#" role="button">
                         Browse Campaigns <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== HOW IT WORKS ========== -->
-    <section id="how-it-works" class="py-20 lg:py-28 bg-dark-900/50">
-        <div class="container max-w-7xl mx-auto px-4">
-            <!-- Section Header -->
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="section-badge mb-4">How It Works</span>
-                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Get Started in Minutes</h2>
-                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== HOW IT WORKS ========== -->
+<section class="py-20 lg:py-28 bg-dark-900/50" id="how-it-works">
+<div class="container max-w-7xl mx-auto px-4">
+<!-- Section Header -->
+<div class="text-center mb-16" data-aos="fade-up">
+<span class="section-badge mb-4">How It Works</span>
+<h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Get Started in Minutes</h2>
+<p class="text-dark-400 text-lg max-w-2xl mx-auto">
                     Whether you're a brand or creator, our platform makes collaboration simple and effective.
                 </p>
-            </div>
-            
-            <!-- Tabs -->
-            <div class="flex justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
-                <button class="how-tab active" data-tab="brands">
-                    <i class="fas fa-building mr-2"></i> For Brands
+</div>
+<!-- Tabs -->
+<div class="flex justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
+<button class="how-tab active" data-tab="brands" type="button">
+<i class="fas fa-building mr-2"></i> For Brands
                 </button>
-                <button class="how-tab" data-tab="creators">
-                    <i class="fas fa-star mr-2"></i> For Creators
+<button class="how-tab" data-tab="creators" type="button">
+<i class="fas fa-star mr-2"></i> For Creators
                 </button>
-            </div>
-            
-            <!-- Brands Content -->
-            <div id="brands-content" class="how-content active">
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="100">
-                        <div class="step-connector hidden lg:block"></div>
-                        <div class="step-number">1</div>
-                        <div class="text-4xl mb-4">📝</div>
-                        <h4 class="text-white font-semibold text-lg mb-2">Create Campaign</h4>
-                        <p class="text-dark-400 text-sm">Define your goals, set budget, and specify requirements for your ideal collaboration.</p>
-                    </div>
-                    
-                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="200">
-                        <div class="step-connector hidden lg:block"></div>
-                        <div class="step-number">2</div>
-                        <div class="text-4xl mb-4">🔍</div>
-                        <h4 class="text-white font-semibold text-lg mb-2">Find Matches</h4>
-                        <p class="text-dark-400 text-sm">Our AI suggests influencers that align with your brand. Review profiles and analytics.</p>
-                    </div>
-                    
-                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="300">
-                        <div class="step-connector hidden lg:block"></div>
-                        <div class="step-number">3</div>
-                        <div class="text-4xl mb-4">🤝</div>
-                        <h4 class="text-white font-semibold text-lg mb-2">Collaborate</h4>
-                        <p class="text-dark-400 text-sm">Connect, negotiate terms, and sign digital contracts. Communicate seamlessly.</p>
-                    </div>
-                    
-                    <div class="step-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="step-number">4</div>
-                        <div class="text-4xl mb-4">📊</div>
-                        <h4 class="text-white font-semibold text-lg mb-2">Measure Results</h4>
-                        <p class="text-dark-400 text-sm">Track performance, engagement metrics, and ROI in real-time.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Creators Content -->
-            <div id="creators-content" class="how-content">
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="100">
-                        <div class="step-connector hidden lg:block"></div>
-                        <div class="step-number">1</div>
-                        <div class="text-4xl mb-4">👤</div>
-                        <h4 class="text-white font-semibold text-lg mb-2">Build Profile</h4>
-                        <p class="text-dark-400 text-sm">Showcase your work, connect social accounts, and set your rates.</p>
-                    </div>
-                    
-                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="200">
-                        <div class="step-connector hidden lg:block"></div>
-                        <div class="step-number">2</div>
-                        <div class="text-4xl mb-4">🎯</div>
-                        <h4 class="text-white font-semibold text-lg mb-2">Find Opportunities</h4>
-                        <p class="text-dark-400 text-sm">Browse campaigns matching your niche. Get personalized recommendations.</p>
-                    </div>
-                    
-                    <div class="step-card relative" data-aos="fade-up" data-aos-delay="300">
-                        <div class="step-connector hidden lg:block"></div>
-                        <div class="step-number">3</div>
-                        <div class="text-4xl mb-4">📩</div>
-                        <h4 class="text-white font-semibold text-lg mb-2">Apply & Negotiate</h4>
-                        <p class="text-dark-400 text-sm">Submit proposals with your creative ideas. Negotiate terms that work for you.</p>
-                    </div>
-                    
-                    <div class="step-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="step-number">4</div>
-                        <div class="text-4xl mb-4">💵</div>
-                        <h4 class="text-white font-semibold text-lg mb-2">Create & Get Paid</h4>
-                        <p class="text-dark-400 text-sm">Deliver content, get approved, and receive secure payment.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== FEATURES ========== -->
-    <section id="features" class="py-20 lg:py-28">
-        <div class="container max-w-7xl mx-auto px-4">
-            <!-- Section Header -->
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="section-badge mb-4">Features</span>
-                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Everything You Need to Succeed</h2>
-                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+</div>
+<!-- Brands Content -->
+<div class="how-content active" id="brands-content">
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="step-card relative" data-aos="fade-up" data-aos-delay="100">
+<div class="step-connector hidden lg:block"></div>
+<div class="step-number">1</div>
+<div class="text-4xl mb-4">📝</div>
+<h4 class="text-white font-semibold text-lg mb-2">Create Campaign</h4>
+<p class="text-dark-400 text-sm">Define your goals, set budget, and specify requirements for your ideal collaboration.</p>
+</div>
+<div class="step-card relative" data-aos="fade-up" data-aos-delay="200">
+<div class="step-connector hidden lg:block"></div>
+<div class="step-number">2</div>
+<div class="text-4xl mb-4">🔍</div>
+<h4 class="text-white font-semibold text-lg mb-2">Find Matches</h4>
+<p class="text-dark-400 text-sm">Our AI suggests influencers that align with your brand. Review profiles and analytics.</p>
+</div>
+<div class="step-card relative" data-aos="fade-up" data-aos-delay="300">
+<div class="step-connector hidden lg:block"></div>
+<div class="step-number">3</div>
+<div class="text-4xl mb-4">🤝</div>
+<h4 class="text-white font-semibold text-lg mb-2">Collaborate</h4>
+<p class="text-dark-400 text-sm">Connect, negotiate terms, and sign digital contracts. Communicate seamlessly.</p>
+</div>
+<div class="step-card" data-aos="fade-up" data-aos-delay="400">
+<div class="step-number">4</div>
+<div class="text-4xl mb-4">📊</div>
+<h4 class="text-white font-semibold text-lg mb-2">Measure Results</h4>
+<p class="text-dark-400 text-sm">Track performance, engagement metrics, and ROI in real-time.</p>
+</div>
+</div>
+</div>
+<!-- Creators Content -->
+<div class="how-content" id="creators-content">
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="step-card relative" data-aos="fade-up" data-aos-delay="100">
+<div class="step-connector hidden lg:block"></div>
+<div class="step-number">1</div>
+<div class="text-4xl mb-4">👤</div>
+<h4 class="text-white font-semibold text-lg mb-2">Build Profile</h4>
+<p class="text-dark-400 text-sm">Showcase your work, connect social accounts, and set your rates.</p>
+</div>
+<div class="step-card relative" data-aos="fade-up" data-aos-delay="200">
+<div class="step-connector hidden lg:block"></div>
+<div class="step-number">2</div>
+<div class="text-4xl mb-4">🎯</div>
+<h4 class="text-white font-semibold text-lg mb-2">Find Opportunities</h4>
+<p class="text-dark-400 text-sm">Browse campaigns matching your niche. Get personalized recommendations.</p>
+</div>
+<div class="step-card relative" data-aos="fade-up" data-aos-delay="300">
+<div class="step-connector hidden lg:block"></div>
+<div class="step-number">3</div>
+<div class="text-4xl mb-4">📩</div>
+<h4 class="text-white font-semibold text-lg mb-2">Apply &amp; Negotiate</h4>
+<p class="text-dark-400 text-sm">Submit proposals with your creative ideas. Negotiate terms that work for you.</p>
+</div>
+<div class="step-card" data-aos="fade-up" data-aos-delay="400">
+<div class="step-number">4</div>
+<div class="text-4xl mb-4">💵</div>
+<h4 class="text-white font-semibold text-lg mb-2">Create &amp; Get Paid</h4>
+<p class="text-dark-400 text-sm">Deliver content, get approved, and receive secure payment.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== FEATURES ========== -->
+<section class="py-20 lg:py-28" id="features">
+<div class="container max-w-7xl mx-auto px-4">
+<!-- Section Header -->
+<div class="text-center mb-16" data-aos="fade-up">
+<span class="section-badge mb-4">Features</span>
+<h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Everything You Need to Succeed</h2>
+<p class="text-dark-400 text-lg max-w-2xl mx-auto">
                     Powerful tools designed to make collaboration seamless and profitable.
                 </p>
-            </div>
-            
-            <!-- Features Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Feature 1 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-icon">
-                        <i class="fas fa-search text-primary-500"></i>
-                    </div>
-                    <h4 class="text-white font-semibold text-xl mb-3">Smart Discovery</h4>
-                    <p class="text-dark-400">AI-powered search to find influencers that match your brand using advanced filters for niche, audience, and engagement.</p>
-                </div>
-                
-                <!-- Feature 2 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="150">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments text-green-500"></i>
-                    </div>
-                    <h4 class="text-white font-semibold text-xl mb-3">Direct Messaging</h4>
-                    <p class="text-dark-400">Built-in messaging system to communicate, share files, discuss ideas, and negotiate terms all in one place.</p>
-                </div>
-                
-                <!-- Feature 3 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line text-cyan-500"></i>
-                    </div>
-                    <h4 class="text-white font-semibold text-xl mb-3">Real-time Analytics</h4>
-                    <p class="text-dark-400">Track campaign performance, engagement metrics, and ROI with comprehensive real-time analytics dashboard.</p>
-                </div>
-                
-                <!-- Feature 4 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="250">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt text-yellow-500"></i>
-                    </div>
-                    <h4 class="text-white font-semibold text-xl mb-3">Secure Payments</h4>
-                    <p class="text-dark-400">Protected escrow payments with milestone-based releases. Multiple payment methods for peace of mind.</p>
-                </div>
-                
-                <!-- Feature 5 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-icon">
-                        <i class="fas fa-tasks text-purple-500"></i>
-                    </div>
-                    <h4 class="text-white font-semibold text-xl mb-3">Campaign Management</h4>
-                    <p class="text-dark-400">Create, launch, and manage campaigns from a single dashboard. Track applications, content, and deliverables.</p>
-                </div>
-                
-                <!-- Feature 6 -->
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="350">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-check text-pink-500"></i>
-                    </div>
-                    <h4 class="text-white font-semibold text-xl mb-3">Verified Profiles</h4>
-                    <p class="text-dark-400">Trust in verified influencers and brands. We validate identities and authenticate social accounts.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== CATEGORIES ========== -->
-    <section id="categories" class="py-20 lg:py-28 bg-dark-900/50">
-        <div class="container max-w-7xl mx-auto px-4">
-            <!-- Section Header -->
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="section-badge mb-4">Categories</span>
-                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Find Your Perfect Niche</h2>
-                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+</div>
+<!-- Features Grid -->
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Feature 1 -->
+<div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+<div class="feature-icon">
+<i class="fas fa-search text-primary-500"></i>
+</div>
+<h4 class="text-white font-semibold text-xl mb-3">Smart Discovery</h4>
+<p class="text-dark-400">AI-powered search to find influencers that match your brand using advanced filters for niche, audience, and engagement.</p>
+</div>
+<!-- Feature 2 -->
+<div class="feature-card" data-aos="fade-up" data-aos-delay="150">
+<div class="feature-icon">
+<i class="fas fa-comments text-green-500"></i>
+</div>
+<h4 class="text-white font-semibold text-xl mb-3">Direct Messaging</h4>
+<p class="text-dark-400">Built-in messaging system to communicate, share files, discuss ideas, and negotiate terms all in one place.</p>
+</div>
+<!-- Feature 3 -->
+<div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+<div class="feature-icon">
+<i class="fas fa-chart-line text-cyan-500"></i>
+</div>
+<h4 class="text-white font-semibold text-xl mb-3">Real-time Analytics</h4>
+<p class="text-dark-400">Track campaign performance, engagement metrics, and ROI with comprehensive real-time analytics dashboard.</p>
+</div>
+<!-- Feature 4 -->
+<div class="feature-card" data-aos="fade-up" data-aos-delay="250">
+<div class="feature-icon">
+<i class="fas fa-shield-alt text-yellow-500"></i>
+</div>
+<h4 class="text-white font-semibold text-xl mb-3">Secure Payments</h4>
+<p class="text-dark-400">Protected escrow payments with milestone-based releases. Multiple payment methods for peace of mind.</p>
+</div>
+<!-- Feature 5 -->
+<div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+<div class="feature-icon">
+<i class="fas fa-tasks text-purple-500"></i>
+</div>
+<h4 class="text-white font-semibold text-xl mb-3">Campaign Management</h4>
+<p class="text-dark-400">Create, launch, and manage campaigns from a single dashboard. Track applications, content, and deliverables.</p>
+</div>
+<!-- Feature 6 -->
+<div class="feature-card" data-aos="fade-up" data-aos-delay="350">
+<div class="feature-icon">
+<i class="fas fa-user-check text-pink-500"></i>
+</div>
+<h4 class="text-white font-semibold text-xl mb-3">Verified Profiles</h4>
+<p class="text-dark-400">Trust in verified influencers and brands. We validate identities and authenticate social accounts.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== CATEGORIES ========== -->
+<section class="py-20 lg:py-28 bg-dark-900/50" id="categories">
+<div class="container max-w-7xl mx-auto px-4">
+<!-- Section Header -->
+<div class="text-center mb-16" data-aos="fade-up">
+<span class="section-badge mb-4">Categories</span>
+<h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Find Your Perfect Niche</h2>
+<p class="text-dark-400 text-lg max-w-2xl mx-auto">
                     Explore campaigns and creators across all major categories.
                 </p>
-            </div>
-            
-            <!-- Categories Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                <div class="category-card" data-aos="fade-up" data-aos-delay="50">
-                    <div class="category-icon">👗</div>
-                    <h5 class="text-white font-semibold">Fashion</h5>
-                    <p class="text-dark-500 text-sm">Style & Clothing</p>
-                </div>
-                
-                <div class="category-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="category-icon">📱</div>
-                    <h5 class="text-white font-semibold">Tech</h5>
-                    <p class="text-dark-500 text-sm">Gadgets & Software</p>
-                </div>
-                
-                <div class="category-card" data-aos="fade-up" data-aos-delay="150">
-                    <div class="category-icon">🍕</div>
-                    <h5 class="text-white font-semibold">Food</h5>
-                    <p class="text-dark-500 text-sm">Cooking & Recipes</p>
-                </div>
-                
-                <div class="category-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="category-icon">✈️</div>
-                    <h5 class="text-white font-semibold">Travel</h5>
-                    <p class="text-dark-500 text-sm">Adventure & Places</p>
-                </div>
-                
-                <div class="category-card" data-aos="fade-up" data-aos-delay="250">
-                    <div class="category-icon">💪</div>
-                    <h5 class="text-white font-semibold">Fitness</h5>
-                    <p class="text-dark-500 text-sm">Health & Wellness</p>
-                </div>
-                
-                <div class="category-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="category-icon">🎮</div>
-                    <h5 class="text-white font-semibold">Gaming</h5>
-                    <p class="text-dark-500 text-sm">Games & Esports</p>
-                </div>
-                
-                <div class="category-card" data-aos="fade-up" data-aos-delay="350">
-                    <div class="category-icon">💄</div>
-                    <h5 class="text-white font-semibold">Beauty</h5>
-                    <p class="text-dark-500 text-sm">Makeup & Skincare</p>
-                </div>
-                
-                <div class="category-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="category-icon">🏠</div>
-                    <h5 class="text-white font-semibold">Lifestyle</h5>
-                    <p class="text-dark-500 text-sm">Home & Living</p>
-                </div>
-                
-                <div class="category-card" data-aos="fade-up" data-aos-delay="450">
-                    <div class="category-icon">📚</div>
-                    <h5 class="text-white font-semibold">Education</h5>
-                    <p class="text-dark-500 text-sm">Learning & Courses</p>
-                </div>
-                
-                <div class="category-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="category-icon">🎵</div>
-                    <h5 class="text-white font-semibold">Music</h5>
-                    <p class="text-dark-500 text-sm">Artists & Sounds</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== CAMPAIGN TYPES (Alternative to Latest Campaigns when empty) ========== -->
-    <section id="campaign-types" class="py-20 lg:py-28">
-        <div class="container max-w-7xl mx-auto px-4">
-            <!-- Section Header -->
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="section-badge mb-4">Opportunities</span>
-                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Campaign Types on CollabHub</h2>
-                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+</div>
+<!-- Categories Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+<div class="category-card" data-aos="fade-up" data-aos-delay="50">
+<div class="category-icon">👗</div>
+<h5 class="text-white font-semibold">Fashion</h5>
+<p class="text-dark-500 text-sm">Style &amp; Clothing</p>
+</div>
+<div class="category-card" data-aos="fade-up" data-aos-delay="100">
+<div class="category-icon">📱</div>
+<h5 class="text-white font-semibold">Tech</h5>
+<p class="text-dark-500 text-sm">Gadgets &amp; Software</p>
+</div>
+<div class="category-card" data-aos="fade-up" data-aos-delay="150">
+<div class="category-icon">🍕</div>
+<h5 class="text-white font-semibold">Food</h5>
+<p class="text-dark-500 text-sm">Cooking &amp; Recipes</p>
+</div>
+<div class="category-card" data-aos="fade-up" data-aos-delay="200">
+<div class="category-icon">✈️</div>
+<h5 class="text-white font-semibold">Travel</h5>
+<p class="text-dark-500 text-sm">Adventure &amp; Places</p>
+</div>
+<div class="category-card" data-aos="fade-up" data-aos-delay="250">
+<div class="category-icon">💪</div>
+<h5 class="text-white font-semibold">Fitness</h5>
+<p class="text-dark-500 text-sm">Health &amp; Wellness</p>
+</div>
+<div class="category-card" data-aos="fade-up" data-aos-delay="300">
+<div class="category-icon">🎮</div>
+<h5 class="text-white font-semibold">Gaming</h5>
+<p class="text-dark-500 text-sm">Games &amp; Esports</p>
+</div>
+<div class="category-card" data-aos="fade-up" data-aos-delay="350">
+<div class="category-icon">💄</div>
+<h5 class="text-white font-semibold">Beauty</h5>
+<p class="text-dark-500 text-sm">Makeup &amp; Skincare</p>
+</div>
+<div class="category-card" data-aos="fade-up" data-aos-delay="400">
+<div class="category-icon">🏠</div>
+<h5 class="text-white font-semibold">Lifestyle</h5>
+<p class="text-dark-500 text-sm">Home &amp; Living</p>
+</div>
+<div class="category-card" data-aos="fade-up" data-aos-delay="450">
+<div class="category-icon">📚</div>
+<h5 class="text-white font-semibold">Education</h5>
+<p class="text-dark-500 text-sm">Learning &amp; Courses</p>
+</div>
+<div class="category-card" data-aos="fade-up" data-aos-delay="500">
+<div class="category-icon">🎵</div>
+<h5 class="text-white font-semibold">Music</h5>
+<p class="text-dark-500 text-sm">Artists &amp; Sounds</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== CAMPAIGN TYPES (Alternative to Latest Campaigns when empty) ========== -->
+<section class="py-20 lg:py-28" id="campaign-types">
+<div class="container max-w-7xl mx-auto px-4">
+<!-- Section Header -->
+<div class="text-center mb-16" data-aos="fade-up">
+<span class="section-badge mb-4">Opportunities</span>
+<h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Campaign Types on CollabHub</h2>
+<p class="text-dark-400 text-lg max-w-2xl mx-auto">
                     Discover various collaboration opportunities that match your style and audience.
                 </p>
-            </div>
-            
-            <!-- Campaign Types Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="campaign-type-icon">📸</div>
-                    <h4 class="text-white font-semibold text-lg mb-2">Sponsored Posts</h4>
-                    <p class="text-dark-400 text-sm">Create branded content for your social media platforms with authentic integration.</p>
-                </div>
-                
-                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="150">
-                    <div class="campaign-type-icon">📹</div>
-                    <h4 class="text-white font-semibold text-lg mb-2">Product Reviews</h4>
-                    <p class="text-dark-400 text-sm">Share honest reviews and unboxing experiences with your audience.</p>
-                </div>
-                
-                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="campaign-type-icon">🤝</div>
-                    <h4 class="text-white font-semibold text-lg mb-2">Brand Ambassador</h4>
-                    <p class="text-dark-400 text-sm">Long-term partnerships representing brands you love.</p>
-                </div>
-                
-                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="250">
-                    <div class="campaign-type-icon">🎁</div>
-                    <h4 class="text-white font-semibold text-lg mb-2">Giveaways</h4>
-                    <p class="text-dark-400 text-sm">Host exciting giveaways to boost engagement and brand awareness.</p>
-                </div>
-                
-                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="campaign-type-icon">🎬</div>
-                    <h4 class="text-white font-semibold text-lg mb-2">Event Coverage</h4>
-                    <p class="text-dark-400 text-sm">Attend and cover brand events, launches, and experiences.</p>
-                </div>
-                
-                <div class="campaign-type-card" data-aos="fade-up" data-aos-delay="350">
-                    <div class="campaign-type-icon">📱</div>
-                    <h4 class="text-white font-semibold text-lg mb-2">Account Takeover</h4>
-                    <p class="text-dark-400 text-sm">Take over brand social accounts to engage their audience directly.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== PROMISE SECTION (Alternative to Testimonials when empty) ========== -->
-    <section id="promise" class="py-20 lg:py-28 bg-dark-900/50">
-        <div class="container max-w-7xl mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Left Content -->
-                <div data-aos="fade-right">
-                    <span class="section-badge mb-4">Our Promise</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-4 mb-6">Why Trust CollabHub</h2>
-                    <p class="text-dark-400 text-lg mb-8">
+</div>
+<!-- Campaign Types Grid -->
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="campaign-type-card" data-aos="fade-up" data-aos-delay="100">
+<div class="campaign-type-icon">📸</div>
+<h4 class="text-white font-semibold text-lg mb-2">Sponsored Posts</h4>
+<p class="text-dark-400 text-sm">Create branded content for your social media platforms with authentic integration.</p>
+</div>
+<div class="campaign-type-card" data-aos="fade-up" data-aos-delay="150">
+<div class="campaign-type-icon">📹</div>
+<h4 class="text-white font-semibold text-lg mb-2">Product Reviews</h4>
+<p class="text-dark-400 text-sm">Share honest reviews and unboxing experiences with your audience.</p>
+</div>
+<div class="campaign-type-card" data-aos="fade-up" data-aos-delay="200">
+<div class="campaign-type-icon">🤝</div>
+<h4 class="text-white font-semibold text-lg mb-2">Brand Ambassador</h4>
+<p class="text-dark-400 text-sm">Long-term partnerships representing brands you love.</p>
+</div>
+<div class="campaign-type-card" data-aos="fade-up" data-aos-delay="250">
+<div class="campaign-type-icon">🎁</div>
+<h4 class="text-white font-semibold text-lg mb-2">Giveaways</h4>
+<p class="text-dark-400 text-sm">Host exciting giveaways to boost engagement and brand awareness.</p>
+</div>
+<div class="campaign-type-card" data-aos="fade-up" data-aos-delay="300">
+<div class="campaign-type-icon">🎬</div>
+<h4 class="text-white font-semibold text-lg mb-2">Event Coverage</h4>
+<p class="text-dark-400 text-sm">Attend and cover brand events, launches, and experiences.</p>
+</div>
+<div class="campaign-type-card" data-aos="fade-up" data-aos-delay="350">
+<div class="campaign-type-icon">📱</div>
+<h4 class="text-white font-semibold text-lg mb-2">Account Takeover</h4>
+<p class="text-dark-400 text-sm">Take over brand social accounts to engage their audience directly.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== PROMISE SECTION (Alternative to Testimonials when empty) ========== -->
+<section class="py-20 lg:py-28 bg-dark-900/50" id="promise">
+<div class="container max-w-7xl mx-auto px-4">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<!-- Left Content -->
+<div data-aos="fade-right">
+<span class="section-badge mb-4">Our Promise</span>
+<h2 class="text-3xl md:text-4xl font-bold text-white mt-4 mb-6">Why Trust CollabHub</h2>
+<p class="text-dark-400 text-lg mb-8">
                         We've built CollabHub with trust, transparency, and your success at its core. Here's what you can always count on.
                     </p>
-                    
-                    <!-- Promise Items -->
-                    <div class="space-y-4">
-                        <div class="promise-item">
-                            <div class="promise-icon">
-                                <i class="fas fa-user-check"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-white font-semibold mb-1">Verified Profiles</h5>
-                                <p class="text-dark-400 text-sm">Every user is authenticated. Real people, real brands.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="promise-item">
-                            <div class="promise-icon">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-white font-semibold mb-1">Secure Escrow Payments</h5>
-                                <p class="text-dark-400 text-sm">Funds are protected until work is approved.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="promise-item">
-                            <div class="promise-icon">
-                                <i class="fas fa-file-contract"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-white font-semibold mb-1">Clear Contracts</h5>
-                                <p class="text-dark-400 text-sm">Know exactly what's expected. No surprises.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="promise-item">
-                            <div class="promise-icon">
-                                <i class="fas fa-headset"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-white font-semibold mb-1">Dedicated Support</h5>
-                                <p class="text-dark-400 text-sm">We're here when you need us. Real humans, real help.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="promise-item">
-                            <div class="promise-icon">
-                                <i class="fas fa-balance-scale"></i>
-                            </div>
-                            <div>
-                                <h5 class="text-white font-semibold mb-1">Fair & Transparent</h5>
-                                <p class="text-dark-400 text-sm">No hidden fees. You see exactly what you pay.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Visual -->
-                <div class="relative" data-aos="fade-left">
-                    <div class="glass-card rounded-3xl p-8">
-                        <div class="text-center mb-8">
-                            <div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center mx-auto mb-4 pulse-glow">
-                                <i class="fas fa-shield-alt text-white text-3xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">100% Protected</h3>
-                            <p class="text-dark-400">Every collaboration on CollabHub</p>
-                        </div>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-4 p-4 bg-dark-800 rounded-xl">
-                                <i class="fas fa-check-circle text-green-500 text-xl"></i>
-                                <span class="text-white">Money-back guarantee</span>
-                            </div>
-                            <div class="flex items-center gap-4 p-4 bg-dark-800 rounded-xl">
-                                <i class="fas fa-check-circle text-green-500 text-xl"></i>
-                                <span class="text-white">Dispute resolution support</span>
-                            </div>
-                            <div class="flex items-center gap-4 p-4 bg-dark-800 rounded-xl">
-                                <i class="fas fa-check-circle text-green-500 text-xl"></i>
-                                <span class="text-white">24/7 fraud protection</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Floating Elements -->
-                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary-500/10 rounded-full blur-2xl"></div>
-                    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-secondary-500/10 rounded-full blur-2xl"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== PRICING ========== -->
-    <section id="pricing" class="py-20 lg:py-28">
-        <div class="container max-w-7xl mx-auto px-4">
-            <!-- Section Header -->
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="section-badge mb-4">Pricing</span>
-                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Simple, Transparent Pricing</h2>
-                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+<!-- Promise Items -->
+<div class="space-y-4">
+<div class="promise-item">
+<div class="promise-icon">
+<i class="fas fa-user-check"></i>
+</div>
+<div>
+<h5 class="text-white font-semibold mb-1">Verified Profiles</h5>
+<p class="text-dark-400 text-sm">Every user is authenticated. Real people, real brands.</p>
+</div>
+</div>
+<div class="promise-item">
+<div class="promise-icon">
+<i class="fas fa-lock"></i>
+</div>
+<div>
+<h5 class="text-white font-semibold mb-1">Secure Escrow Payments</h5>
+<p class="text-dark-400 text-sm">Funds are protected until work is approved.</p>
+</div>
+</div>
+<div class="promise-item">
+<div class="promise-icon">
+<i class="fas fa-file-contract"></i>
+</div>
+<div>
+<h5 class="text-white font-semibold mb-1">Clear Contracts</h5>
+<p class="text-dark-400 text-sm">Know exactly what's expected. No surprises.</p>
+</div>
+</div>
+<div class="promise-item">
+<div class="promise-icon">
+<i class="fas fa-headset"></i>
+</div>
+<div>
+<h5 class="text-white font-semibold mb-1">Dedicated Support</h5>
+<p class="text-dark-400 text-sm">We're here when you need us. Real humans, real help.</p>
+</div>
+</div>
+<div class="promise-item">
+<div class="promise-icon">
+<i class="fas fa-balance-scale"></i>
+</div>
+<div>
+<h5 class="text-white font-semibold mb-1">Fair &amp; Transparent</h5>
+<p class="text-dark-400 text-sm">No hidden fees. You see exactly what you pay.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Visual -->
+<div class="relative" data-aos="fade-left">
+<div class="glass-card rounded-3xl p-8">
+<div class="text-center mb-8">
+<div class="w-20 h-20 rounded-full gradient-bg flex items-center justify-center mx-auto mb-4 pulse-glow">
+<i class="fas fa-shield-alt text-white text-3xl"></i>
+</div>
+<h3 class="text-2xl font-bold text-white mb-2">100% Protected</h3>
+<p class="text-dark-400">Every collaboration on CollabHub</p>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 bg-dark-800 rounded-xl">
+<i class="fas fa-check-circle text-green-500 text-xl"></i>
+<span class="text-white">Money-back guarantee</span>
+</div>
+<div class="flex items-center gap-4 p-4 bg-dark-800 rounded-xl">
+<i class="fas fa-check-circle text-green-500 text-xl"></i>
+<span class="text-white">Dispute resolution support</span>
+</div>
+<div class="flex items-center gap-4 p-4 bg-dark-800 rounded-xl">
+<i class="fas fa-check-circle text-green-500 text-xl"></i>
+<span class="text-white">24/7 fraud protection</span>
+</div>
+</div>
+</div>
+<!-- Floating Elements -->
+<div class="absolute -top-4 -right-4 w-24 h-24 bg-primary-500/10 rounded-full blur-2xl"></div>
+<div class="absolute -bottom-4 -left-4 w-32 h-32 bg-secondary-500/10 rounded-full blur-2xl"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========== PRICING ========== -->
+<section class="py-20 lg:py-28" id="pricing">
+<div class="container max-w-7xl mx-auto px-4">
+<!-- Section Header -->
+<div class="text-center mb-16" data-aos="fade-up">
+<span class="section-badge mb-4">Pricing</span>
+<h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Simple, Transparent Pricing</h2>
+<p class="text-dark-400 text-lg max-w-2xl mx-auto">
                     Choose the plan that's right for you. No hidden fees, cancel anytime.
                 </p>
-            </div>
-            
-            <!-- Pricing Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Starter -->
-                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-center mb-8">
-                        <h3 class="text-xl font-semibold text-white mb-2">Starter</h3>
-                        <div class="text-4xl font-bold text-white mb-2">Free</div>
-                        <p class="text-dark-400 text-sm">Perfect for getting started</p>
-                    </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>3 campaigns per month</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Basic search filters</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Direct messaging</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Standard support</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-500">
-                            <i class="fas fa-times"></i>
-                            <span>Advanced analytics</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-500">
-                            <i class="fas fa-times"></i>
-                            <span>AI matching</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="#" class="btn-secondary-custom w-full text-center block">Get Started</a>
-                </div>
-                
-                <!-- Professional -->
-                <div class="pricing-card featured relative" data-aos="fade-up" data-aos-delay="200">
-                    <div class="pricing-badge">Most Popular</div>
-                    
-                    <div class="text-center mb-8">
-                        <h3 class="text-xl font-semibold text-white mb-2">Professional</h3>
-                        <div class="text-4xl font-bold text-white mb-2">$49<span class="text-lg text-dark-400 font-normal">/mo</span></div>
-                        <p class="text-dark-400 text-sm">For growing teams</p>
-                    </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Unlimited campaigns</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Advanced AI matching</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Priority support</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Analytics dashboard</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>API access</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Custom branding</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="#" class="btn-primary-custom w-full text-center block">Start Free Trial</a>
-                </div>
-                
-                <!-- Enterprise -->
-                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-center mb-8">
-                        <h3 class="text-xl font-semibold text-white mb-2">Enterprise</h3>
-                        <div class="text-4xl font-bold text-white mb-2">Custom</div>
-                        <p class="text-dark-400 text-sm">For large organizations</p>
-                    </div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Everything in Professional</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Dedicated account manager</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Custom integrations</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>SLA guarantee</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Advanced security</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-dark-300">
-                            <i class="fas fa-check text-green-500"></i>
-                            <span>Volume discounts</span>
-                        </li>
-                    </ul>
-                    
-                    <a href="#" class="btn-secondary-custom w-full text-center block">Contact Sales</a>
-                </div>
-            </div>
-            
-            <!-- Note -->
-            <p class="text-center text-dark-500 text-sm mt-8">
+</div>
+<!-- Pricing Grid -->
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+<!-- Starter -->
+<div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+<div class="text-center mb-8">
+<h3 class="text-xl font-semibold text-white mb-2">Starter</h3>
+<div class="text-4xl font-bold text-white mb-2">Free</div>
+<p class="text-dark-400 text-sm">Perfect for getting started</p>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>3 campaigns per month</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Basic search filters</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Direct messaging</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Standard support</span>
+</li>
+<li class="flex items-center gap-3 text-dark-500">
+<i class="fas fa-times"></i>
+<span>Advanced analytics</span>
+</li>
+<li class="flex items-center gap-3 text-dark-500">
+<i class="fas fa-times"></i>
+<span>AI matching</span>
+</li>
+</ul>
+<a aria-disabled="true" class="btn-secondary-custom w-full text-center block" href="#" role="button">Get Started</a>
+</div>
+<!-- Professional -->
+<div class="pricing-card featured relative" data-aos="fade-up" data-aos-delay="200">
+<div class="pricing-badge">Most Popular</div>
+<div class="text-center mb-8">
+<h3 class="text-xl font-semibold text-white mb-2">Professional</h3>
+<div class="text-4xl font-bold text-white mb-2">$49<span class="text-lg text-dark-400 font-normal">/mo</span></div>
+<p class="text-dark-400 text-sm">For growing teams</p>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Unlimited campaigns</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Advanced AI matching</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Priority support</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Analytics dashboard</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>API access</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Custom branding</span>
+</li>
+</ul>
+<a aria-disabled="true" class="btn-primary-custom w-full text-center block" href="#" role="button">Start Free Trial</a>
+</div>
+<!-- Enterprise -->
+<div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+<div class="text-center mb-8">
+<h3 class="text-xl font-semibold text-white mb-2">Enterprise</h3>
+<div class="text-4xl font-bold text-white mb-2">Custom</div>
+<p class="text-dark-400 text-sm">For large organizations</p>
+</div>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Everything in Professional</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Dedicated account manager</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Custom integrations</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>SLA guarantee</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Advanced security</span>
+</li>
+<li class="flex items-center gap-3 text-dark-300">
+<i class="fas fa-check text-green-500"></i>
+<span>Volume discounts</span>
+</li>
+</ul>
+<a aria-disabled="true" class="btn-secondary-custom w-full text-center block" href="#" role="button">Contact Sales</a>
+</div>
+</div>
+<!-- Note -->
+<p class="text-center text-dark-500 text-sm mt-8">
                 All plans include secure payments and basic support. 14-day free trial on paid plans.
             </p>
-        </div>
-    </section>
-    
-    <!-- ========== FAQ ========== -->
-    <section id="faq" class="py-20 lg:py-28 bg-dark-900/50">
-        <div class="container max-w-4xl mx-auto px-4">
-            <!-- Section Header -->
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="section-badge mb-4">FAQ</span>
-                <h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Frequently Asked Questions</h2>
-                <p class="text-dark-400 text-lg max-w-2xl mx-auto">
+</div>
+</section>
+<!-- ========== FAQ ========== -->
+<section class="py-20 lg:py-28 bg-dark-900/50" id="faq">
+<div class="container max-w-4xl mx-auto px-4">
+<!-- Section Header -->
+<div class="text-center mb-16" data-aos="fade-up">
+<span class="section-badge mb-4">FAQ</span>
+<h2 class="section-title text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 mb-4">Frequently Asked Questions</h2>
+<p class="text-dark-400 text-lg max-w-2xl mx-auto">
                     Everything you need to know about CollabHub.
                 </p>
-            </div>
-            
-            <!-- FAQ Items -->
-            <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
-                <!-- FAQ 1 -->
-                <div class="faq-item active">
-                    <div class="faq-question">
-                        <h4 class="text-white font-semibold pr-8">How does CollabHub work?</h4>
-                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p class="text-dark-400">CollabHub connects brands with influencers for marketing collaborations. Brands can post campaigns specifying their requirements, budget, and target audience. Influencers browse and apply to campaigns that match their niche. Once matched, both parties collaborate through our platform with secure contracts, messaging, and payments.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ 2 -->
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4 class="text-white font-semibold pr-8">How do influencers get paid?</h4>
-                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p class="text-dark-400">We use a secure escrow payment system. When a brand accepts an influencer, they deposit the agreed amount into escrow. Once the influencer delivers the content and it's approved by the brand, the payment is released. This protects both parties and ensures fair transactions.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ 3 -->
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4 class="text-white font-semibold pr-8">Is it free to join as an influencer?</h4>
-                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p class="text-dark-400">Yes! Influencers can join and browse campaigns completely free. We only charge a small platform fee (10%) on successful collaborations. This means you only pay when you get paid. There are no upfront costs or subscription fees for creators.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ 4 -->
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4 class="text-white font-semibold pr-8">How do I find the right influencers for my brand?</h4>
-                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p class="text-dark-400">Our smart search and AI matching system helps you find perfect matches. Filter by niche, follower count, engagement rate, location, platform, and more. You can also post a campaign and let influencers come to you. We verify all profiles to ensure quality and authenticity.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ 5 -->
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4 class="text-white font-semibold pr-8">What if there's a dispute?</h4>
-                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p class="text-dark-400">Our dedicated support team handles all disputes fairly. With escrow protection and clear contracts, issues are rare. If a dispute arises, we review the evidence from both parties and make a fair decision. We prioritize resolution and maintaining trust on our platform.</p>
-                    </div>
-                </div>
-                
-                <!-- FAQ 6 -->
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4 class="text-white font-semibold pr-8">What platforms do you support?</h4>
-                        <i class="fas fa-chevron-down faq-icon text-primary-500"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p class="text-dark-400">CollabHub supports all major social media platforms including Instagram, YouTube, TikTok, Twitter, Facebook, LinkedIn, Pinterest, Twitch, and blogs. Influencers can connect multiple platforms to their profile to showcase their complete reach.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- More Questions -->
-            <div class="text-center mt-12">
-                <p class="text-dark-400 mb-4">Still have questions?</p>
-                <a href="#" class="btn-secondary-custom inline-flex items-center gap-2">
-                    <i class="fas fa-envelope"></i> Contact Support
+</div>
+<!-- FAQ Items -->
+<div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+<!-- FAQ 1 -->
+<div class="faq-item active">
+<div class="faq-question">
+<h4 class="text-white font-semibold pr-8">How does CollabHub work?</h4>
+<i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+</div>
+<div class="faq-answer">
+<p class="text-dark-400">CollabHub connects brands with influencers for marketing collaborations. Brands can post campaigns specifying their requirements, budget, and target audience. Influencers browse and apply to campaigns that match their niche. Once matched, both parties collaborate through our platform with secure contracts, messaging, and payments.</p>
+</div>
+</div>
+<!-- FAQ 2 -->
+<div class="faq-item">
+<div class="faq-question">
+<h4 class="text-white font-semibold pr-8">How do influencers get paid?</h4>
+<i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+</div>
+<div class="faq-answer">
+<p class="text-dark-400">We use a secure escrow payment system. When a brand accepts an influencer, they deposit the agreed amount into escrow. Once the influencer delivers the content and it's approved by the brand, the payment is released. This protects both parties and ensures fair transactions.</p>
+</div>
+</div>
+<!-- FAQ 3 -->
+<div class="faq-item">
+<div class="faq-question">
+<h4 class="text-white font-semibold pr-8">Is it free to join as an influencer?</h4>
+<i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+</div>
+<div class="faq-answer">
+<p class="text-dark-400">Yes! Influencers can join and browse campaigns completely free. We only charge a small platform fee (10%) on successful collaborations. This means you only pay when you get paid. There are no upfront costs or subscription fees for creators.</p>
+</div>
+</div>
+<!-- FAQ 4 -->
+<div class="faq-item">
+<div class="faq-question">
+<h4 class="text-white font-semibold pr-8">How do I find the right influencers for my brand?</h4>
+<i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+</div>
+<div class="faq-answer">
+<p class="text-dark-400">Our smart search and AI matching system helps you find perfect matches. Filter by niche, follower count, engagement rate, location, platform, and more. You can also post a campaign and let influencers come to you. We verify all profiles to ensure quality and authenticity.</p>
+</div>
+</div>
+<!-- FAQ 5 -->
+<div class="faq-item">
+<div class="faq-question">
+<h4 class="text-white font-semibold pr-8">What if there's a dispute?</h4>
+<i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+</div>
+<div class="faq-answer">
+<p class="text-dark-400">Our dedicated support team handles all disputes fairly. With escrow protection and clear contracts, issues are rare. If a dispute arises, we review the evidence from both parties and make a fair decision. We prioritize resolution and maintaining trust on our platform.</p>
+</div>
+</div>
+<!-- FAQ 6 -->
+<div class="faq-item">
+<div class="faq-question">
+<h4 class="text-white font-semibold pr-8">What platforms do you support?</h4>
+<i class="fas fa-chevron-down faq-icon text-primary-500"></i>
+</div>
+<div class="faq-answer">
+<p class="text-dark-400">CollabHub supports all major social media platforms including Instagram, YouTube, TikTok, Twitter, Facebook, LinkedIn, Pinterest, Twitch, and blogs. Influencers can connect multiple platforms to their profile to showcase their complete reach.</p>
+</div>
+</div>
+</div>
+<!-- More Questions -->
+<div class="text-center mt-12">
+<p class="text-dark-400 mb-4">Still have questions?</p>
+<a aria-disabled="true" class="btn-secondary-custom inline-flex items-center gap-2" href="#" role="button">
+<i class="fas fa-envelope"></i> Contact Support
                 </a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== CTA SECTION ========== -->
-    <section id="cta" class="py-20 lg:py-28">
-        <div class="container max-w-5xl mx-auto px-4">
-            <div class="cta-section p-8 md:p-16 text-center" data-aos="fade-up">
-                <div class="relative z-10">
-                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                        Ready to Start Your<br>
-                        <span class="gradient-text">Collaboration Journey?</span>
-                    </h2>
-                    <p class="text-dark-400 text-lg mb-8 max-w-2xl mx-auto">
+</div>
+</div>
+</section>
+<!-- ========== CTA SECTION ========== -->
+<section class="py-20 lg:py-28" id="cta">
+<div class="container max-w-5xl mx-auto px-4">
+<div class="cta-section p-8 md:p-16 text-center" data-aos="fade-up">
+<div class="relative z-10">
+<h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+                        Ready to Start Your<br/>
+<span class="gradient-text">Collaboration Journey?</span>
+</h2>
+<p class="text-dark-400 text-lg mb-8 max-w-2xl mx-auto">
                         Join CollabHub today and experience the future of influencer marketing. Whether you're a brand or creator, your next big opportunity awaits.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="#" class="btn-primary-custom text-lg py-4 px-8 flex items-center justify-center gap-2">
-                            <i class="fas fa-building"></i> Join as Brand
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a aria-disabled="true" class="btn-primary-custom text-lg py-4 px-8 flex items-center justify-center gap-2" href="#" role="button">
+<i class="fas fa-building"></i> Join as Brand
                         </a>
-                        <a href="#" class="btn-secondary-custom text-lg py-4 px-8 flex items-center justify-center gap-2">
-                            <i class="fas fa-star"></i> Join as Creator
+<a aria-disabled="true" class="btn-secondary-custom text-lg py-4 px-8 flex items-center justify-center gap-2" href="#" role="button">
+<i class="fas fa-star"></i> Join as Creator
                         </a>
-                    </div>
-                    <p class="text-dark-500 text-sm mt-6">
-                        <i class="fas fa-check-circle text-green-500 mr-2"></i>
+</div>
+<p class="text-dark-500 text-sm mt-6">
+<i class="fas fa-check-circle text-green-500 mr-2"></i>
                         No credit card required • Free to join • Cancel anytime
                     </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== FOOTER ========== -->
-    <footer class="py-16 border-t border-dark-800">
-        <div class="container max-w-7xl mx-auto px-4">
-            <!-- Footer Top -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-                <!-- Brand -->
-                <div class="lg:col-span-2">
-                    <a href="#" class="flex items-center gap-3 text-decoration-none mb-4">
-                        <div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
-                            <i class="fas fa-cube text-white text-lg"></i>
-                        </div>
-                        <span class="text-xl font-bold text-white">CollabHub</span>
-                    </a>
-                    <p class="text-dark-400 mb-6 max-w-xs">
+</div>
+</div>
+</div>
+</section>
+<!-- ========== FOOTER ========== -->
+<footer class="py-16 border-t border-dark-800">
+<div class="container max-w-7xl mx-auto px-4">
+<!-- Footer Top -->
+<div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+<!-- Brand -->
+<div class="lg:col-span-2">
+<a aria-disabled="true" class="flex items-center gap-3 text-decoration-none mb-4" href="#" role="button">
+<div class="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
+<i class="fas fa-cube text-white text-lg"></i>
+</div>
+<span class="text-xl font-bold text-white">CollabHub</span>
+</a>
+<p class="text-dark-400 mb-6 max-w-xs">
                         Connecting brands and creators for authentic, impactful collaborations.
                     </p>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Product -->
-                <div>
-                    <h5 class="text-white font-semibold mb-4">Product</h5>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Features</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Pricing</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">For Brands</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">For Creators</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">API</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Company -->
-                <div>
-                    <h5 class="text-white font-semibold mb-4">Company</h5>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Careers</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Press Kit</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Support -->
-                <div>
-                    <h5 class="text-white font-semibold mb-4">Support</h5>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Help Center</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">FAQs</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Community</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Status</a></li>
-                        <li><a href="#" class="text-dark-400 hover:text-white transition-colors">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Footer Bottom -->
-            <div class="pt-8 border-t border-dark-800 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-dark-500 text-sm">
+<div class="flex gap-4">
+<a aria-disabled="true" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all" href="#" role="button">
+<i class="fab fa-twitter"></i>
+</a>
+<a aria-disabled="true" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all" href="#" role="button">
+<i class="fab fa-linkedin-in"></i>
+</a>
+<a aria-disabled="true" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all" href="#" role="button">
+<i class="fab fa-instagram"></i>
+</a>
+<a aria-disabled="true" class="w-10 h-10 rounded-xl bg-dark-800 flex items-center justify-center text-dark-400 hover:text-white hover:bg-primary-500 transition-all" href="#" role="button">
+<i class="fab fa-youtube"></i>
+</a>
+</div>
+</div>
+<!-- Product -->
+<div>
+<h5 class="text-white font-semibold mb-4">Product</h5>
+<ul class="space-y-3">
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">Features</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">Pricing</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">For Brands</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">For Creators</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">API</a></li>
+</ul>
+</div>
+<!-- Company -->
+<div>
+<h5 class="text-white font-semibold mb-4">Company</h5>
+<ul class="space-y-3">
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">About Us</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">Careers</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">Blog</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">Press Kit</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">Contact</a></li>
+</ul>
+</div>
+<!-- Support -->
+<div>
+<h5 class="text-white font-semibold mb-4">Support</h5>
+<ul class="space-y-3">
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">Help Center</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">FAQs</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">Community</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">Status</a></li>
+<li><a aria-disabled="true" class="text-dark-400 hover:text-white transition-colors" href="#" role="button">Contact Us</a></li>
+</ul>
+</div>
+</div>
+<!-- Footer Bottom -->
+<div class="pt-8 border-t border-dark-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-dark-500 text-sm">
                     © 2024 CollabHub. All rights reserved.
                 </p>
-                <div class="flex gap-6">
-                    <a href="#" class="text-dark-500 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                    <a href="#" class="text-dark-500 hover:text-white text-sm transition-colors">Terms of Service</a>
-                    <a href="#" class="text-dark-500 hover:text-white text-sm transition-colors">Cookies</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- ========== BACK TO TOP ========== -->
-    <button id="backToTop" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    
-    <!-- ========== SCRIPTS ========== -->
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- AOS Animation -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script>
+<div class="flex gap-6">
+<a aria-disabled="true" class="text-dark-500 hover:text-white text-sm transition-colors" href="#" role="button">Privacy Policy</a>
+<a aria-disabled="true" class="text-dark-500 hover:text-white text-sm transition-colors" href="#" role="button">Terms of Service</a>
+<a aria-disabled="true" class="text-dark-500 hover:text-white text-sm transition-colors" href="#" role="button">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-to-top" id="backToTop" type="button">
+<i class="fas fa-arrow-up"></i>
+</button>
+<!-- ========== SCRIPTS ========== -->
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- AOS Animation -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
         // ===== INITIALIZE AOS =====
         AOS.init({
             duration: 800,
@@ -1956,24 +1849,26 @@
         const mobileLinks = document.querySelectorAll('.mobile-link');
         
         function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            mobileOverlay.classList.add('active');
+            if (mobileMenu) mobileMenu.classList.add('active');
+            if (mobileOverlay) mobileOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
         
         function closeMobileMenuFn() {
-            mobileMenu.classList.remove('active');
-            mobileOverlay.classList.remove('active');
+            if (mobileMenu) mobileMenu.classList.remove('active');
+            if (mobileOverlay) mobileOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
         
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-        closeMobileMenu.addEventListener('click', closeMobileMenuFn);
-        mobileOverlay.addEventListener('click', closeMobileMenuFn);
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+        if (closeMobileMenu) closeMobileMenu.addEventListener('click', closeMobileMenuFn);
+        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenuFn);
         
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenuFn);
-        });
+        if (mobileLinks && mobileLinks.length) {
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenuFn);
+            });
+        }
         
         // ===== HOW IT WORKS TABS =====
         const howTabs = document.querySelectorAll('.how-tab');

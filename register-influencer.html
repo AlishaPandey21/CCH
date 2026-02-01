@@ -1,18 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creator Registration - CollabHub</title>
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-size='60' fill='white'>C</text></svg>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Creator Registration - CollabHub</title>
+<link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;rect width='100' height='100' rx='20' fill='%236366f1'/&gt;&lt;text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-size='60' fill='white'&gt;C&lt;/text&gt;&lt;/svg&gt;" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -36,8 +35,7 @@
             }
         }
     </script>
-    
-    <style>
+<style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0f172a;
@@ -356,310 +354,251 @@
     </style>
 </head>
 <body>
-    <div class="auth-bg"></div>
-    <div class="auth-grid"></div>
-    
-    <div class="min-h-screen flex relative z-10">
-        <!-- Left Side - Branding -->
-        <div class="hidden lg:flex lg:w-1/2 xl:w-[55%] relative overflow-hidden">
-            <div class="flex flex-col justify-center items-center w-full p-12 relative z-10">
-                <!-- Logo -->
-                <a href="index.html" class="flex items-center gap-3 mb-12">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                        <i class="fas fa-cube text-white text-xl"></i>
-                    </div>
-                    <span class="text-2xl font-bold text-white">CollabHub</span>
-                </a>
-                
-                <div class="max-w-md text-center">
-                    <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mx-auto mb-8">
-                        <i class="fas fa-star text-4xl text-purple-400"></i>
-                    </div>
-                    
-                    <h1 class="text-3xl font-bold text-white mb-4">Join as a Creator</h1>
-                    <p class="text-dark-400 text-lg mb-10">
+<div class="auth-bg"></div>
+<div class="auth-grid"></div>
+<div class="min-h-screen flex relative z-10">
+<!-- Left Side - Branding -->
+<div class="hidden lg:flex lg:w-1/2 xl:w-[55%] relative overflow-hidden">
+<div class="flex flex-col justify-center items-center w-full p-12 relative z-10">
+<!-- Logo -->
+<a class="flex items-center gap-3 mb-12" href="index.html">
+<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+<i class="fas fa-cube text-white text-xl"></i>
+</div>
+<span class="text-2xl font-bold text-white">CollabHub</span>
+</a>
+<div class="max-w-md text-center">
+<div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mx-auto mb-8">
+<i class="fas fa-star text-4xl text-purple-400"></i>
+</div>
+<h1 class="text-3xl font-bold text-white mb-4">Join as a Creator</h1>
+<p class="text-dark-400 text-lg mb-10">
                         Turn your influence into income. Connect with brands that value your creativity.
                     </p>
-                    
-                    <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-6 mb-10">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-white">50K+</div>
-                            <div class="text-dark-500 text-sm">Creators</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-white">$25M+</div>
-                            <div class="text-dark-500 text-sm">Earned</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-white">10K+</div>
-                            <div class="text-dark-500 text-sm">Brands</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Benefits -->
-                    <div class="text-left space-y-4">
-                        <div class="flex items-start gap-4 p-4 glass-card rounded-xl">
-                            <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-dollar-sign text-green-500"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-medium">Get Paid Securely</h4>
-                                <p class="text-dark-400 text-sm">Protected escrow payments on every collaboration</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-4 p-4 glass-card rounded-xl">
-                            <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-bullhorn text-blue-500"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-medium">Get Discovered</h4>
-                                <p class="text-dark-400 text-sm">Brands actively searching for creators like you</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-4 p-4 glass-card rounded-xl">
-                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-chart-line text-purple-500"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-medium">Grow Your Career</h4>
-                                <p class="text-dark-400 text-sm">Build portfolio, collect reviews, level up</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Right Side - Registration Form -->
-        <div class="w-full lg:w-1/2 xl:w-[45%] flex items-center justify-center p-6 sm:p-8 overflow-y-auto">
-            <div class="w-full max-w-md py-8">
-                <!-- Mobile Logo -->
-                <div class="lg:hidden text-center mb-6">
-                    <a href="index.html" class="inline-flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                            <i class="fas fa-cube text-white"></i>
-                        </div>
-                        <span class="text-xl font-bold text-white">CollabHub</span>
-                    </a>
-                </div>
-                
-                <!-- Back Link -->
-                <a href="register.html" class="inline-flex items-center gap-2 text-dark-400 hover:text-white mb-6 transition-colors">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>Back to account type</span>
-                </a>
-                
-                <!-- Form Card -->
-                <div class="glass-card rounded-2xl p-6 sm:p-8">
-                    <!-- Header -->
-                    <div class="text-center mb-6">
-                        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-star text-xl text-purple-400"></i>
-                        </div>
-                        <h2 class="text-2xl font-bold text-white mb-1">Create Creator Account</h2>
-                        <p class="text-dark-400 text-sm">Fill in your details to get started</p>
-                    </div>
-                    
-                    <!-- Registration Form -->
-                    <form id="registerForm" class="space-y-4">
-                        <!-- Full Name -->
-                        <div>
-                            <label class="block text-dark-300 text-sm font-medium mb-2">Full Name</label>
-                            <div class="input-group relative">
-                                <i class="fas fa-user input-icon"></i>
-                                <input 
-                                    type="text" 
-                                    id="fullName"
-                                    name="fullName"
-                                    class="form-input" 
-                                    placeholder="Enter your full name"
-                                    required
-                                >
-                            </div>
-                            <div id="fullNameError" class="error-message hidden">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span></span>
-                            </div>
-                        </div>
-                        
-                        <!-- Username -->
-                        <div>
-                            <label class="block text-dark-300 text-sm font-medium mb-2">Username</label>
-                            <div class="input-group relative">
-                                <i class="fas fa-at input-icon"></i>
-                                <input 
-                                    type="text" 
-                                    id="username"
-                                    name="username"
-                                    class="form-input" 
-                                    placeholder="Choose a username"
-                                    required
-                                >
-                            </div>
-                            <div id="usernameError" class="error-message hidden">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span></span>
-                            </div>
-                            <p class="text-dark-500 text-xs mt-1">This will be your profile URL: collabhub.com/@username</p>
-                        </div>
-                        
-                        <!-- Email -->
-                        <div>
-                            <label class="block text-dark-300 text-sm font-medium mb-2">Email Address</label>
-                            <div class="input-group relative">
-                                <i class="fas fa-envelope input-icon"></i>
-                                <input 
-                                    type="email" 
-                                    id="email"
-                                    name="email"
-                                    class="form-input" 
-                                    placeholder="Enter your email"
-                                    required
-                                >
-                            </div>
-                            <div id="emailError" class="error-message hidden">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span></span>
-                            </div>
-                        </div>
-                        
-                        <!-- Password -->
-                        <div>
-                            <label class="block text-dark-300 text-sm font-medium mb-2">Password</label>
-                            <div class="input-group relative">
-                                <i class="fas fa-lock input-icon"></i>
-                                <input 
-                                    type="password" 
-                                    id="password"
-                                    name="password"
-                                    class="form-input" 
-                                    placeholder="Create a password"
-                                    required
-                                >
-                                <button type="button" class="toggle-password" onclick="togglePassword('password', this)">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                            <div id="passwordError" class="error-message hidden">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span></span>
-                            </div>
-                            
-                            <!-- Password Strength Indicator -->
-                            <div class="password-strength" id="passwordStrength" style="display: none;">
-                                <div class="strength-bars">
-                                    <div class="strength-bar" id="bar1"></div>
-                                    <div class="strength-bar" id="bar2"></div>
-                                    <div class="strength-bar" id="bar3"></div>
-                                    <div class="strength-bar" id="bar4"></div>
-                                </div>
-                                <p class="strength-text" id="strengthText">Weak password</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Confirm Password -->
-                        <div>
-                            <label class="block text-dark-300 text-sm font-medium mb-2">Confirm Password</label>
-                            <div class="input-group relative">
-                                <i class="fas fa-lock input-icon"></i>
-                                <input 
-                                    type="password" 
-                                    id="confirmPassword"
-                                    name="confirmPassword"
-                                    class="form-input" 
-                                    placeholder="Confirm your password"
-                                    required
-                                >
-                                <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword', this)">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </div>
-                            <div id="confirmPasswordError" class="error-message hidden">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span></span>
-                            </div>
-                        </div>
-                        
-                        <!-- Primary Category -->
-                        <div>
-                            <label class="block text-dark-300 text-sm font-medium mb-2">Primary Niche</label>
-                            <div class="input-group relative">
-                                <i class="fas fa-tags input-icon"></i>
-                                <select id="category" name="category" class="form-select" required>
-                                    <option value="">Select your primary niche</option>
-                                    <option value="fashion">Fashion & Style</option>
-                                    <option value="beauty">Beauty & Skincare</option>
-                                    <option value="fitness">Fitness & Health</option>
-                                    <option value="food">Food & Cooking</option>
-                                    <option value="travel">Travel & Adventure</option>
-                                    <option value="tech">Tech & Gadgets</option>
-                                    <option value="gaming">Gaming</option>
-                                    <option value="lifestyle">Lifestyle</option>
-                                    <option value="education">Education</option>
-                                    <option value="music">Music & Entertainment</option>
-                                    <option value="business">Business & Finance</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <!-- Terms & Conditions -->
-                        <div class="flex items-start gap-3 mt-6">
-                            <input type="checkbox" id="terms" name="terms" class="custom-checkbox mt-0.5" required>
-                            <label for="terms" class="text-dark-400 text-sm cursor-pointer">
-                                I agree to the <a href="#" class="link">Terms of Service</a> and <a href="#" class="link">Privacy Policy</a>
-                            </label>
-                        </div>
-                        
-                        <!-- Newsletter -->
-                        <div class="flex items-start gap-3">
-                            <input type="checkbox" id="newsletter" name="newsletter" class="custom-checkbox mt-0.5" checked>
-                            <label for="newsletter" class="text-dark-400 text-sm cursor-pointer">
+<!-- Stats -->
+<div class="grid grid-cols-3 gap-6 mb-10">
+<div class="text-center">
+<div class="text-2xl font-bold text-white">50K+</div>
+<div class="text-dark-500 text-sm">Creators</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-white">$25M+</div>
+<div class="text-dark-500 text-sm">Earned</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-white">10K+</div>
+<div class="text-dark-500 text-sm">Brands</div>
+</div>
+</div>
+<!-- Benefits -->
+<div class="text-left space-y-4">
+<div class="flex items-start gap-4 p-4 glass-card rounded-xl">
+<div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center flex-shrink-0">
+<i class="fas fa-dollar-sign text-green-500"></i>
+</div>
+<div>
+<h4 class="text-white font-medium">Get Paid Securely</h4>
+<p class="text-dark-400 text-sm">Protected escrow payments on every collaboration</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 glass-card rounded-xl">
+<div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
+<i class="fas fa-bullhorn text-blue-500"></i>
+</div>
+<div>
+<h4 class="text-white font-medium">Get Discovered</h4>
+<p class="text-dark-400 text-sm">Brands actively searching for creators like you</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 glass-card rounded-xl">
+<div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+<i class="fas fa-chart-line text-purple-500"></i>
+</div>
+<div>
+<h4 class="text-white font-medium">Grow Your Career</h4>
+<p class="text-dark-400 text-sm">Build portfolio, collect reviews, level up</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side - Registration Form -->
+<div class="w-full lg:w-1/2 xl:w-[45%] flex items-center justify-center p-6 sm:p-8 overflow-y-auto">
+<div class="w-full max-w-md py-8">
+<!-- Mobile Logo -->
+<div class="lg:hidden text-center mb-6">
+<a class="inline-flex items-center gap-3" href="index.html">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+<i class="fas fa-cube text-white"></i>
+</div>
+<span class="text-xl font-bold text-white">CollabHub</span>
+</a>
+</div>
+<!-- Back Link -->
+<a class="inline-flex items-center gap-2 text-dark-400 hover:text-white mb-6 transition-colors" href="register.html">
+<i class="fas fa-arrow-left"></i>
+<span>Back to account type</span>
+</a>
+<!-- Form Card -->
+<div class="glass-card rounded-2xl p-6 sm:p-8">
+<!-- Header -->
+<div class="text-center mb-6">
+<div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mx-auto mb-4">
+<i class="fas fa-star text-xl text-purple-400"></i>
+</div>
+<h2 class="text-2xl font-bold text-white mb-1">Create Creator Account</h2>
+<p class="text-dark-400 text-sm">Fill in your details to get started</p>
+</div>
+<!-- Registration Form -->
+<form class="space-y-4" id="registerForm">
+<!-- Full Name -->
+<div>
+<label class="block text-dark-300 text-sm font-medium mb-2">Full Name</label>
+<div class="input-group relative">
+<i class="fas fa-user input-icon"></i>
+<input aria-label="Enter your full name" class="form-input" id="fullName" name="fullName" placeholder="Enter your full name" required="" type="text"/>
+</div>
+<div class="error-message hidden" id="fullNameError">
+<i class="fas fa-exclamation-circle"></i>
+<span></span>
+</div>
+</div>
+<!-- Username -->
+<div>
+<label class="block text-dark-300 text-sm font-medium mb-2">Username</label>
+<div class="input-group relative">
+<i class="fas fa-at input-icon"></i>
+<input aria-label="Choose a username" class="form-input" id="username" name="username" placeholder="Choose a username" required="" type="text"/>
+</div>
+<div class="error-message hidden" id="usernameError">
+<i class="fas fa-exclamation-circle"></i>
+<span></span>
+</div>
+<p class="text-dark-500 text-xs mt-1">This will be your profile URL: collabhub.com/@username</p>
+</div>
+<!-- Email -->
+<div>
+<label class="block text-dark-300 text-sm font-medium mb-2">Email Address</label>
+<div class="input-group relative">
+<i class="fas fa-envelope input-icon"></i>
+<input aria-label="Enter your email" class="form-input" id="email" name="email" placeholder="Enter your email" required="" type="email"/>
+</div>
+<div class="error-message hidden" id="emailError">
+<i class="fas fa-exclamation-circle"></i>
+<span></span>
+</div>
+</div>
+<!-- Password -->
+<div>
+<label class="block text-dark-300 text-sm font-medium mb-2">Password</label>
+<div class="input-group relative">
+<i class="fas fa-lock input-icon"></i>
+<input aria-label="Create a password" class="form-input" id="password" name="password" placeholder="Create a password" required="" type="password"/>
+<button class="toggle-password" onclick="togglePassword('password', this)" type="button">
+<i class="fas fa-eye"></i>
+</button>
+</div>
+<div class="error-message hidden" id="passwordError">
+<i class="fas fa-exclamation-circle"></i>
+<span></span>
+</div>
+<!-- Password Strength Indicator -->
+<div class="password-strength" id="passwordStrength" style="display: none;">
+<div class="strength-bars">
+<div class="strength-bar" id="bar1"></div>
+<div class="strength-bar" id="bar2"></div>
+<div class="strength-bar" id="bar3"></div>
+<div class="strength-bar" id="bar4"></div>
+</div>
+<p class="strength-text" id="strengthText">Weak password</p>
+</div>
+</div>
+<!-- Confirm Password -->
+<div>
+<label class="block text-dark-300 text-sm font-medium mb-2">Confirm Password</label>
+<div class="input-group relative">
+<i class="fas fa-lock input-icon"></i>
+<input aria-label="Confirm your password" class="form-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required="" type="password"/>
+<button class="toggle-password" onclick="togglePassword('confirmPassword', this)" type="button">
+<i class="fas fa-eye"></i>
+</button>
+</div>
+<div class="error-message hidden" id="confirmPasswordError">
+<i class="fas fa-exclamation-circle"></i>
+<span></span>
+</div>
+</div>
+<!-- Primary Category -->
+<div>
+<label class="block text-dark-300 text-sm font-medium mb-2">Primary Niche</label>
+<div class="input-group relative">
+<i class="fas fa-tags input-icon"></i>
+<select aria-label="Category" class="form-select" id="category" name="category" required="">
+<option value="">Select your primary niche</option>
+<option value="fashion">Fashion &amp; Style</option>
+<option value="beauty">Beauty &amp; Skincare</option>
+<option value="fitness">Fitness &amp; Health</option>
+<option value="food">Food &amp; Cooking</option>
+<option value="travel">Travel &amp; Adventure</option>
+<option value="tech">Tech &amp; Gadgets</option>
+<option value="gaming">Gaming</option>
+<option value="lifestyle">Lifestyle</option>
+<option value="education">Education</option>
+<option value="music">Music &amp; Entertainment</option>
+<option value="business">Business &amp; Finance</option>
+<option value="other">Other</option>
+</select>
+</div>
+</div>
+<!-- Terms & Conditions -->
+<div class="flex items-start gap-3 mt-6">
+<input class="custom-checkbox mt-0.5" id="terms" name="terms" required="" type="checkbox"/>
+<label class="text-dark-400 text-sm cursor-pointer" for="terms">
+                                I agree to the <a aria-disabled="true" class="link" href="#" role="button">Terms of Service</a> and <a aria-disabled="true" class="link" href="#" role="button">Privacy Policy</a>
+</label>
+</div>
+<!-- Newsletter -->
+<div class="flex items-start gap-3">
+<input checked="" class="custom-checkbox mt-0.5" id="newsletter" name="newsletter" type="checkbox"/>
+<label class="text-dark-400 text-sm cursor-pointer" for="newsletter">
                                 Send me updates about new features and opportunities
                             </label>
-                        </div>
-                        
-                        <!-- Submit Button -->
-                        <button type="submit" id="submitBtn" class="btn-primary flex items-center justify-center gap-2 mt-6">
-                            <span>Create Account</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </form>
-                    
-                    <!-- Divider -->
-                    <div class="divider my-6">or sign up with</div>
-                    
-                    <!-- Social Registration -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <button class="btn-social">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24">
-                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                            </svg>
+</div>
+<!-- Submit Button -->
+<button class="btn-primary flex items-center justify-center gap-2 mt-6" id="submitBtn" type="submit">
+<span>Create Account</span>
+<i class="fas fa-arrow-right"></i>
+</button>
+</form>
+<!-- Divider -->
+<div class="divider my-6">or sign up with</div>
+<!-- Social Registration -->
+<div class="grid grid-cols-2 gap-4">
+<button class="btn-social" type="button">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
                             Google
                         </button>
-                        <button class="btn-social">
-                            <i class="fab fa-instagram text-pink-500"></i>
+<button class="btn-social" type="button">
+<i class="fab fa-instagram text-pink-500"></i>
                             Instagram
                         </button>
-                    </div>
-                    
-                    <!-- Login Link -->
-                    <p class="text-center text-dark-400 text-sm mt-6">
+</div>
+<!-- Login Link -->
+<p class="text-center text-dark-400 text-sm mt-6">
                         Already have an account? 
-                        <a href="login.html" class="link font-medium">Sign in</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <script>
+                        <a class="link font-medium" href="login.html">Sign in</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<script>
         // Toggle Password Visibility
         function togglePassword(inputId, button) {
             const input = document.getElementById(inputId);

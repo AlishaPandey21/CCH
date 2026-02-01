@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CollabHub - Where Brands Meet Brilliant Creators</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Reset & Variables */
+        :root {
+            --primary: #4A54FF;
+            --primary-dark: #3740E6;
+            --secondary: #FF6B8B;
+            --accent: #00C9A7;
+            --dark: #1A1D2B;
+            --light: #F8F9FF;
+            --gray: #6C757D;
+            --light-gray: #E9ECEF;
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(74, 84, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(74, 84, 255, 0.1);
+        }
+
+        .btn-light {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .btn-light:hover {
+            background-color: #f0f0ff;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--primary);
+            margin-right: 8px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--dark);
+            text-decoration: none;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            background: none;
+            border: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            background: linear-gradient(135deg, #F8F9FF 0%, #EFF1FF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .floating-card {
+            position: absolute;
+            background-color: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            animation: float 3s ease-in-out infinite;
+            width: 220px;
+        }
+
+        .floating-card:nth-child(1) {
+            top: -20px;
+            right: 10%;
+            animation-delay: 0.5s;
+        }
+
+        .floating-card:nth-child(2) {
+            bottom: 50px;
+            left: -20px;
+            animation-delay: 1s;
+        }
+
+        .floating-card:nth-child(3) {
+            bottom: -20px;
+            right: 30px;
+            animation-delay: 1.5s;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .card-content p {
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .card-desc {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            background-color: white;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            background-color: var(--light);
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 25px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: #F9FAFF;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+            border-color: rgba(74, 84, 255, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: rgba(74, 84, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        /* Campaign Categories */
+        .categories {
+            background-color: white;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-stats {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: #F9FAFF;
+        }
+
+        .testimonials-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .testimonial-card {
+            flex: 1;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 20px;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-text:before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: rgba(74, 84, 255, 0.2);
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .testimonial-highlight {
+            background-color: rgba(0, 201, 167, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        /* Trust Section */
+        .trust {
+            background-color: white;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .trust-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: rgba(74, 84, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background-color: #F9FAFF;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-logo i {
+            color: var(--primary);
+            margin-right: 8px;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-links h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes counter {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                margin-bottom: 60px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .steps-container {
+                flex-direction: column;
+            }
+
+            .testimonials-container {
+                flex-direction: column;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .nav-buttons {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.3rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .hero {
+                padding-top: 150px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            .floating-card {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header & Navigation -->
+<header id="header">
+<div class="container nav-container">
+<a aria-disabled="true" class="logo" href="#" role="button">
+<i class="fas fa-users"></i> CollabHub
+            </a>
+<button class="mobile-menu-btn" id="mobile-menu-btn" type="button">
+<i class="fas fa-bars"></i>
+</button>
+<ul class="nav-links" id="nav-links">
+<li><a href="#how-it-works">How It Works</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#categories">Campaigns</a></li>
+<li><a href="#testimonials">Success Stories</a></li>
+<li><a href="#pricing">Pricing</a></li>
+</ul>
+<div class="nav-buttons">
+<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">Login</a>
+<a aria-disabled="true" class="btn btn-primary" href="#" role="button">Get Started</a>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="hero">
+<div class="container hero-content">
+<div class="hero-text">
+<h1>Where Brands Meet <span style="color: var(--primary);">Brilliant Creators</span></h1>
+<p>Connect, collaborate, and create compelling campaigns with the perfect influencers for your brand. Join India's fastest-growing influencer marketing platform.</p>
+<div class="hero-buttons">
+<a aria-disabled="true" class="btn btn-primary" href="#" role="button">Start Free Trial</a>
+<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">Find Campaigns</a>
+</div>
+<div class="hero-stats">
+<div class="stat-item">
+<div class="stat-number" id="campaigns-counter">53,427</div>
+<div class="stat-label">Campaigns</div>
+</div>
+<div class="stat-item">
+<div class="stat-number" id="payouts-counter">₹10.2Cr+</div>
+<div class="stat-label">Paid to Creators</div>
+</div>
+<div class="stat-item">
+<div class="stat-number" id="satisfaction-counter">95%</div>
+<div class="stat-label">Satisfaction</div>
+</div>
+</div>
+</div>
+<div class="hero-image">
+<img alt="Team Collaboration" src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80"/>
+<div class="floating-card">
+<div class="card-icon" style="background-color: var(--primary);">
+<i class="fas fa-bullseye"></i>
+</div>
+<div class="card-content">
+<p class="card-title">Campaign Matching</p>
+<p class="card-desc">AI-powered matches in real-time</p>
+</div>
+</div>
+<div class="floating-card">
+<div class="card-icon" style="background-color: var(--secondary);">
+<i class="fas fa-chart-line"></i>
+</div>
+<div class="card-content">
+<p class="card-title">Live Analytics</p>
+<p class="card-desc">Track ROI &amp; engagement</p>
+</div>
+</div>
+<div class="floating-card">
+<div class="card-icon" style="background-color: var(--accent);">
+<i class="fas fa-shield-alt"></i>
+</div>
+<div class="card-content">
+<p class="card-title">Secure Payments</p>
+<p class="card-desc">Escrow protected</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="section how-it-works" id="how-it-works">
+<div class="container">
+<div class="section-title">
+<p class="section-subtitle">Simple Process</p>
+<h2>Three Steps to Successful Collaboration</h2>
+<p>From discovery to delivery, we've streamlined the entire influencer marketing workflow.</p>
+</div>
+<div class="steps-container">
+<div class="step">
+<div class="step-number">1</div>
+<h3>Discover Perfect Matches</h3>
+<p>Define your campaign or set your rates. Our AI-powered algorithm finds the best brand-influencer matches.</p>
+</div>
+<div class="step">
+<div class="step-number">2</div>
+<h3>Connect &amp; Collaborate</h3>
+<p>Use our built-in tools for messaging, contract signing, content briefs, and milestone tracking.</p>
+</div>
+<div class="step">
+<div class="step-number">3</div>
+<h3>Launch &amp; Analyze</h3>
+<p>Execute campaigns with escrow protection and track performance with real-time analytics.</p>
+</div>
+</div>
+<div style="text-align: center; margin-top: 50px;">
+<div class="btn btn-primary">See Platform Demo</div>
+</div>
+</div>
+</section>
+<!-- Features Section -->
+<section class="section features" id="features">
+<div class="container">
+<div class="section-title">
+<p class="section-subtitle">Platform Features</p>
+<h2>Everything You Need in One Place</h2>
+<p>Powerful tools designed specifically for influencer marketing success.</p>
+</div>
+<div class="features-grid">
+<div class="feature-card">
+<div class="feature-icon">
+<i class="fas fa-robot"></i>
+</div>
+<h3>Smart AI Matching</h3>
+<p>Our algorithm analyzes niche, audience demographics, past performance, and engagement rates to find perfect matches.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">
+<i class="fas fa-tasks"></i>
+</div>
+<h3>Campaign Management</h3>
+<p>End-to-end campaign tracking with milestones, deadlines, content approval workflows, and team collaboration.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">
+<i class="fas fa-shield-alt"></i>
+</div>
+<h3>Secure Escrow Payments</h3>
+<p>Funds held securely until work is delivered. Milestone-based payments with dispute resolution support.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">
+<i class="fas fa-chart-bar"></i>
+</div>
+<h3>Real-Time Analytics</h3>
+<p>Track ROI, engagement rates, conversions, audience growth, and campaign performance in real-time dashboards.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">
+<i class="fas fa-folder-open"></i>
+</div>
+<h3>Content Library</h3>
+<p>Centralized hub for all campaign assets, briefs, and approved content with version control and permissions.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">
+<i class="fas fa-mobile-alt"></i>
+</div>
+<h3>Multi-Platform Support</h3>
+<p>Manage Instagram, YouTube, TikTok, Twitter, and more from a single dashboard with platform-specific metrics.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Campaign Categories -->
+<section class="section categories" id="categories">
+<div class="container">
+<div class="section-title">
+<p class="section-subtitle">Campaign Types</p>
+<h2>Explore Popular Campaign Categories</h2>
+<p>From product launches to long-term ambassadorships, we support all influencer marketing formats.</p>
+</div>
+<div class="categories-grid">
+<div class="category-card">
+<div class="category-icon">
+<i class="fas fa-rocket"></i>
+</div>
+<h3>Product Launches</h3>
+<p>Generate buzz for new products with authentic creator reviews and unboxings.</p>
+<div class="category-stats">Avg. Engagement: 8.2%</div>
+</div>
+<div class="category-card">
+<div class="category-icon">
+<i class="fas fa-bullhorn"></i>
+</div>
+<h3>Brand Awareness</h3>
+<p>Increase visibility and reach with strategic influencer partnerships across platforms.</p>
+<div class="category-stats">Avg. Reach: 2.5M</div>
+</div>
+<div class="category-card">
+<div class="category-icon">
+<i class="fas fa-shopping-cart"></i>
+</div>
+<h3>Sales &amp; Conversions</h3>
+<p>Drive direct sales with affiliate links, promo codes, and shoppable content.</p>
+<div class="category-stats">Avg. Conversion: 4.7%</div>
+</div>
+<div class="category-card">
+<div class="category-icon">
+<i class="fas fa-calendar-star"></i>
+</div>
+<h3>Event Coverage</h3>
+<p>Amplify events with creator attendance, live coverage, and behind-the-scenes content.</p>
+<div class="category-stats">Avg. Stories: 15/creator</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="section testimonials" id="testimonials">
+<div class="container">
+<div class="section-title">
+<p class="section-subtitle">Success Stories</p>
+<h2>Real Results, Real Stories</h2>
+<p>See how brands and creators are achieving remarkable success with CollabHub.</p>
+</div>
+<div class="testimonials-container">
+<div class="testimonial-card">
+<div class="testimonial-text">
+                        CollabHub helped us identify 50+ authentic micro-influencers for our babycare line. The campaign generated ₹25L+ in direct sales with a 320% ROI.
+                    </div>
+<div class="testimonial-author">
+<div class="author-avatar">PS</div>
+<div class="author-info">
+<h4>Priya Sharma</h4>
+<p>Marketing Head, Mamaearth</p>
+</div>
+</div>
+<div class="testimonial-highlight">
+<strong>Campaign:</strong> Babycare Launch with 50 micro-influencers
+                    </div>
+</div>
+<div class="testimonial-card">
+<div class="testimonial-text">
+                        Earned ₹15L in my first 6 months on CollabHub. The platform connects me with relevant brands that match my aesthetic and values.
+                    </div>
+<div class="testimonial-author">
+<div class="author-avatar">KP</div>
+<div class="author-info">
+<h4>Komal Pandey</h4>
+<p>Fashion Influencer, 1.2M followers</p>
+</div>
+</div>
+<div class="testimonial-highlight">
+<strong>Featured in:</strong> Myntra Fashion Festival Campaign
+                    </div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 50px;">
+<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">View All Case Studies</a>
+</div>
+</div>
+</section>
+<!-- Trust Section -->
+<section class="section trust">
+<div class="container">
+<div class="section-title">
+<p class="section-subtitle">Built on Trust</p>
+<h2>Why Thousands Trust CollabHub</h2>
+<p>Our platform is designed with security, transparency, and success in mind.</p>
+</div>
+<div class="trust-grid">
+<div class="trust-item">
+<div class="trust-icon">
+<i class="fas fa-check-circle"></i>
+</div>
+<h3>Verified Profiles</h3>
+<p>Blue checkmarks for verified brands and star badges for top-performing creators.</p>
+</div>
+<div class="trust-item">
+<div class="trust-icon">
+<i class="fas fa-lock"></i>
+</div>
+<h3>Escrow Protection</h3>
+<p>Funds held securely until deliverables are approved. Dispute resolution available.</p>
+</div>
+<div class="trust-item">
+<div class="trust-icon">
+<i class="fas fa-chart-line"></i>
+</div>
+<h3>Authentic Metrics</h3>
+<p>AI-powered fake engagement detection and verified audience analytics.</p>
+</div>
+<div class="trust-item">
+<div class="trust-icon">
+<i class="fas fa-file-contract"></i>
+</div>
+<h3>Legal Compliance</h3>
+<p>FTC/ASCIC compliant contracts, tax documentation, and disclosure support.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="section pricing" id="pricing">
+<div class="container">
+<div class="section-title">
+<p class="section-subtitle">Simple Pricing</p>
+<h2>Transparent Plans for Everyone</h2>
+<p>No subscription fees. We only earn when you do.</p>
+</div>
+<div class="pricing-grid">
+<div class="pricing-card">
+<h3>Free</h3>
+<p>For individual creators &amp; small brands</p>
+<div class="price">0% <span>subscription</span></div>
+<ul class="pricing-features">
+<li><i class="fas fa-check"></i> 5 campaigns/month</li>
+<li><i class="fas fa-check"></i> Basic matching algorithm</li>
+<li><i class="fas fa-check"></i> Standard support</li>
+<li><i class="fas fa-check"></i> 15% platform commission</li>
+</ul>
+<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">Get Started</a>
+</div>
+<div class="pricing-card popular">
+<div class="popular-badge">Most Popular</div>
+<h3>Pro</h3>
+<p>For growing brands &amp; full-time creators</p>
+<div class="price">12% <span>commission only</span></div>
+<ul class="pricing-features">
+<li><i class="fas fa-check"></i> Unlimited campaigns</li>
+<li><i class="fas fa-check"></i> Advanced AI matching</li>
+<li><i class="fas fa-check"></i> Priority support</li>
+<li><i class="fas fa-check"></i> Dedicated account manager</li>
+<li><i class="fas fa-check"></i> Advanced analytics</li>
+</ul>
+<a aria-disabled="true" class="btn btn-primary" href="#" role="button">Try Free for 14 Days</a>
+</div>
+<div class="pricing-card">
+<h3>Enterprise</h3>
+<p>For agencies &amp; large corporations</p>
+<div class="price">Custom</div>
+<ul class="pricing-features">
+<li><i class="fas fa-check"></i> Everything in Pro</li>
+<li><i class="fas fa-check"></i> API access</li>
+<li><i class="fas fa-check"></i> White-label dashboard</li>
+<li><i class="fas fa-check"></i> Custom contracts</li>
+<li><i class="fas fa-check"></i> Volume discounts</li>
+</ul>
+<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">Contact Sales</a>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="cta">
+<div class="container">
+<h2>Ready to Transform Your Marketing?</h2>
+<p>Join 500+ brands and 10,000+ creators already achieving remarkable results with CollabHub.</p>
+<div class="cta-buttons">
+<a aria-disabled="true" class="btn btn-light" href="#" role="button">I'm a Brand → Start Free Trial</a>
+<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">I'm a Creator → Sign Up Free</a>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="footer-content">
+<div class="footer-about">
+<a aria-disabled="true" class="footer-logo" href="#" role="button">
+<i class="fas fa-users"></i> CollabHub
+                    </a>
+<p>India's fastest-growing platform connecting brands with brilliant creators for authentic influencer marketing campaigns.</p>
+<div class="social-icons">
+<a aria-disabled="true" href="#" role="button"><i class="fab fa-twitter"></i></a>
+<a aria-disabled="true" href="#" role="button"><i class="fab fa-linkedin-in"></i></a>
+<a aria-disabled="true" href="#" role="button"><i class="fab fa-instagram"></i></a>
+<a aria-disabled="true" href="#" role="button"><i class="fab fa-youtube"></i></a>
+<a aria-disabled="true" href="#" role="button"><i class="fab fa-facebook-f"></i></a>
+</div>
+</div>
+<div class="footer-links">
+<h4>Platform</h4>
+<ul>
+<li><a aria-disabled="true" href="#" role="button">Features</a></li>
+<li><a aria-disabled="true" href="#" role="button">How It Works</a></li>
+<li><a aria-disabled="true" href="#" role="button">Success Stories</a></li>
+<li><a aria-disabled="true" href="#" role="button">Pricing</a></li>
+<li><a aria-disabled="true" href="#" role="button">API</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Company</h4>
+<ul>
+<li><a aria-disabled="true" href="#" role="button">About Us</a></li>
+<li><a aria-disabled="true" href="#" role="button">Careers</a></li>
+<li><a aria-disabled="true" href="#" role="button">Blog</a></li>
+<li><a aria-disabled="true" href="#" role="button">Press</a></li>
+<li><a aria-disabled="true" href="#" role="button">Contact</a></li>
+</ul>
+</div>
+<div class="footer-links">
+<h4>Resources</h4>
+<ul>
+<li><a aria-disabled="true" href="#" role="button">Help Center</a></li>
+<li><a aria-disabled="true" href="#" role="button">Creator Academy</a></li>
+<li><a aria-disabled="true" href="#" role="button">Brand Guidelines</a></li>
+<li><a aria-disabled="true" href="#" role="button">Campaign Templates</a></li>
+<li><a aria-disabled="true" href="#" role="button">Legal &amp; Privacy</a></li>
+</ul>
+</div>
+</div>
+<div class="copyright">
+<p>© 2024 CollabHub. All rights reserved. Made with ❤️ in India</p>
+</div>
+</div>
+</footer>
+<script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animated counters
+        function animateCounter(elementId, finalValue, duration = 2000) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            const startValue = 0;
+            const startTime = performance.now();
+            
+            function updateCounter(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                
+                // Easing function
+                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                
+                let currentValue;
+                if (elementId.includes('payouts-counter')) {
+                    // Special handling for currency values
+                    currentValue = Math.floor(easeOutQuart * finalValue);
+                    element.textContent = `₹${(currentValue / 10000000).toFixed(1)}Cr+`;
+                } else if (elementId.includes('satisfaction-counter')) {
+                    // Percentage
+                    currentValue = Math.floor(easeOutQuart * finalValue);
+                    element.textContent = `${currentValue}%`;
+                } else {
+                    // Regular numbers
+                    currentValue = Math.floor(easeOutQuart * finalValue);
+                    // Format with commas
+                    element.textContent = currentValue.toLocaleString();
+                }
+                
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                }
+            }
+            
+            requestAnimationFrame(updateCounter);
+        }
+
+        // Initialize counters when page loads
+        window.addEventListener('load', () => {
+            // These values would normally come from a database API
+            // For now, we use realistic static values
+            setTimeout(() => {
+                animateCounter('campaigns-counter', 53427);
+                animateCounter('payouts-counter', 102000000); // 10.2Cr
+                animateCounter('satisfaction-counter', 95);
+            }, 500);
+        });
+
+        // Interactive category cards
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // This would normally navigate to a campaigns page
+                // For demo, we'll just add a visual feedback
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-5px)';
+                }, 200);
+            });
+        });
+
+        // User type detection for personalized CTAs
+        function detectUserType() {
+            // This would normally come from authentication or cookies
+            // For now, we'll check URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const userType = urlParams.get('user_type');
+            
+            if (userType === 'brand') {
+                document.querySelector('.hero-buttons .btn-primary').textContent = 'Start Free Trial';
+                document.querySelector('.hero-buttons .btn-secondary').textContent = 'View Demo';
+            } else if (userType === 'influencer') {
+                document.querySelector('.hero-buttons .btn-primary').textContent = 'Find Campaigns';
+                document.querySelector('.hero-buttons .btn-secondary').textContent = 'Learn More';
+            }
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', detectUserType);
+    </script>
+</body>
+</html>
