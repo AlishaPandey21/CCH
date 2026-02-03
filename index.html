@@ -1,1435 +1,1714 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>CollabHub - Where Brands Meet Brilliant Creators</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<style>
-        /* Reset & Variables */
-        :root {
-            --primary: #4A54FF;
-            --primary-dark: #3740E6;
-            --secondary: #FF6B8B;
-            --accent: #00C9A7;
-            --dark: #1A1D2B;
-            --light: #F8F9FF;
-            --gray: #6C757D;
-            --light-gray: #E9ECEF;
-            --border-radius: 12px;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s ease;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollabX - Creator Collaboration Hub | Brand Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        },
+                        dark: {
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    }
+                }
+            }
         }
-
+    </script>
+    
+    <style>
+        /* ==========================================
+           Custom CSS - CollabX Brand Dashboard
+           ========================================== */
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark);
-            line-height: 1.6;
-            background-color: white;
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            background-image: 
+                radial-gradient(ellipse at top left, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(129, 140, 248, 0.1) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #ffffff;
             overflow-x: hidden;
         }
-
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.2;
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
         }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.5rem;
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
         }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #6366f1, #818cf8);
+            border-radius: 4px;
         }
-
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #818cf8;
         }
-
-        p {
-            margin-bottom: 1.5rem;
-            color: var(--gray);
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
-
-        .btn {
-            display: inline-block;
-            padding: 16px 32px;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            text-align: center;
-            text-decoration: none;
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(129, 140, 248, 0.6); }
         }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(74, 84, 255, 0.2);
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
+        
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        .animate-slide-in { animation: slideIn 0.4s ease-out forwards; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+        .animate-spin { animation: spin 1s linear infinite; }
+        
+        /* Glass Card */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            transition: all 0.3s ease;
         }
-
-        .btn-secondary:hover {
-            background-color: rgba(74, 84, 255, 0.1);
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
         }
-
-        .btn-light {
-            background-color: white;
-            color: var(--primary);
-        }
-
-        .btn-light:hover {
-            background-color: #f0f0ff;
-        }
-
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 60px;
-        }
-
-        .section-subtitle {
-            color: var(--primary);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        /* Header & Navigation */
-        header {
+        
+        /* Sidebar */
+        .sidebar {
             position: fixed;
+            left: 0;
             top: 0;
-            left: 0;
-            width: 100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(30, 41, 59, 0.9);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(99, 102, 241, 0.2);
+            display: flex;
+            flex-direction: column;
             z-index: 1000;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            padding: 20px 0;
-            transition: var(--transition);
+            transition: transform 0.3s ease;
         }
-
-        header.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        .sidebar.closed {
+            transform: translateX(-100%);
         }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
+        
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #6366f1, #818cf8);
+            border-radius: 12px;
             display: flex;
             align-items: center;
-            font-size: 1.8rem;
-            font-weight: 900;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--dark);
-            text-decoration: none;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            animation: pulseGlow 2s ease-in-out infinite;
         }
-
-        .logo i {
-            color: var(--primary);
-            margin-right: 8px;
-            font-size: 2rem;
-        }
-
-        .nav-links {
+        
+        /* Navigation */
+        .nav-item {
             display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: var(--dark);
-            text-decoration: none;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+            margin-bottom: 4px;
             position: relative;
-            padding: 5px 0;
         }
-
-        .nav-links a:after {
-            content: '';
+        .nav-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: #ffffff;
+        }
+        .nav-item.active {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: #ffffff;
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+        }
+        .nav-badge {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
+            right: 12px;
+            background: linear-gradient(135deg, #ec4899, #be185d);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 10px;
         }
-
-        .nav-links a:hover:after {
-            width: 100%;
+        
+        /* Badge Styles */
+        .badge-verified {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
         }
-
-        .nav-buttons {
+        .badge-pending {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+            padding: 24px;
+            transition: margin-left 0.3s ease;
+        }
+        .main-content.expanded {
+            margin-left: 0;
+        }
+        
+        /* Stat Card */
+        .stat-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            padding: 24px;
             display: flex;
-            gap: 15px;
+            gap: 16px;
+            transition: all 0.3s ease;
         }
-
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+        }
+        .stat-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .stat-icon.green { background: linear-gradient(135deg, #10b981, #059669); }
+        .stat-icon.purple { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .stat-icon.blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .stat-icon.gold { background: linear-gradient(135deg, #fbbf24, #d97706); }
+        .stat-icon.pink { background: linear-gradient(135deg, #ec4899, #be185d); }
+        
+        /* Quick Action Buttons */
+        .quick-action-btn {
+            padding: 20px;
+            border-radius: 16px;
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .quick-action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .quick-action-btn.purple { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .quick-action-btn.pink { background: linear-gradient(135deg, #ec4899, #be185d); }
+        .quick-action-btn.blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .quick-action-btn.green { background: linear-gradient(135deg, #10b981, #059669); }
+        
+        /* Campaign Status */
+        .status-active { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        .status-pending { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .status-draft { background: rgba(156, 163, 175, 0.2); color: #9ca3af; }
+        .status-completed { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        
+        /* Kanban Board */
+        .kanban-column {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+        .kanban-cards {
+            flex: 1;
+            min-height: 300px;
+            transition: all 0.3s ease;
+        }
+        .kanban-cards.drag-over {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 12px;
+        }
+        .kanban-card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            cursor: grab;
+            transition: all 0.3s ease;
+        }
+        .kanban-card:hover {
+            border-color: rgba(99, 102, 241, 0.5);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        .kanban-card.dragging {
+            opacity: 0.7;
+            transform: scale(1.02) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+        }
+        .kanban-tag {
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .kanban-tag.category { background: rgba(99, 102, 241, 0.2); color: #818cf8; }
+        .kanban-tag.budget { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        
+        /* Progress Bars */
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        .progress-fill.gray { background: #6b7280; }
+        .progress-fill.orange { background: #f59e0b; }
+        .progress-fill.green { background: #10b981; }
+        .progress-fill.blue { background: #3b82f6; }
+        
+        /* Drop Zone */
+        .drop-zone {
+            border: 2px dashed rgba(99, 102, 241, 0.4);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .drop-zone:hover,
+        .drop-zone.active {
+            border-color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+        }
+        .drop-zone.active .drop-icon {
+            animation: float 2s ease-in-out infinite;
+        }
+        
+        /* Form Inputs */
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+        }
+        .form-input::placeholder {
+            color: #64748b;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        .btn-success:hover {
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+        }
+        .btn-secondary {
+            padding: 14px 28px;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            color: #94a3b8;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: #ffffff;
+        }
+        
+        /* Step Indicators */
+        .step-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .step-circle.active {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+        .step-circle.completed {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .toast {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 20px;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 12px;
+            min-width: 300px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.4s ease-out;
+        }
+        .toast.success { border-left: 4px solid #10b981; }
+        .toast.error { border-left: 4px solid #ef4444; }
+        .toast.warning { border-left: 4px solid #f59e0b; }
+        .toast.info { border-left: 4px solid #3b82f6; }
+        
+        /* Mobile Menu Button */
         .mobile-menu-btn {
             display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-            background: none;
-            border: none;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding-top: 180px;
-            padding-bottom: 100px;
-            background: linear-gradient(135deg, #F8F9FF 0%, #EFF1FF 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 60px;
-        }
-
-        .hero-text {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .hero-text h1 {
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 2rem;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        .hero-image {
-            flex: 1;
-            max-width: 500px;
-            position: relative;
-        }
-
-        .hero-image img {
-            width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .floating-card {
-            position: absolute;
-            background-color: white;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #ffffff;
+            width: 44px;
+            height: 44px;
             border-radius: 12px;
-            padding: 15px;
-            box-shadow: var(--shadow);
-            display: flex;
-            align-items: center;
-            animation: float 3s ease-in-out infinite;
-            width: 220px;
-        }
-
-        .floating-card:nth-child(1) {
-            top: -20px;
-            right: 10%;
-            animation-delay: 0.5s;
-        }
-
-        .floating-card:nth-child(2) {
-            bottom: 50px;
-            left: -20px;
-            animation-delay: 1s;
-        }
-
-        .floating-card:nth-child(3) {
-            bottom: -20px;
-            right: 30px;
-            animation-delay: 1.5s;
-        }
-
-        .card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 12px;
-            color: white;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .card-content p {
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        .card-title {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .card-desc {
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-
-        /* How It Works Section */
-        .how-it-works {
-            background-color: white;
-        }
-
-        .steps-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .step {
-            flex: 1;
-            text-align: center;
-            padding: 40px 30px;
-            border-radius: var(--border-radius);
-            background-color: var(--light);
-            transition: var(--transition);
-        }
-
-        .step:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 25px;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        /* Features Section */
-        .features {
-            background-color: #F9FAFF;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 40px 30px;
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
-            border-color: rgba(74, 84, 255, 0.1);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background-color: rgba(74, 84, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-            color: var(--primary);
-        }
-
-        /* Campaign Categories */
-        .categories {
-            background-color: white;
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .category-card {
-            background-color: var(--light);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            text-align: center;
-            transition: var(--transition);
+            font-size: 24px;
             cursor: pointer;
         }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
+        
+        /* Sidebar Overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
         }
-
-        .category-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.5rem;
-            color: var(--primary);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .sidebar-overlay.show {
+            display: block;
         }
-
-        .category-stats {
-            font-size: 0.9rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-top: 10px;
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            .kanban-container { grid-template-columns: repeat(2, 1fr) !important; }
         }
-
-        /* Testimonials */
-        .testimonials {
-            background-color: #F9FAFF;
-        }
-
-        .testimonials-container {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .testimonial-card {
-            flex: 1;
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 40px;
-            box-shadow: var(--shadow);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 30px;
-            position: relative;
-            padding-left: 20px;
-            font-size: 1.1rem;
-        }
-
-        .testimonial-text:before {
-            content: '"';
-            position: absolute;
-            left: 0;
-            top: -10px;
-            font-size: 3rem;
-            color: rgba(74, 84, 255, 0.2);
-            font-family: serif;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-
-        .author-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-            background-color: var(--light-gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-
-        .author-info h4 {
-            margin-bottom: 5px;
-        }
-
-        .author-info p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        .testimonial-highlight {
-            background-color: rgba(0, 201, 167, 0.1);
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: var(--dark);
-        }
-
-        /* Trust Section */
-        .trust {
-            background-color: white;
-        }
-
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .trust-item {
-            text-align: center;
-            padding: 30px;
-        }
-
-        .trust-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-color: rgba(74, 84, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        /* Pricing Section */
-        .pricing {
-            background-color: #F9FAFF;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .pricing-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 40px 30px;
-            text-align: center;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
-        }
-
-        .pricing-card.popular {
-            border: 2px solid var(--primary);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary);
-            color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .price {
-            font-size: 3rem;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            color: var(--dark);
-            margin: 20px 0;
-        }
-
-        .price span {
-            font-size: 1rem;
-            color: var(--gray);
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin: 30px 0;
-            text-align: left;
-        }
-
-        .pricing-features li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .pricing-features i {
-            color: var(--accent);
-            margin-right: 10px;
-        }
-
-        /* CTA Section */
-        .cta {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            text-align: center;
-            padding: 100px 0;
-        }
-
-        .cta h2 {
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 600px;
-            margin: 0 auto 40px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 70px 0 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            font-family: 'Montserrat', sans-serif;
-            margin-bottom: 20px;
-            display: inline-block;
-            color: white;
-            text-decoration: none;
-        }
-
-        .footer-logo i {
-            color: var(--primary);
-            margin-right: 8px;
-        }
-
-        .footer-about p {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .footer-links h4 {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: white;
-            padding-left: 5px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            color: white;
-            text-decoration: none;
-        }
-
-        .social-icons a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes counter {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Styles */
         @media (max-width: 992px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-
-            h2 {
-                font-size: 2.2rem;
-            }
-
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-text {
-                margin-bottom: 60px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-
-            .steps-container {
-                flex-direction: column;
-            }
-
-            .testimonials-container {
-                flex-direction: column;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: var(--transition);
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .nav-links li {
-                margin: 15px 0;
-            }
-
-            .nav-buttons {
-                display: none;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .main-content { margin-left: 0; }
+            .mobile-menu-btn { display: flex; align-items: center; justify-content: center; }
         }
-
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.3rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            .section {
-                padding: 70px 0;
-            }
-
-            .hero {
-                padding-top: 150px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 250px;
-            }
-
-            .floating-card {
-                display: none;
-            }
+            .stats-grid { grid-template-columns: 1fr !important; }
+            .kanban-container { grid-template-columns: 1fr !important; }
+            .quick-actions-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            .search-box { display: none !important; }
         }
+        
+        /* Page visibility */
+        .page { display: none; }
+        .page.active { display: block; animation: fadeIn 0.5s ease-out; }
     </style>
 </head>
-<body>
-<!-- Header & Navigation -->
-<header id="header">
-<div class="container nav-container">
-<a aria-disabled="true" class="logo" href="#" role="button">
-<i class="fas fa-users"></i> CollabHub
-            </a>
-<button class="mobile-menu-btn" id="mobile-menu-btn" type="button">
-<i class="fas fa-bars"></i>
-</button>
-<ul class="nav-links" id="nav-links">
-<li><a href="#how-it-works">How It Works</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#categories">Campaigns</a></li>
-<li><a href="#testimonials">Success Stories</a></li>
-<li><a href="#pricing">Pricing</a></li>
-</ul>
-<div class="nav-buttons">
-<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">Login</a>
-<a aria-disabled="true" class="btn btn-primary" href="#" role="button">Get Started</a>
-</div>
-</div>
-</header>
-<!-- Hero Section -->
-<section class="hero">
-<div class="container hero-content">
-<div class="hero-text">
-<h1>Where Brands Meet <span style="color: var(--primary);">Brilliant Creators</span></h1>
-<p>Connect, collaborate, and create compelling campaigns with the perfect influencers for your brand. Join India's fastest-growing influencer marketing platform.</p>
-<div class="hero-buttons">
-<a aria-disabled="true" class="btn btn-primary" href="#" role="button">Start Free Trial</a>
-<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">Find Campaigns</a>
-</div>
-<div class="hero-stats">
-<div class="stat-item">
-<div class="stat-number" id="campaigns-counter">53,427</div>
-<div class="stat-label">Campaigns</div>
-</div>
-<div class="stat-item">
-<div class="stat-number" id="payouts-counter">₹10.2Cr+</div>
-<div class="stat-label">Paid to Creators</div>
-</div>
-<div class="stat-item">
-<div class="stat-number" id="satisfaction-counter">95%</div>
-<div class="stat-label">Satisfaction</div>
-</div>
-</div>
-</div>
-<div class="hero-image">
-<img alt="Team Collaboration" src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80"/>
-<div class="floating-card">
-<div class="card-icon" style="background-color: var(--primary);">
-<i class="fas fa-bullseye"></i>
-</div>
-<div class="card-content">
-<p class="card-title">Campaign Matching</p>
-<p class="card-desc">AI-powered matches in real-time</p>
-</div>
-</div>
-<div class="floating-card">
-<div class="card-icon" style="background-color: var(--secondary);">
-<i class="fas fa-chart-line"></i>
-</div>
-<div class="card-content">
-<p class="card-title">Live Analytics</p>
-<p class="card-desc">Track ROI &amp; engagement</p>
-</div>
-</div>
-<div class="floating-card">
-<div class="card-icon" style="background-color: var(--accent);">
-<i class="fas fa-shield-alt"></i>
-</div>
-<div class="card-content">
-<p class="card-title">Secure Payments</p>
-<p class="card-desc">Escrow protected</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- How It Works Section -->
-<section class="section how-it-works" id="how-it-works">
-<div class="container">
-<div class="section-title">
-<p class="section-subtitle">Simple Process</p>
-<h2>Three Steps to Successful Collaboration</h2>
-<p>From discovery to delivery, we've streamlined the entire influencer marketing workflow.</p>
-</div>
-<div class="steps-container">
-<div class="step">
-<div class="step-number">1</div>
-<h3>Discover Perfect Matches</h3>
-<p>Define your campaign or set your rates. Our AI-powered algorithm finds the best brand-influencer matches.</p>
-</div>
-<div class="step">
-<div class="step-number">2</div>
-<h3>Connect &amp; Collaborate</h3>
-<p>Use our built-in tools for messaging, contract signing, content briefs, and milestone tracking.</p>
-</div>
-<div class="step">
-<div class="step-number">3</div>
-<h3>Launch &amp; Analyze</h3>
-<p>Execute campaigns with escrow protection and track performance with real-time analytics.</p>
-</div>
-</div>
-<div style="text-align: center; margin-top: 50px;">
-<div class="btn btn-primary">See Platform Demo</div>
-</div>
-</div>
-</section>
-<!-- Features Section -->
-<section class="section features" id="features">
-<div class="container">
-<div class="section-title">
-<p class="section-subtitle">Platform Features</p>
-<h2>Everything You Need in One Place</h2>
-<p>Powerful tools designed specifically for influencer marketing success.</p>
-</div>
-<div class="features-grid">
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-robot"></i>
-</div>
-<h3>Smart AI Matching</h3>
-<p>Our algorithm analyzes niche, audience demographics, past performance, and engagement rates to find perfect matches.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-tasks"></i>
-</div>
-<h3>Campaign Management</h3>
-<p>End-to-end campaign tracking with milestones, deadlines, content approval workflows, and team collaboration.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-shield-alt"></i>
-</div>
-<h3>Secure Escrow Payments</h3>
-<p>Funds held securely until work is delivered. Milestone-based payments with dispute resolution support.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-chart-bar"></i>
-</div>
-<h3>Real-Time Analytics</h3>
-<p>Track ROI, engagement rates, conversions, audience growth, and campaign performance in real-time dashboards.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-folder-open"></i>
-</div>
-<h3>Content Library</h3>
-<p>Centralized hub for all campaign assets, briefs, and approved content with version control and permissions.</p>
-</div>
-<div class="feature-card">
-<div class="feature-icon">
-<i class="fas fa-mobile-alt"></i>
-</div>
-<h3>Multi-Platform Support</h3>
-<p>Manage Instagram, YouTube, TikTok, Twitter, and more from a single dashboard with platform-specific metrics.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Campaign Categories -->
-<section class="section categories" id="categories">
-<div class="container">
-<div class="section-title">
-<p class="section-subtitle">Campaign Types</p>
-<h2>Explore Popular Campaign Categories</h2>
-<p>From product launches to long-term ambassadorships, we support all influencer marketing formats.</p>
-</div>
-<div class="categories-grid">
-<div class="category-card">
-<div class="category-icon">
-<i class="fas fa-rocket"></i>
-</div>
-<h3>Product Launches</h3>
-<p>Generate buzz for new products with authentic creator reviews and unboxings.</p>
-<div class="category-stats">Avg. Engagement: 8.2%</div>
-</div>
-<div class="category-card">
-<div class="category-icon">
-<i class="fas fa-bullhorn"></i>
-</div>
-<h3>Brand Awareness</h3>
-<p>Increase visibility and reach with strategic influencer partnerships across platforms.</p>
-<div class="category-stats">Avg. Reach: 2.5M</div>
-</div>
-<div class="category-card">
-<div class="category-icon">
-<i class="fas fa-shopping-cart"></i>
-</div>
-<h3>Sales &amp; Conversions</h3>
-<p>Drive direct sales with affiliate links, promo codes, and shoppable content.</p>
-<div class="category-stats">Avg. Conversion: 4.7%</div>
-</div>
-<div class="category-card">
-<div class="category-icon">
-<i class="fas fa-calendar-star"></i>
-</div>
-<h3>Event Coverage</h3>
-<p>Amplify events with creator attendance, live coverage, and behind-the-scenes content.</p>
-<div class="category-stats">Avg. Stories: 15/creator</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Testimonials -->
-<section class="section testimonials" id="testimonials">
-<div class="container">
-<div class="section-title">
-<p class="section-subtitle">Success Stories</p>
-<h2>Real Results, Real Stories</h2>
-<p>See how brands and creators are achieving remarkable success with CollabHub.</p>
-</div>
-<div class="testimonials-container">
-<div class="testimonial-card">
-<div class="testimonial-text">
-                        CollabHub helped us identify 50+ authentic micro-influencers for our babycare line. The campaign generated ₹25L+ in direct sales with a 320% ROI.
-                    </div>
-<div class="testimonial-author">
-<div class="author-avatar">PS</div>
-<div class="author-info">
-<h4>Priya Sharma</h4>
-<p>Marketing Head, Mamaearth</p>
-</div>
-</div>
-<div class="testimonial-highlight">
-<strong>Campaign:</strong> Babycare Launch with 50 micro-influencers
-                    </div>
-</div>
-<div class="testimonial-card">
-<div class="testimonial-text">
-                        Earned ₹15L in my first 6 months on CollabHub. The platform connects me with relevant brands that match my aesthetic and values.
-                    </div>
-<div class="testimonial-author">
-<div class="author-avatar">KP</div>
-<div class="author-info">
-<h4>Komal Pandey</h4>
-<p>Fashion Influencer, 1.2M followers</p>
-</div>
-</div>
-<div class="testimonial-highlight">
-<strong>Featured in:</strong> Myntra Fashion Festival Campaign
-                    </div>
-</div>
-</div>
-<div style="text-align: center; margin-top: 50px;">
-<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">View All Case Studies</a>
-</div>
-</div>
-</section>
-<!-- Trust Section -->
-<section class="section trust">
-<div class="container">
-<div class="section-title">
-<p class="section-subtitle">Built on Trust</p>
-<h2>Why Thousands Trust CollabHub</h2>
-<p>Our platform is designed with security, transparency, and success in mind.</p>
-</div>
-<div class="trust-grid">
-<div class="trust-item">
-<div class="trust-icon">
-<i class="fas fa-check-circle"></i>
-</div>
-<h3>Verified Profiles</h3>
-<p>Blue checkmarks for verified brands and star badges for top-performing creators.</p>
-</div>
-<div class="trust-item">
-<div class="trust-icon">
-<i class="fas fa-lock"></i>
-</div>
-<h3>Escrow Protection</h3>
-<p>Funds held securely until deliverables are approved. Dispute resolution available.</p>
-</div>
-<div class="trust-item">
-<div class="trust-icon">
-<i class="fas fa-chart-line"></i>
-</div>
-<h3>Authentic Metrics</h3>
-<p>AI-powered fake engagement detection and verified audience analytics.</p>
-</div>
-<div class="trust-item">
-<div class="trust-icon">
-<i class="fas fa-file-contract"></i>
-</div>
-<h3>Legal Compliance</h3>
-<p>FTC/ASCIC compliant contracts, tax documentation, and disclosure support.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Pricing Section -->
-<section class="section pricing" id="pricing">
-<div class="container">
-<div class="section-title">
-<p class="section-subtitle">Simple Pricing</p>
-<h2>Transparent Plans for Everyone</h2>
-<p>No subscription fees. We only earn when you do.</p>
-</div>
-<div class="pricing-grid">
-<div class="pricing-card">
-<h3>Free</h3>
-<p>For individual creators &amp; small brands</p>
-<div class="price">0% <span>subscription</span></div>
-<ul class="pricing-features">
-<li><i class="fas fa-check"></i> 5 campaigns/month</li>
-<li><i class="fas fa-check"></i> Basic matching algorithm</li>
-<li><i class="fas fa-check"></i> Standard support</li>
-<li><i class="fas fa-check"></i> 15% platform commission</li>
-</ul>
-<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">Get Started</a>
-</div>
-<div class="pricing-card popular">
-<div class="popular-badge">Most Popular</div>
-<h3>Pro</h3>
-<p>For growing brands &amp; full-time creators</p>
-<div class="price">12% <span>commission only</span></div>
-<ul class="pricing-features">
-<li><i class="fas fa-check"></i> Unlimited campaigns</li>
-<li><i class="fas fa-check"></i> Advanced AI matching</li>
-<li><i class="fas fa-check"></i> Priority support</li>
-<li><i class="fas fa-check"></i> Dedicated account manager</li>
-<li><i class="fas fa-check"></i> Advanced analytics</li>
-</ul>
-<a aria-disabled="true" class="btn btn-primary" href="#" role="button">Try Free for 14 Days</a>
-</div>
-<div class="pricing-card">
-<h3>Enterprise</h3>
-<p>For agencies &amp; large corporations</p>
-<div class="price">Custom</div>
-<ul class="pricing-features">
-<li><i class="fas fa-check"></i> Everything in Pro</li>
-<li><i class="fas fa-check"></i> API access</li>
-<li><i class="fas fa-check"></i> White-label dashboard</li>
-<li><i class="fas fa-check"></i> Custom contracts</li>
-<li><i class="fas fa-check"></i> Volume discounts</li>
-</ul>
-<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">Contact Sales</a>
-</div>
-</div>
-</div>
-</section>
-<!-- CTA Section -->
-<section class="cta">
-<div class="container">
-<h2>Ready to Transform Your Marketing?</h2>
-<p>Join 500+ brands and 10,000+ creators already achieving remarkable results with CollabHub.</p>
-<div class="cta-buttons">
-<a aria-disabled="true" class="btn btn-light" href="#" role="button">I'm a Brand → Start Free Trial</a>
-<a aria-disabled="true" class="btn btn-secondary" href="#" role="button">I'm a Creator → Sign Up Free</a>
-</div>
-</div>
-</section>
-<!-- Footer -->
-<footer>
-<div class="container">
-<div class="footer-content">
-<div class="footer-about">
-<a aria-disabled="true" class="footer-logo" href="#" role="button">
-<i class="fas fa-users"></i> CollabHub
-                    </a>
-<p>India's fastest-growing platform connecting brands with brilliant creators for authentic influencer marketing campaigns.</p>
-<div class="social-icons">
-<a aria-disabled="true" href="#" role="button"><i class="fab fa-twitter"></i></a>
-<a aria-disabled="true" href="#" role="button"><i class="fab fa-linkedin-in"></i></a>
-<a aria-disabled="true" href="#" role="button"><i class="fab fa-instagram"></i></a>
-<a aria-disabled="true" href="#" role="button"><i class="fab fa-youtube"></i></a>
-<a aria-disabled="true" href="#" role="button"><i class="fab fa-facebook-f"></i></a>
-</div>
-</div>
-<div class="footer-links">
-<h4>Platform</h4>
-<ul>
-<li><a aria-disabled="true" href="#" role="button">Features</a></li>
-<li><a aria-disabled="true" href="#" role="button">How It Works</a></li>
-<li><a aria-disabled="true" href="#" role="button">Success Stories</a></li>
-<li><a aria-disabled="true" href="#" role="button">Pricing</a></li>
-<li><a aria-disabled="true" href="#" role="button">API</a></li>
-</ul>
-</div>
-<div class="footer-links">
-<h4>Company</h4>
-<ul>
-<li><a aria-disabled="true" href="#" role="button">About Us</a></li>
-<li><a aria-disabled="true" href="#" role="button">Careers</a></li>
-<li><a aria-disabled="true" href="#" role="button">Blog</a></li>
-<li><a aria-disabled="true" href="#" role="button">Press</a></li>
-<li><a aria-disabled="true" href="#" role="button">Contact</a></li>
-</ul>
-</div>
-<div class="footer-links">
-<h4>Resources</h4>
-<ul>
-<li><a aria-disabled="true" href="#" role="button">Help Center</a></li>
-<li><a aria-disabled="true" href="#" role="button">Creator Academy</a></li>
-<li><a aria-disabled="true" href="#" role="button">Brand Guidelines</a></li>
-<li><a aria-disabled="true" href="#" role="button">Campaign Templates</a></li>
-<li><a aria-disabled="true" href="#" role="button">Legal &amp; Privacy</a></li>
-</ul>
-</div>
-</div>
-<div class="copyright">
-<p>© 2024 CollabHub. All rights reserved. Made with ❤️ in India</p>
-</div>
-</div>
-</footer>
-<script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const navLinks = document.getElementById('nav-links');
+<body class="font-inter">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <!-- Logo -->
+        <div class="p-6 border-b border-primary-500/20">
+            <div class="flex items-center gap-3">
+                <div class="logo-icon">CX</div>
+                <div>
+                    <h1 class="text-xl font-bold bg-gradient-to-r from-primary-400 to-primary-500 bg-clip-text text-transparent">CollabX</h1>
+                    <p class="text-xs text-dark-400">Creator Hub</p>
+                </div>
+            </div>
+        </div>
         
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Animated counters
-        function animateCounter(elementId, finalValue, duration = 2000) {
-            const element = document.getElementById(elementId);
-            if (!element) return;
+        <!-- Brand Card -->
+        <div class="p-4">
+            <div class="glass-card p-3 flex items-center gap-3">
+                <img src="https://ui-avatars.com/api/?name=TV&background=6366f1&color=fff&size=128" alt="Brand" class="w-11 h-11 rounded-xl object-cover">
+                <div>
+                    <h3 class="text-sm font-semibold text-white">TechVision Labs</h3>
+                    <span class="badge-verified"><i class="bi bi-patch-check-fill"></i> Verified</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="flex-1 px-4 overflow-y-auto">
+            <ul class="space-y-1">
+                <li class="nav-item active" data-page="dashboard" onclick="navigateTo('dashboard')">
+                    <i class="bi bi-grid-1x2-fill text-xl"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="nav-item" data-page="campaigns" onclick="navigateTo('campaigns')">
+                    <i class="bi bi-rocket-takeoff-fill text-xl"></i>
+                    <span>Campaigns</span>
+                </li>
+                <li class="nav-item" data-page="upload" onclick="navigateTo('upload')">
+                    <i class="bi bi-plus-circle-fill text-xl"></i>
+                    <span>New Campaign</span>
+                </li>
+                <li class="nav-item" data-page="profile" onclick="navigateTo('profile')">
+                    <i class="bi bi-building text-xl"></i>
+                    <span>Brand Profile</span>
+                </li>
+                <li class="nav-item" data-page="verification" onclick="navigateTo('verification')">
+                    <i class="bi bi-shield-check text-xl"></i>
+                    <span>Verification</span>
+                </li>
+                <li class="nav-item" data-page="analytics" onclick="navigateTo('analytics')">
+                    <i class="bi bi-graph-up-arrow text-xl"></i>
+                    <span>Analytics</span>
+                </li>
+                <li class="nav-item" data-page="messages" onclick="navigateTo('messages')">
+                    <i class="bi bi-chat-dots-fill text-xl"></i>
+                    <span>Messages</span>
+                    <span class="nav-badge">3</span>
+                </li>
+            </ul>
+        </nav>
+        
+        <!-- Help Card -->
+        <div class="p-4">
+            <div class="glass-card p-4 text-center">
+                <div class="text-3xl mb-2">💡</div>
+                <h4 class="text-sm font-semibold text-white mb-1">Need Help?</h4>
+                <p class="text-xs text-dark-400 mb-3">Get 24/7 support</p>
+                <button class="w-full py-2 rounded-lg border border-primary-500/50 text-dark-400 text-sm hover:bg-primary-500/20 hover:text-white transition-all">Contact Support</button>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+    
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="flex justify-between items-center mb-8 flex-wrap gap-4">
+            <div class="flex items-center gap-4">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="openSidebar()">
+                    <i class="bi bi-list"></i>
+                </button>
+                <div class="animate-fade-in">
+                    <h1 class="text-2xl md:text-3xl font-bold text-white" id="pageTitle">Dashboard</h1>
+                    <p class="text-dark-400 text-sm" id="pageSubtitle">Welcome back! Here's your overview.</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="search-box relative animate-fade-in">
+                    <i class="bi bi-search absolute left-4 top-1/2 -translate-y-1/2 text-dark-500"></i>
+                    <input type="text" placeholder="Search..." class="w-64 py-2.5 pl-11 pr-4 rounded-xl bg-dark-800/50 border border-primary-500/30 text-white placeholder-dark-500 focus:outline-none focus:border-primary-500 transition-all">
+                </div>
+                <button class="relative p-3 rounded-xl bg-dark-800/50 border border-primary-500/30 text-dark-400 hover:bg-primary-500/20 hover:text-white transition-all">
+                    <i class="bi bi-bell-fill text-lg"></i>
+                    <span class="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-pink-500 to-rose-600 rounded-full text-xs flex items-center justify-center text-white font-bold">3</span>
+                </button>
+                <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-dark-800/50 border border-primary-500/30 cursor-pointer hover:bg-primary-500/10 transition-all">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-sm font-bold">TV</div>
+                    <span class="text-sm font-medium hidden sm:inline">TechVision</span>
+                    <i class="bi bi-chevron-down text-dark-500 text-xs"></i>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Pages Container -->
+        <div id="pagesContainer">
             
-            const startValue = 0;
-            const startTime = performance.now();
+            <!-- Dashboard Page -->
+            <div class="page active" id="dashboardPage">
+                <!-- Stats Grid -->
+                <div class="stats-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div class="stat-card animate-fade-in" style="animation-delay: 0s">
+                        <div class="stat-icon green"><i class="bi bi-currency-dollar"></i></div>
+                        <div class="flex-1">
+                            <span class="inline-block px-2 py-0.5 rounded-md text-xs font-semibold bg-green-500/20 text-green-400 mb-1">+12%</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-white">$2.4M</h3>
+                            <p class="text-dark-400 text-sm">Total Revenue</p>
+                        </div>
+                    </div>
+                    <div class="stat-card animate-fade-in" style="animation-delay: 0.1s">
+                        <div class="stat-icon purple"><i class="bi bi-rocket-takeoff"></i></div>
+                        <div class="flex-1">
+                            <span class="inline-block px-2 py-0.5 rounded-md text-xs font-semibold bg-primary-500/20 text-primary-400 mb-1">+2</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-white">8</h3>
+                            <p class="text-dark-400 text-sm">Active Campaigns</p>
+                        </div>
+                    </div>
+                    <div class="stat-card animate-fade-in" style="animation-delay: 0.2s">
+                        <div class="stat-icon blue"><i class="bi bi-check-circle"></i></div>
+                        <div class="flex-1">
+                            <span class="inline-block px-2 py-0.5 rounded-md text-xs font-semibold bg-blue-500/20 text-blue-400 mb-1">+5</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-white">47</h3>
+                            <p class="text-dark-400 text-sm">Completed</p>
+                        </div>
+                    </div>
+                    <div class="stat-card animate-fade-in" style="animation-delay: 0.3s">
+                        <div class="stat-icon gold"><i class="bi bi-star-fill"></i></div>
+                        <div class="flex-1">
+                            <span class="inline-block px-2 py-0.5 rounded-md text-xs font-semibold bg-amber-500/20 text-amber-400 mb-1">+0.2</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-white">4.8</h3>
+                            <p class="text-dark-400 text-sm">Average Rating</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="glass-card p-6 mb-6 animate-fade-in" style="animation-delay: 0.4s">
+                    <h3 class="text-lg font-semibold text-white mb-4">Quick Actions</h3>
+                    <div class="quick-actions-grid grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <button class="quick-action-btn purple" onclick="navigateTo('upload')">
+                            <i class="bi bi-plus-lg text-2xl"></i>
+                            <span>New Campaign</span>
+                        </button>
+                        <button class="quick-action-btn pink">
+                            <i class="bi bi-search text-2xl"></i>
+                            <span>Find Creators</span>
+                        </button>
+                        <button class="quick-action-btn blue" onclick="navigateTo('analytics')">
+                            <i class="bi bi-graph-up text-2xl"></i>
+                            <span>View Analytics</span>
+                        </button>
+                        <button class="quick-action-btn green" onclick="navigateTo('messages')">
+                            <i class="bi bi-chat-dots text-2xl"></i>
+                            <span>Send Message</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Recent Campaigns & Activity -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Recent Campaigns -->
+                    <div class="glass-card p-6 animate-fade-in" style="animation-delay: 0.5s">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-white">Recent Campaigns</h3>
+                            <a href="#" class="text-primary-400 text-sm hover:text-primary-300" onclick="navigateTo('campaigns'); return false;">View All →</a>
+                        </div>
+                        <div class="space-y-3" id="recentCampaigns">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Feed -->
+                    <div class="glass-card p-6 animate-fade-in" style="animation-delay: 0.6s">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg font-semibold text-white">Recent Activity</h3>
+                            <a href="#" class="text-primary-400 text-sm hover:text-primary-300">View All →</a>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3 p-3 rounded-xl bg-dark-900/50">
+                                <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400"><i class="bi bi-inbox-fill"></i></div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-medium">New application received</p>
+                                    <p class="text-dark-500 text-xs">Summer Tech Launch</p>
+                                </div>
+                                <span class="text-dark-500 text-xs">2h ago</span>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-xl bg-dark-900/50">
+                                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400"><i class="bi bi-check-circle-fill"></i></div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-medium">Campaign approved</p>
+                                    <p class="text-dark-500 text-xs">Product Unboxing</p>
+                                </div>
+                                <span class="text-dark-500 text-xs">5h ago</span>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-xl bg-dark-900/50">
+                                <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400"><i class="bi bi-trophy-fill"></i></div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-medium">Creator completed task</p>
+                                    <p class="text-dark-500 text-xs">App Review Campaign</p>
+                                </div>
+                                <span class="text-dark-500 text-xs">1d ago</span>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-xl bg-dark-900/50">
+                                <div class="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400"><i class="bi bi-credit-card-fill"></i></div>
+                                <div class="flex-1">
+                                    <p class="text-white text-sm font-medium">Payment processed</p>
+                                    <p class="text-dark-500 text-xs">Brand Awareness Q4</p>
+                                </div>
+                                <span class="text-dark-500 text-xs">2d ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            function updateCounter(currentTime) {
-                const elapsedTime = currentTime - startTime;
-                const progress = Math.min(elapsedTime / duration, 1);
-                
-                // Easing function
-                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-                
-                let currentValue;
-                if (elementId.includes('payouts-counter')) {
-                    // Special handling for currency values
-                    currentValue = Math.floor(easeOutQuart * finalValue);
-                    element.textContent = `₹${(currentValue / 10000000).toFixed(1)}Cr+`;
-                } else if (elementId.includes('satisfaction-counter')) {
-                    // Percentage
-                    currentValue = Math.floor(easeOutQuart * finalValue);
-                    element.textContent = `${currentValue}%`;
-                } else {
-                    // Regular numbers
-                    currentValue = Math.floor(easeOutQuart * finalValue);
-                    // Format with commas
-                    element.textContent = currentValue.toLocaleString();
-                }
-                
-                if (progress < 1) {
-                    requestAnimationFrame(updateCounter);
-                }
-            }
+            <!-- Campaigns Page (Kanban Board) -->
+            <div class="page" id="campaignsPage">
+                <div class="kanban-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5" id="kanbanBoard">
+                    <!-- Draft Column -->
+                    <div class="kanban-column animate-fade-in" style="animation-delay: 0s" data-status="draft" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'draft')">
+                        <div class="flex justify-between items-center pb-4 mb-4 border-b border-primary-500/20">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-gray-500"></span>
+                                <h4 class="text-sm font-semibold text-white">📝 Drafts</h4>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-lg bg-primary-500/20 text-primary-400 text-xs font-semibold" id="draftCount">0</span>
+                        </div>
+                        <div class="kanban-cards" id="draftCards"></div>
+                        <button class="w-full py-3 rounded-xl border-2 border-dashed border-primary-500/30 text-dark-500 text-sm hover:border-primary-500 hover:text-primary-400 hover:bg-primary-500/10 transition-all mt-auto" onclick="navigateTo('upload')">
+                            <i class="bi bi-plus"></i> Add Campaign
+                        </button>
+                    </div>
+                    
+                    <!-- Pending Column -->
+                    <div class="kanban-column animate-fade-in" style="animation-delay: 0.1s" data-status="pending" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'pending')">
+                        <div class="flex justify-between items-center pb-4 mb-4 border-b border-primary-500/20">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                                <h4 class="text-sm font-semibold text-white">⏳ Pending</h4>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-lg bg-primary-500/20 text-primary-400 text-xs font-semibold" id="pendingCount">0</span>
+                        </div>
+                        <div class="kanban-cards" id="pendingCards"></div>
+                        <button class="w-full py-3 rounded-xl border-2 border-dashed border-primary-500/30 text-dark-500 text-sm hover:border-primary-500 hover:text-primary-400 hover:bg-primary-500/10 transition-all mt-auto" onclick="navigateTo('upload')">
+                            <i class="bi bi-plus"></i> Add Campaign
+                        </button>
+                    </div>
+                    
+                    <!-- Active Column -->
+                    <div class="kanban-column animate-fade-in" style="animation-delay: 0.2s" data-status="active" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'active')">
+                        <div class="flex justify-between items-center pb-4 mb-4 border-b border-primary-500/20">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                                <h4 class="text-sm font-semibold text-white">🚀 Active</h4>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-lg bg-primary-500/20 text-primary-400 text-xs font-semibold" id="activeCount">0</span>
+                        </div>
+                        <div class="kanban-cards" id="activeCards"></div>
+                        <button class="w-full py-3 rounded-xl border-2 border-dashed border-primary-500/30 text-dark-500 text-sm hover:border-primary-500 hover:text-primary-400 hover:bg-primary-500/10 transition-all mt-auto" onclick="navigateTo('upload')">
+                            <i class="bi bi-plus"></i> Add Campaign
+                        </button>
+                    </div>
+                    
+                    <!-- Completed Column -->
+                    <div class="kanban-column animate-fade-in" style="animation-delay: 0.3s" data-status="completed" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'completed')">
+                        <div class="flex justify-between items-center pb-4 mb-4 border-b border-primary-500/20">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                                <h4 class="text-sm font-semibold text-white">✅ Completed</h4>
+                            </div>
+                            <span class="px-2.5 py-1 rounded-lg bg-primary-500/20 text-primary-400 text-xs font-semibold" id="completedCount">0</span>
+                        </div>
+                        <div class="kanban-cards" id="completedCards"></div>
+                        <button class="w-full py-3 rounded-xl border-2 border-dashed border-primary-500/30 text-dark-500 text-sm hover:border-primary-500 hover:text-primary-400 hover:bg-primary-500/10 transition-all mt-auto" onclick="navigateTo('upload')">
+                            <i class="bi bi-plus"></i> Add Campaign
+                        </button>
+                    </div>
+                </div>
+            </div>
             
-            requestAnimationFrame(updateCounter);
-        }
-
-        // Initialize counters when page loads
-        window.addEventListener('load', () => {
-            // These values would normally come from a database API
-            // For now, we use realistic static values
+            <!-- Upload Campaign Page -->
+            <div class="page" id="uploadPage">
+                <div class="max-w-3xl mx-auto">
+                    <!-- Progress Steps -->
+                    <div class="flex items-center justify-center mb-10">
+                        <div class="flex items-center">
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="step-circle active" id="step1Circle">📝</div>
+                                <span class="text-xs text-dark-400">Basic Info</span>
+                            </div>
+                            <div class="w-16 md:w-20 h-1 mx-2 mb-6 rounded-full bg-dark-700 transition-all" id="line1"></div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="step-circle bg-dark-800" id="step2Circle">📋</div>
+                                <span class="text-xs text-dark-400">Details</span>
+                            </div>
+                            <div class="w-16 md:w-20 h-1 mx-2 mb-6 rounded-full bg-dark-700 transition-all" id="line2"></div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="step-circle bg-dark-800" id="step3Circle">🖼️</div>
+                                <span class="text-xs text-dark-400">Media</span>
+                            </div>
+                            <div class="w-16 md:w-20 h-1 mx-2 mb-6 rounded-full bg-dark-700 transition-all" id="line3"></div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="step-circle bg-dark-800" id="step4Circle">✅</div>
+                                <span class="text-xs text-dark-400">Review</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Form Steps -->
+                    <form id="campaignForm" onsubmit="submitCampaign(event)">
+                        <!-- Step 1: Basic Info -->
+                        <div class="form-step active" id="formStep1">
+                            <div class="glass-card p-6 md:p-8">
+                                <h2 class="text-xl md:text-2xl font-bold text-white mb-6">Campaign Details</h2>
+                                <div class="space-y-5">
+                                    <div>
+                                        <label class="block text-dark-400 text-sm font-medium mb-2">Campaign Title *</label>
+                                        <input type="text" id="campaignTitle" class="form-input" placeholder="Enter campaign title..." required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-dark-400 text-sm font-medium mb-2">Description *</label>
+                                        <textarea id="campaignDescription" class="form-input resize-none" rows="4" placeholder="Describe your campaign goals..." required></textarea>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                        <div>
+                                            <label class="block text-dark-400 text-sm font-medium mb-2">Category *</label>
+                                            <select id="campaignCategory" class="form-input" required>
+                                                <option value="">Select category</option>
+                                                <option value="Technology">Technology</option>
+                                                <option value="Lifestyle">Lifestyle</option>
+                                                <option value="Fashion">Fashion</option>
+                                                <option value="Beauty">Beauty</option>
+                                                <option value="Gaming">Gaming</option>
+                                                <option value="Food">Food & Beverage</option>
+                                                <option value="Travel">Travel</option>
+                                                <option value="Fitness">Fitness</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-dark-400 text-sm font-medium mb-2">Budget ($) *</label>
+                                            <input type="number" id="campaignBudget" class="form-input" placeholder="5000" min="100" required>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-dark-400 text-sm font-medium mb-2">Deadline *</label>
+                                        <input type="date" id="campaignDeadline" class="form-input" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Requirements & Deliverables -->
+                        <div class="form-step" id="formStep2">
+                            <div class="glass-card p-6 md:p-8">
+                                <h2 class="text-xl md:text-2xl font-bold text-white mb-6">Requirements & Deliverables</h2>
+                                <div class="space-y-5">
+                                    <div>
+                                        <label class="block text-dark-400 text-sm font-medium mb-2">Target Audience</label>
+                                        <input type="text" id="targetAudience" class="form-input" placeholder="e.g., Tech enthusiasts aged 25-40">
+                                    </div>
+                                    <div>
+                                        <label class="block text-dark-400 text-sm font-medium mb-2">Creator Requirements</label>
+                                        <div id="requirementsList">
+                                            <div class="flex gap-2 mb-2">
+                                                <input type="text" class="form-input flex-1 requirement-input" placeholder="e.g., 10k+ followers">
+                                                <button type="button" class="px-4 py-3 rounded-xl bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-all" onclick="removeListItem(this)"><i class="bi bi-x"></i></button>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="px-4 py-2 rounded-xl border-2 border-dashed border-primary-500/30 text-dark-500 text-sm hover:border-primary-500 hover:text-primary-400 transition-all" onclick="addListItem('requirementsList', 'requirement-input')">+ Add Requirement</button>
+                                    </div>
+                                    <div>
+                                        <label class="block text-dark-400 text-sm font-medium mb-2">Deliverables</label>
+                                        <div id="deliverablesList">
+                                            <div class="flex gap-2 mb-2">
+                                                <input type="text" class="form-input flex-1 deliverable-input" placeholder="e.g., 3 Instagram posts">
+                                                <button type="button" class="px-4 py-3 rounded-xl bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-all" onclick="removeListItem(this)"><i class="bi bi-x"></i></button>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="px-4 py-2 rounded-xl border-2 border-dashed border-primary-500/30 text-dark-500 text-sm hover:border-primary-500 hover:text-primary-400 transition-all" onclick="addListItem('deliverablesList', 'deliverable-input')">+ Add Deliverable</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Media Upload -->
+                        <div class="form-step" id="formStep3">
+                            <div class="glass-card p-6 md:p-8">
+                                <h2 class="text-xl md:text-2xl font-bold text-white mb-6">Campaign Media</h2>
+                                <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
+                                    <input type="file" id="fileInput" multiple accept="image/*,video/*,.pdf,.doc,.docx" class="hidden" onchange="handleFileSelect(event)">
+                                    <div class="drop-icon w-20 h-20 mx-auto mb-4 rounded-full bg-primary-500/20 flex items-center justify-center text-4xl text-primary-400">📁</div>
+                                    <h3 class="text-lg font-semibold text-white mb-2">Drag & Drop Files</h3>
+                                    <p class="text-dark-400 mb-2">or click to browse</p>
+                                    <span class="text-dark-500 text-xs">Supports: Images, Videos, PDFs, Documents</span>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-6" id="uploadedFiles"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4: Review -->
+                        <div class="form-step" id="formStep4">
+                            <div class="glass-card p-6 md:p-8">
+                                <h2 class="text-xl md:text-2xl font-bold text-white mb-6">Review Campaign</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                                    <div class="p-4 rounded-xl bg-dark-900/50">
+                                        <label class="text-xs text-dark-500 block mb-1">Title</label>
+                                        <p class="text-white font-medium" id="reviewTitle">-</p>
+                                    </div>
+                                    <div class="p-4 rounded-xl bg-dark-900/50">
+                                        <label class="text-xs text-dark-500 block mb-1">Category</label>
+                                        <p class="text-white font-medium" id="reviewCategory">-</p>
+                                    </div>
+                                    <div class="p-4 rounded-xl bg-dark-900/50">
+                                        <label class="text-xs text-dark-500 block mb-1">Budget</label>
+                                        <p class="text-white font-medium" id="reviewBudget">-</p>
+                                    </div>
+                                    <div class="p-4 rounded-xl bg-dark-900/50">
+                                        <label class="text-xs text-dark-500 block mb-1">Deadline</label>
+                                        <p class="text-white font-medium" id="reviewDeadline">-</p>
+                                    </div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-dark-900/50 mb-5">
+                                    <label class="text-xs text-dark-500 block mb-1">Description</label>
+                                    <p class="text-white" id="reviewDescription">-</p>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                                    <div class="p-4 rounded-xl bg-dark-900/50">
+                                        <label class="text-xs text-dark-500 block mb-2">Requirements</label>
+                                        <ul class="space-y-1 text-sm" id="reviewRequirements"><li class="text-dark-400">No requirements specified</li></ul>
+                                    </div>
+                                    <div class="p-4 rounded-xl bg-dark-900/50">
+                                        <label class="text-xs text-dark-500 block mb-2">Deliverables</label>
+                                        <ul class="space-y-1 text-sm" id="reviewDeliverables"><li class="text-dark-400">No deliverables specified</li></ul>
+                                    </div>
+                                </div>
+                                <div class="p-4 rounded-xl bg-dark-900/50">
+                                    <label class="text-xs text-dark-500 block mb-1">Files Uploaded</label>
+                                    <p class="text-white font-medium" id="reviewFiles">0 files</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Navigation Buttons -->
+                        <div class="flex justify-between mt-6">
+                            <button type="button" class="btn-secondary" id="prevBtn" onclick="prevStep()" disabled>← Previous</button>
+                            <button type="button" class="btn-primary" id="nextBtn" onclick="nextStep()">Next →</button>
+                            <button type="submit" class="btn-primary btn-success hidden" id="submitBtn">🚀 Create Campaign</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Profile Page -->
+            <div class="page" id="profilePage">
+                <div class="max-w-5xl mx-auto">
+                    <!-- Profile Header -->
+                    <div class="glass-card p-6 md:p-8 mb-6 animate-fade-in">
+                        <div class="flex flex-col md:flex-row gap-6">
+                            <div class="relative">
+                                <img src="https://ui-avatars.com/api/?name=TV&background=6366f1&color=fff&size=140" alt="Brand" class="w-32 h-32 rounded-2xl object-cover ring-4 ring-primary-500/30">
+                                <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 badge-verified whitespace-nowrap"><i class="bi bi-patch-check-fill"></i> Verified</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-col md:flex-row justify-between gap-4 mb-4">
+                                    <div>
+                                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-1">TechVision Labs</h2>
+                                        <p class="text-dark-400 mb-3">Technology & SaaS</p>
+                                        <div class="flex flex-wrap items-center gap-4 text-sm">
+                                            <a href="#" class="text-primary-400 hover:text-primary-300 flex items-center gap-1"><i class="bi bi-globe"></i> techvision.com</a>
+                                            <span class="text-dark-400"><i class="bi bi-envelope"></i> contact@techvision.com</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-primary self-start">✏️ Edit Profile</button>
+                                </div>
+                                <p class="text-dark-300 leading-relaxed">Leading innovation in AI-powered marketing solutions. We help brands connect with the right creators for maximum impact.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <div class="glass-card p-5 text-center animate-fade-in" style="animation-delay: 0.1s">
+                            <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-green-500/20 flex items-center justify-center text-2xl">💰</div>
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-1">$2.4M</h3>
+                            <p class="text-dark-400 text-sm">Total Sales</p>
+                        </div>
+                        <div class="glass-card p-5 text-center animate-fade-in" style="animation-delay: 0.2s">
+                            <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-blue-500/20 flex items-center justify-center text-2xl">📅</div>
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-1">5 Years</h3>
+                            <p class="text-dark-400 text-sm">Experience</p>
+                        </div>
+                        <div class="glass-card p-5 text-center animate-fade-in" style="animation-delay: 0.3s">
+                            <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-purple-500/20 flex items-center justify-center text-2xl">✅</div>
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-1">47</h3>
+                            <p class="text-dark-400 text-sm">Completed</p>
+                        </div>
+                        <div class="glass-card p-5 text-center animate-fade-in" style="animation-delay: 0.4s">
+                            <div class="w-14 h-14 mx-auto mb-3 rounded-xl bg-amber-500/20 flex items-center justify-center text-2xl">⭐</div>
+                            <h3 class="text-xl md:text-2xl font-bold text-white mb-1">4.8/5</h3>
+                            <p class="text-dark-400 text-sm">Rating</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact & Social -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="glass-card p-6 animate-fade-in" style="animation-delay: 0.5s">
+                            <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2"><i class="bi bi-geo-alt"></i> Contact Details</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 p-3 rounded-xl bg-dark-900/50">
+                                    <i class="bi bi-telephone text-primary-400 text-xl"></i>
+                                    <div><p class="text-xs text-dark-500">Phone</p><p class="text-white">+1 (555) 123-4567</p></div>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 rounded-xl bg-dark-900/50">
+                                    <i class="bi bi-house text-primary-400 text-xl"></i>
+                                    <div><p class="text-xs text-dark-500">Address</p><p class="text-white">123 Innovation Drive, Suite 500</p></div>
+                                </div>
+                                <div class="flex items-center gap-3 p-3 rounded-xl bg-dark-900/50">
+                                    <i class="bi bi-globe text-primary-400 text-xl"></i>
+                                    <div><p class="text-xs text-dark-500">Location</p><p class="text-white">San Francisco, United States</p></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 animate-fade-in" style="animation-delay: 0.6s">
+                            <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2"><i class="bi bi-share"></i> Social Links</h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="#" class="flex items-center gap-3 p-3 rounded-xl bg-gradient-to-r from-pink-500/20 to-purple-500/20 hover:from-pink-500/30 hover:to-purple-500/30 transition-all">
+                                    <i class="bi bi-instagram text-2xl text-pink-400"></i>
+                                    <div><p class="text-xs text-dark-500">Instagram</p><p class="text-white text-sm">@techvisionlabs</p></div>
+                                </a>
+                                <a href="#" class="flex items-center gap-3 p-3 rounded-xl bg-blue-500/20 hover:bg-blue-500/30 transition-all">
+                                    <i class="bi bi-twitter text-2xl text-blue-400"></i>
+                                    <div><p class="text-xs text-dark-500">Twitter</p><p class="text-white text-sm">@techvision</p></div>
+                                </a>
+                                <a href="#" class="flex items-center gap-3 p-3 rounded-xl bg-blue-600/20 hover:bg-blue-600/30 transition-all">
+                                    <i class="bi bi-linkedin text-2xl text-blue-500"></i>
+                                    <div><p class="text-xs text-dark-500">LinkedIn</p><p class="text-white text-sm">techvision-labs</p></div>
+                                </a>
+                                <a href="#" class="flex items-center gap-3 p-3 rounded-xl bg-blue-700/20 hover:bg-blue-700/30 transition-all">
+                                    <i class="bi bi-facebook text-2xl text-blue-600"></i>
+                                    <div><p class="text-xs text-dark-500">Facebook</p><p class="text-white text-sm">TechVisionLabs</p></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rating -->
+                    <div class="glass-card p-6 animate-fade-in" style="animation-delay: 0.7s">
+                        <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2"><i class="bi bi-star-fill text-amber-400"></i> Brand Rating</h3>
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="text-center pr-0 md:pr-8 pb-6 md:pb-0 border-b md:border-b-0 md:border-r border-primary-500/20">
+                                <div class="text-5xl font-bold text-white mb-2">4.8</div>
+                                <div class="flex justify-center gap-1 text-amber-400 text-xl mb-2">★★★★★</div>
+                                <p class="text-dark-500 text-sm">Based on 124 reviews</p>
+                            </div>
+                            <div class="flex-1 space-y-2 w-full">
+                                <div class="flex items-center gap-2"><span class="text-dark-400 w-4 text-sm">5</span><span class="text-amber-400">★</span><div class="flex-1 h-2 bg-dark-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full" style="width: 72%"></div></div><span class="text-dark-500 text-sm w-10 text-right">72%</span></div>
+                                <div class="flex items-center gap-2"><span class="text-dark-400 w-4 text-sm">4</span><span class="text-amber-400">★</span><div class="flex-1 h-2 bg-dark-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full" style="width: 18%"></div></div><span class="text-dark-500 text-sm w-10 text-right">18%</span></div>
+                                <div class="flex items-center gap-2"><span class="text-dark-400 w-4 text-sm">3</span><span class="text-amber-400">★</span><div class="flex-1 h-2 bg-dark-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full" style="width: 6%"></div></div><span class="text-dark-500 text-sm w-10 text-right">6%</span></div>
+                                <div class="flex items-center gap-2"><span class="text-dark-400 w-4 text-sm">2</span><span class="text-amber-400">★</span><div class="flex-1 h-2 bg-dark-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full" style="width: 3%"></div></div><span class="text-dark-500 text-sm w-10 text-right">3%</span></div>
+                                <div class="flex items-center gap-2"><span class="text-dark-400 w-4 text-sm">1</span><span class="text-amber-400">★</span><div class="flex-1 h-2 bg-dark-800 rounded-full overflow-hidden"><div class="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full" style="width: 1%"></div></div><span class="text-dark-500 text-sm w-10 text-right">1%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Verification Page -->
+            <div class="page" id="verificationPage">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Header -->
+                    <div class="glass-card p-6 md:p-8 mb-6 animate-fade-in">
+                        <div class="flex flex-col md:flex-row justify-between gap-4 mb-6">
+                            <div>
+                                <h2 class="text-xl md:text-2xl font-bold text-white mb-1">Brand Verification</h2>
+                                <p class="text-dark-400">Complete all steps to get verified</p>
+                            </div>
+                            <span class="badge-verified self-start"><i class="bi bi-patch-check-fill"></i> Verified Brand</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-dark-400">Verification Progress</span>
+                                <span class="text-white font-medium">4/4 Steps Completed</span>
+                            </div>
+                            <div class="h-3 bg-dark-800 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-green-500 to-emerald-600 rounded-full transition-all" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Benefits -->
+                    <div class="glass-card p-6 mb-6 animate-fade-in" style="animation-delay: 0.1s">
+                        <h3 class="text-lg font-semibold text-white mb-4">✨ Benefits of Verification</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-5 rounded-xl bg-dark-900/50 text-center"><span class="text-3xl block mb-2">🏆</span><h4 class="text-white font-medium mb-1">Verified Badge</h4><p class="text-dark-500 text-sm">Stand out with a trust badge</p></div>
+                            <div class="p-5 rounded-xl bg-dark-900/50 text-center"><span class="text-3xl block mb-2">🚀</span><h4 class="text-white font-medium mb-1">Priority Listing</h4><p class="text-dark-500 text-sm">Appear first in search results</p></div>
+                            <div class="p-5 rounded-xl bg-dark-900/50 text-center"><span class="text-3xl block mb-2">💳</span><h4 class="text-white font-medium mb-1">Higher Limits</h4><p class="text-dark-500 text-sm">Increased campaign budgets</p></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Steps -->
+                    <h3 class="text-lg font-semibold text-white mb-4">Verification Steps</h3>
+                    <div class="space-y-3">
+                        <div class="glass-card p-5 flex items-center gap-4 animate-fade-in" style="animation-delay: 0.2s">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold">✓</div>
+                            <div class="flex-1"><h4 class="text-white font-medium">Business License</h4><p class="text-dark-500 text-sm">Document verified</p></div>
+                            <span class="px-3 py-1 rounded-lg bg-green-500/20 text-green-400 text-xs font-medium">Completed</span>
+                        </div>
+                        <div class="glass-card p-5 flex items-center gap-4 animate-fade-in" style="animation-delay: 0.3s">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold">✓</div>
+                            <div class="flex-1"><h4 class="text-white font-medium">Tax ID Verification</h4><p class="text-dark-500 text-sm">Document verified</p></div>
+                            <span class="px-3 py-1 rounded-lg bg-green-500/20 text-green-400 text-xs font-medium">Completed</span>
+                        </div>
+                        <div class="glass-card p-5 flex items-center gap-4 animate-fade-in" style="animation-delay: 0.4s">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold">✓</div>
+                            <div class="flex-1"><h4 class="text-white font-medium">Bank Account Details</h4><p class="text-dark-500 text-sm">Document verified</p></div>
+                            <span class="px-3 py-1 rounded-lg bg-green-500/20 text-green-400 text-xs font-medium">Completed</span>
+                        </div>
+                        <div class="glass-card p-5 flex items-center gap-4 animate-fade-in" style="animation-delay: 0.5s">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold">✓</div>
+                            <div class="flex-1"><h4 class="text-white font-medium">Identity Verification</h4><p class="text-dark-500 text-sm">Document verified</p></div>
+                            <span class="px-3 py-1 rounded-lg bg-green-500/20 text-green-400 text-xs font-medium">Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analytics Page -->
+            <div class="page" id="analyticsPage">
+                <div class="stats-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div class="stat-card animate-fade-in" style="animation-delay: 0s">
+                        <div class="stat-icon green"><i class="bi bi-currency-dollar"></i></div>
+                        <div class="flex-1">
+                            <span class="inline-block px-2 py-0.5 rounded-md text-xs font-semibold bg-green-500/20 text-green-400 mb-1">+12%</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-white">$65K</h3>
+                            <p class="text-dark-400 text-sm">Total Budget</p>
+                        </div>
+                    </div>
+                    <div class="stat-card animate-fade-in" style="animation-delay: 0.1s">
+                        <div class="stat-icon purple"><i class="bi bi-people-fill"></i></div>
+                        <div class="flex-1">
+                            <span class="inline-block px-2 py-0.5 rounded-md text-xs font-semibold bg-primary-500/20 text-primary-400 mb-1">+24%</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-white">99</h3>
+                            <p class="text-dark-400 text-sm">Total Applicants</p>
+                        </div>
+                    </div>
+                    <div class="stat-card animate-fade-in" style="animation-delay: 0.2s">
+                        <div class="stat-icon blue"><i class="bi bi-rocket-takeoff"></i></div>
+                        <div class="flex-1">
+                            <span class="inline-block px-2 py-0.5 rounded-md text-xs font-semibold bg-blue-500/20 text-blue-400 mb-1">+2</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-white">3</h3>
+                            <p class="text-dark-400 text-sm">Active Campaigns</p>
+                        </div>
+                    </div>
+                    <div class="stat-card animate-fade-in" style="animation-delay: 0.3s">
+                        <div class="stat-icon gold"><i class="bi bi-check-circle"></i></div>
+                        <div class="flex-1">
+                            <span class="inline-block px-2 py-0.5 rounded-md text-xs font-semibold bg-amber-500/20 text-amber-400 mb-1">+5</span>
+                            <h3 class="text-2xl md:text-3xl font-bold text-white">1</h3>
+                            <p class="text-dark-400 text-sm">Completed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <!-- Bar Chart -->
+                    <div class="glass-card p-6 animate-fade-in" style="animation-delay: 0.4s">
+                        <h3 class="text-lg font-semibold text-white mb-6">Campaign Performance</h3>
+                        <div class="flex items-end justify-between h-48 gap-4">
+                            <div class="flex-1 flex flex-col items-center gap-2 h-full">
+                                <div class="w-full bg-gradient-to-t from-primary-600 to-primary-400 rounded-t-lg" style="height: 45%"></div>
+                                <span class="text-dark-400 text-xs">Jan</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2 h-full">
+                                <div class="w-full bg-gradient-to-t from-primary-600 to-primary-400 rounded-t-lg" style="height: 62%"></div>
+                                <span class="text-dark-400 text-xs">Feb</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2 h-full">
+                                <div class="w-full bg-gradient-to-t from-primary-600 to-primary-400 rounded-t-lg" style="height: 78%"></div>
+                                <span class="text-dark-400 text-xs">Mar</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2 h-full">
+                                <div class="w-full bg-gradient-to-t from-primary-600 to-primary-400 rounded-t-lg" style="height: 55%"></div>
+                                <span class="text-dark-400 text-xs">Apr</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2 h-full">
+                                <div class="w-full bg-gradient-to-t from-primary-600 to-primary-400 rounded-t-lg" style="height: 89%"></div>
+                                <span class="text-dark-400 text-xs">May</span>
+                            </div>
+                            <div class="flex-1 flex flex-col items-center gap-2 h-full">
+                                <div class="w-full bg-gradient-to-t from-green-600 to-green-400 rounded-t-lg" style="height: 95%"></div>
+                                <span class="text-dark-400 text-xs">Jun</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Metrics -->
+                    <div class="glass-card p-6 animate-fade-in" style="animation-delay: 0.5s">
+                        <h3 class="text-lg font-semibold text-white mb-6">Performance Metrics</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 rounded-xl bg-dark-900/50">
+                                <p class="text-dark-500 text-sm mb-2">Engagement Rate</p>
+                                <div class="flex justify-between items-end">
+                                    <span class="text-2xl font-bold text-white">4.8%</span>
+                                    <span class="text-sm font-semibold text-green-400">+0.5%</span>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-dark-900/50">
+                                <p class="text-dark-500 text-sm mb-2">Click-through Rate</p>
+                                <div class="flex justify-between items-end">
+                                    <span class="text-2xl font-bold text-white">2.3%</span>
+                                    <span class="text-sm font-semibold text-green-400">+0.8%</span>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-dark-900/50">
+                                <p class="text-dark-500 text-sm mb-2">Conversion Rate</p>
+                                <div class="flex justify-between items-end">
+                                    <span class="text-2xl font-bold text-white">1.2%</span>
+                                    <span class="text-sm font-semibold text-red-400">-0.2%</span>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-dark-900/50">
+                                <p class="text-dark-500 text-sm mb-2">ROI</p>
+                                <div class="flex justify-between items-end">
+                                    <span class="text-2xl font-bold text-white">340%</span>
+                                    <span class="text-sm font-semibold text-green-400">+45%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Messages Page -->
+            <div class="page" id="messagesPage">
+                <div class="glass-card max-w-lg mx-auto p-10 text-center mt-16 animate-fade-in">
+                    <div class="text-6xl mb-6 animate-float">💬</div>
+                    <h2 class="text-2xl font-bold text-white mb-3">Messages Coming Soon</h2>
+                    <p class="text-dark-400 mb-6 leading-relaxed">Connect directly with creators, negotiate deals, and manage all your conversations in one place.</p>
+                    <button class="btn-primary">Get Notified</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script>
+        // ==========================================
+        // Campaign Data
+        // ==========================================
+        let campaigns = [
+            { id: 'camp-001', title: 'Summer Tech Launch', description: 'Promote our new AI assistant app to tech-savvy millennials', budget: 15000, status: 'active', category: 'Technology', deadline: '2024-08-30', applicants: 24 },
+            { id: 'camp-002', title: 'Product Unboxing Series', description: 'Authentic unboxing and first impressions of our latest gadgets', budget: 8000, status: 'pending', category: 'Lifestyle', deadline: '2024-09-15', applicants: 12 },
+            { id: 'camp-003', title: 'Brand Awareness Q4', description: 'Increase brand visibility during holiday shopping season', budget: 25000, status: 'draft', category: 'Marketing', deadline: '2024-12-20', applicants: 0 },
+            { id: 'camp-004', title: 'App Review Campaign', description: 'In-depth reviews of our mobile productivity suite', budget: 12000, status: 'completed', category: 'Technology', deadline: '2024-05-30', applicants: 18 },
+            { id: 'camp-005', title: 'Influencer Partnership', description: 'Long-term collaboration with micro-influencers', budget: 5000, status: 'active', category: 'Partnerships', deadline: '2024-10-01', applicants: 45 }
+        ];
+        
+        const pageTitles = {
+            dashboard: { title: 'Dashboard', subtitle: "Welcome back! Here's your overview." },
+            campaigns: { title: 'Campaigns', subtitle: 'Manage and track all your campaigns' },
+            upload: { title: 'Create Campaign', subtitle: 'Launch a new collaboration campaign' },
+            profile: { title: 'Brand Profile', subtitle: 'Manage your brand information' },
+            verification: { title: 'Verification', subtitle: 'Complete your brand verification' },
+            analytics: { title: 'Analytics', subtitle: 'Track your performance metrics' },
+            messages: { title: 'Messages', subtitle: 'Connect with creators' }
+        };
+        
+        let currentStep = 1;
+        let uploadedFiles = [];
+        let draggedCard = null;
+        
+        // ==========================================
+        // Initialize App
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderRecentCampaigns();
+            renderKanbanBoard();
+            initFileUpload();
+            
+            // Welcome toast
             setTimeout(() => {
-                animateCounter('campaigns-counter', 53427);
-                animateCounter('payouts-counter', 102000000); // 10.2Cr
-                animateCounter('satisfaction-counter', 95);
-            }, 500);
+                showToast('success', 'Welcome Back!', 'You have 3 new applications to review.');
+            }, 1000);
         });
-
-        // Interactive category cards
-        document.querySelectorAll('.category-card').forEach(card => {
-            card.addEventListener('click', function() {
-                // This would normally navigate to a campaigns page
-                // For demo, we'll just add a visual feedback
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-                setTimeout(() => {
-                    this.style.transform = 'translateY(-5px)';
-                }, 200);
+        
+        // ==========================================
+        // Navigation
+        // ==========================================
+        function navigateTo(page) {
+            // Update nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.page === page) item.classList.add('active');
             });
-        });
-
-        // User type detection for personalized CTAs
-        function detectUserType() {
-            // This would normally come from authentication or cookies
-            // For now, we'll check URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const userType = urlParams.get('user_type');
             
-            if (userType === 'brand') {
-                document.querySelector('.hero-buttons .btn-primary').textContent = 'Start Free Trial';
-                document.querySelector('.hero-buttons .btn-secondary').textContent = 'View Demo';
-            } else if (userType === 'influencer') {
-                document.querySelector('.hero-buttons .btn-primary').textContent = 'Find Campaigns';
-                document.querySelector('.hero-buttons .btn-secondary').textContent = 'Learn More';
+            // Update page title
+            const info = pageTitles[page];
+            if (info) {
+                document.getElementById('pageTitle').textContent = info.title;
+                document.getElementById('pageSubtitle').textContent = info.subtitle;
+            }
+            
+            // Show page
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const targetPage = document.getElementById(page + 'Page');
+            if (targetPage) targetPage.classList.add('active');
+            
+            // Close sidebar on mobile
+            closeSidebar();
+            
+            // Refresh kanban if needed
+            if (page === 'campaigns') renderKanbanBoard();
+        }
+        
+        function openSidebar() {
+            document.getElementById('sidebar').classList.add('open');
+            document.getElementById('sidebarOverlay').classList.add('show');
+        }
+        
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('sidebarOverlay').classList.remove('show');
+        }
+        
+        // ==========================================
+        // Dashboard
+        // ==========================================
+        function renderRecentCampaigns() {
+            const container = document.getElementById('recentCampaigns');
+            container.innerHTML = campaigns.slice(0, 4).map(c => `
+                <div class="flex items-center gap-4 p-3 rounded-xl bg-dark-900/50 cursor-pointer hover:bg-dark-800 transition-all" onclick="navigateTo('campaigns')">
+                    <div class="w-11 h-11 rounded-xl bg-primary-500/20 flex items-center justify-center text-xl">🎯</div>
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-sm font-medium text-white truncate">${c.title}</h4>
+                        <p class="text-xs text-dark-500">Budget: $${c.budget.toLocaleString()}</p>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-xs font-medium status-${c.status}">${c.status}</span>
+                </div>
+            `).join('');
+        }
+        
+        // ==========================================
+        // Kanban Board
+        // ==========================================
+        function renderKanbanBoard() {
+            const statuses = ['draft', 'pending', 'active', 'completed'];
+            const progressMap = { draft: { width: '10%', color: 'gray' }, pending: { width: '30%', color: 'orange' }, active: { width: '60%', color: 'green' }, completed: { width: '100%', color: 'blue' } };
+            
+            statuses.forEach(status => {
+                const container = document.getElementById(status + 'Cards');
+                const statusCampaigns = campaigns.filter(c => c.status === status);
+                
+                container.innerHTML = statusCampaigns.map(c => {
+                    const progress = progressMap[c.status];
+                    return `
+                        <div class="kanban-card" draggable="true" data-id="${c.id}" ondragstart="handleDragStart(event)" ondragend="handleDragEnd(event)">
+                            <div class="flex justify-between items-start mb-3">
+                                <h5 class="text-sm font-semibold text-white leading-tight pr-2">${c.title}</h5>
+                                <button class="text-dark-500 hover:text-white"><i class="bi bi-three-dots-vertical"></i></button>
+                            </div>
+                            <p class="text-xs text-dark-500 mb-3 line-clamp-2">${c.description}</p>
+                            <div class="flex flex-wrap gap-1.5 mb-3">
+                                <span class="kanban-tag category">${c.category}</span>
+                                <span class="kanban-tag budget">$${c.budget.toLocaleString()}</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-3 border-t border-primary-500/10 text-xs text-dark-500">
+                                <span><i class="bi bi-people"></i> ${c.applicants}</span>
+                                <span><i class="bi bi-calendar"></i> ${formatDate(c.deadline)}</span>
+                            </div>
+                            <div class="h-1 bg-dark-800 rounded-full mt-3 overflow-hidden">
+                                <div class="progress-fill ${progress.color}" style="width: ${progress.width}"></div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                document.getElementById(status + 'Count').textContent = statusCampaigns.length;
+            });
+        }
+        
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+        
+        // ==========================================
+        // Drag and Drop
+        // ==========================================
+        function handleDragStart(e) {
+            draggedCard = e.target;
+            e.target.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', e.target.dataset.id);
+        }
+        
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            document.querySelectorAll('.kanban-cards').forEach(c => c.classList.remove('drag-over'));
+        }
+        
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.querySelector('.kanban-cards').classList.add('drag-over');
+        }
+        
+        function handleDragLeave(e) {
+            e.currentTarget.querySelector('.kanban-cards').classList.remove('drag-over');
+        }
+        
+        function handleDrop(e, newStatus) {
+            e.preventDefault();
+            e.currentTarget.querySelector('.kanban-cards').classList.remove('drag-over');
+            
+            const campaignId = e.dataTransfer.getData('text/plain');
+            const campaign = campaigns.find(c => c.id === campaignId);
+            
+            if (campaign && campaign.status !== newStatus) {
+                campaign.status = newStatus;
+                renderKanbanBoard();
+                showToast('success', 'Campaign Moved', `"${campaign.title}" moved to ${newStatus}`);
             }
         }
-
-        // Initialize on load
-        window.addEventListener('DOMContentLoaded', detectUserType);
+        
+        // ==========================================
+        // Form Steps
+        // ==========================================
+        function nextStep() {
+            if (currentStep < 4) {
+                if (!validateStep(currentStep)) {
+                    showToast('error', 'Validation Error', 'Please fill in all required fields.');
+                    return;
+                }
+                currentStep++;
+                updateFormSteps();
+                if (currentStep === 4) populateReview();
+            }
+        }
+        
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateFormSteps();
+            }
+        }
+        
+        function updateFormSteps() {
+            // Update step circles
+            for (let i = 1; i <= 4; i++) {
+                const circle = document.getElementById('step' + i + 'Circle');
+                circle.classList.remove('active', 'completed');
+                circle.classList.add('bg-dark-800');
+                if (i < currentStep) {
+                    circle.classList.remove('bg-dark-800');
+                    circle.classList.add('completed');
+                    circle.textContent = '✓';
+                } else if (i === currentStep) {
+                    circle.classList.remove('bg-dark-800');
+                    circle.classList.add('active');
+                }
+            }
+            
+            // Update lines
+            for (let i = 1; i <= 3; i++) {
+                const line = document.getElementById('line' + i);
+                if (i < currentStep) {
+                    line.classList.remove('bg-dark-700');
+                    line.classList.add('bg-gradient-to-r', 'from-primary-500', 'to-primary-600');
+                } else {
+                    line.classList.add('bg-dark-700');
+                    line.classList.remove('bg-gradient-to-r', 'from-primary-500', 'to-primary-600');
+                }
+            }
+            
+            // Show current step
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById('formStep' + i).classList.toggle('active', i === currentStep);
+            }
+            
+            // Update buttons
+            document.getElementById('prevBtn').disabled = currentStep === 1;
+            document.getElementById('nextBtn').classList.toggle('hidden', currentStep === 4);
+            document.getElementById('submitBtn').classList.toggle('hidden', currentStep !== 4);
+        }
+        
+        function validateStep(step) {
+            if (step === 1) {
+                return document.getElementById('campaignTitle').value && 
+                       document.getElementById('campaignDescription').value &&
+                       document.getElementById('campaignCategory').value &&
+                       document.getElementById('campaignBudget').value &&
+                       document.getElementById('campaignDeadline').value;
+            }
+            return true;
+        }
+        
+        function populateReview() {
+            document.getElementById('reviewTitle').textContent = document.getElementById('campaignTitle').value || '-';
+            document.getElementById('reviewCategory').textContent = document.getElementById('campaignCategory').value || '-';
+            document.getElementById('reviewBudget').textContent = '$' + (document.getElementById('campaignBudget').value || '0');
+            document.getElementById('reviewDeadline').textContent = document.getElementById('campaignDeadline').value || '-';
+            document.getElementById('reviewDescription').textContent = document.getElementById('campaignDescription').value || '-';
+            
+            const requirements = Array.from(document.querySelectorAll('.requirement-input')).map(i => i.value).filter(Boolean);
+            document.getElementById('reviewRequirements').innerHTML = requirements.length > 0 
+                ? requirements.map(r => `<li class="text-white flex items-center gap-2"><span class="text-primary-400">•</span>${r}</li>`).join('') 
+                : '<li class="text-dark-400">No requirements specified</li>';
+            
+            const deliverables = Array.from(document.querySelectorAll('.deliverable-input')).map(i => i.value).filter(Boolean);
+            document.getElementById('reviewDeliverables').innerHTML = deliverables.length > 0 
+                ? deliverables.map(d => `<li class="text-white flex items-center gap-2"><span class="text-green-400">✓</span>${d}</li>`).join('') 
+                : '<li class="text-dark-400">No deliverables specified</li>';
+            
+            document.getElementById('reviewFiles').textContent = uploadedFiles.length + ' files';
+        }
+        
+        function submitCampaign(e) {
+            e.preventDefault();
+            
+            const newCampaign = {
+                id: 'camp-' + Date.now(),
+                title: document.getElementById('campaignTitle').value,
+                description: document.getElementById('campaignDescription').value,
+                budget: parseFloat(document.getElementById('campaignBudget').value) || 0,
+                status: 'draft',
+                category: document.getElementById('campaignCategory').value,
+                deadline: document.getElementById('campaignDeadline').value,
+                applicants: 0
+            };
+            
+            campaigns.unshift(newCampaign);
+            
+            // Reset form
+            document.getElementById('campaignForm').reset();
+            uploadedFiles = [];
+            document.getElementById('uploadedFiles').innerHTML = '';
+            currentStep = 1;
+            updateFormSteps();
+            
+            showToast('success', 'Campaign Created!', 'Your campaign has been saved as a draft.');
+            
+            setTimeout(() => navigateTo('campaigns'), 1500);
+        }
+        
+        // ==========================================
+        // Dynamic Lists
+        // ==========================================
+        function addListItem(listId, inputClass) {
+            const list = document.getElementById(listId);
+            const div = document.createElement('div');
+            div.className = 'flex gap-2 mb-2';
+            div.innerHTML = `
+                <input type="text" class="form-input flex-1 ${inputClass}" placeholder="Enter value...">
+                <button type="button" class="px-4 py-3 rounded-xl bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-all" onclick="removeListItem(this)"><i class="bi bi-x"></i></button>
+            `;
+            list.appendChild(div);
+            div.querySelector('input').focus();
+        }
+        
+        function removeListItem(btn) {
+            const listItem = btn.parentElement;
+            const list = listItem.parentElement;
+            if (list.children.length > 1) listItem.remove();
+        }
+        
+        // ==========================================
+        // File Upload
+        // ==========================================
+        function initFileUpload() {
+            const dropZone = document.getElementById('dropZone');
+            if (!dropZone) return;
+            
+            dropZone.addEventListener('dragover', e => {
+                e.preventDefault();
+                dropZone.classList.add('active');
+            });
+            
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.classList.remove('active');
+            });
+            
+            dropZone.addEventListener('drop', e => {
+                e.preventDefault();
+                dropZone.classList.remove('active');
+                handleFiles(e.dataTransfer.files);
+            });
+        }
+        
+        function handleFileSelect(e) {
+            handleFiles(e.target.files);
+        }
+        
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                const fileObj = {
+                    id: 'file-' + Date.now() + Math.random().toString(36).substr(2, 9),
+                    name: file.name,
+                    size: file.size,
+                    type: file.type,
+                    progress: 0
+                };
+                
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = e => {
+                        fileObj.preview = e.target.result;
+                        uploadedFiles.push(fileObj);
+                        renderUploadedFiles();
+                        simulateUpload(fileObj.id);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    uploadedFiles.push(fileObj);
+                    renderUploadedFiles();
+                    simulateUpload(fileObj.id);
+                }
+            });
+        }
+        
+        function renderUploadedFiles() {
+            const container = document.getElementById('uploadedFiles');
+            container.innerHTML = uploadedFiles.map(file => `
+                <div class="flex items-center gap-3 p-4 rounded-xl bg-dark-900/50 border border-primary-500/20 animate-fade-in">
+                    ${file.preview 
+                        ? `<img src="${file.preview}" alt="${file.name}" class="w-12 h-12 rounded-lg object-cover">`
+                        : `<div class="w-12 h-12 rounded-lg bg-primary-500/20 flex items-center justify-center text-2xl">📄</div>`
+                    }
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-medium text-white truncate">${file.name}</p>
+                        <span class="text-xs text-dark-500">${formatFileSize(file.size)}</span>
+                        ${file.progress < 100 
+                            ? `<div class="h-1 bg-dark-800 rounded-full mt-2 overflow-hidden"><div class="h-full bg-gradient-to-r from-primary-500 to-primary-600 rounded-full" style="width: ${file.progress}%"></div></div>`
+                            : ''
+                        }
+                    </div>
+                    <button class="p-2 rounded-lg text-dark-500 hover:text-red-400 hover:bg-red-500/20 transition-all" onclick="removeFile('${file.id}')"><i class="bi bi-x-lg"></i></button>
+                </div>
+            `).join('');
+        }
+        
+        function simulateUpload(fileId) {
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 20;
+                if (progress >= 100) { progress = 100; clearInterval(interval); }
+                const file = uploadedFiles.find(f => f.id === fileId);
+                if (file) { file.progress = progress; renderUploadedFiles(); }
+            }, 200);
+        }
+        
+        function removeFile(fileId) {
+            uploadedFiles = uploadedFiles.filter(f => f.id !== fileId);
+            renderUploadedFiles();
+        }
+        
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+        
+        // ==========================================
+        // Toast Notifications
+        // ==========================================
+        function showToast(type, title, message) {
+            const container = document.getElementById('toastContainer');
+            const icons = { success: 'bi-check-circle-fill', error: 'bi-x-circle-fill', warning: 'bi-exclamation-triangle-fill', info: 'bi-info-circle-fill' };
+            const colors = { success: 'text-green-400', error: 'text-red-400', warning: 'text-amber-400', info: 'text-blue-400' };
+            
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <i class="bi ${icons[type]} ${colors[type]} text-xl"></i>
+                <div class="flex-1">
+                    <strong class="block text-white text-sm">${title}</strong>
+                    <p class="text-dark-400 text-xs">${message}</p>
+                </div>
+                <button class="text-dark-500 hover:text-white p-1" onclick="this.parentElement.remove()"><i class="bi bi-x-lg"></i></button>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => toast.remove(), 300);
+            }, 5000);
+        }
     </script>
 </body>
 </html>
